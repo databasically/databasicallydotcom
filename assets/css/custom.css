@@ -461,3 +461,19 @@ a.member:hover{
 .footer .footer-newsletter{
   padding-left:5px;
 }
+
+/*Customized for row feature for second option of portfolio template*/
+div.feature{
+  border-top: 1px solid #e0e0e0;
+  margin-top: 50px;
+}
+
+div.feature span.label-portfolio {
+  background-color: #006dcc;
+  font-size: 200%;
+  line-height: normal;
+}
+
+div.feature .span2 {
+  line-height: normal;
+}
