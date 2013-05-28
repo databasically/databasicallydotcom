@@ -149,6 +149,18 @@ nav.primary ul li a:hover {
   background-color:#124191;
   background-image:none;
 }
+
+/*Customized for portfolio template*/
+div.navbar-static-top{
+  padding: 30px 0;
+  background-color: #FFFFFF;
+}
+
+div.navbar-inner{
+  background-color: #FFFFFF;
+  padding-bottom: 30px;
+}
+
 /*ISOTOPE GALLERY*/
 .isotope-item { 
   z-index:2;
