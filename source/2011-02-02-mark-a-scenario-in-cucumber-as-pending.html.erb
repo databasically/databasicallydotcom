@@ -1,0 +1,37 @@
+---
+layout: article
+title: Mark a scenario in cucumber as pending
+post_date: 2011-02-02 15:37:37.000000000 -06:00
+---
+If you're writing lots of cucumber scenarios, sometimes you need to mark one pending so that you can focus on other things.  If you're refactoring, for instance, you don't need ten failing tests when one will do.
+
+So, there are a couple ways that we use to do pending cucumber scenarios:
+
+<h2>Write a non-defined step</h2>
+By default, a non-defined step will stop the execution of the scenario.
+<pre name="code" class="ruby">
+  Scenario: login with valid credentials
+    Given this is pending
+    ...
+</pre>
+This will show the scenario along with a note about defining the step.
+
+<h2>Create a pending step</h2>
+
+In one of your step definition files, add a step:
+<pre name="code" class="ruby">
+  Given /^PENDING/ do
+    pending
+  end
+</pre>
+
+Then you can use it like:
+<pre name="code" class="ruby">
+  Scenario: login with valid credentials
+    Given PENDING I have valid credentials
+</pre>
+
+<h2>Use the @wip tag</h2>
+There's also the <code>@wip</code> tag, which focuses you down to a specific test.
+
+Use it with <code>rake cucumber:wip</code>.

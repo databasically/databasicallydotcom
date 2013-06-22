@@ -1,0 +1,78 @@
+---
+layout: article
+title: ! 'What''s New in Ruby: The August 2012 edition'
+post_date: 2012-08-14 15:59:28.000000000 -05:00
+---
+Every month, <a href="http://meetup.com/kcruby">Kansas City Ruby</a> (#kcruby) reviews a subset of Peter Cooper's fantastic <a href="http://rubyweekly.com/?utm_source=databasically">Ruby Weekly</a> selections, along with other items picked up around the web.
+
+<h4><a href="http://37signals.com/svn/posts/3191-announcing-pow-040-with-xipio-support" target="_blank">Pow 0.4 with xip.io support</a></h4>
+<p>xip.io allows you to test your application from your local network without setting up DNS. Testing in IE? Testing from iPad? Especially handy when you need subdomains to work or have multiple apps running on a port and need domain resolution.</p>
+
+<h4><a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax" target="_blank">rspec's new expectation syntax</a></h4>
+<p>rspec is getting a new expectation syntax.</p>
+Now: <pre name="code" class="ruby">foo.should eq(bar)
+foo.should_not eq(bar)</pre>
+Then: <pre name="code" class="ruby">expect(foo).to eq(bar)
+expect(foo).not_to eq(bar)</pre>
+<p>Read <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax" target="_blank">the post</a> to get more information about the new rspec syntax.</p>
+
+<h4><a href="http://reefpoints.dockyard.com/ruby/2012/06/26/rails-4-sneak-peek-async-actionmailer.html" target="_blank">Rails 4.0 Sneak Peek: Asynchronous ActionMailer</a></h4>
+<p>
+Rails 4.0 has <code>Rails.queue</code> and this new feature allows you to push emails into the queue with code like:
+<pre name="code" class="ruby">class WelcomeMailer < ActionMailer::Base
+  self.async = true
+end</pre>
+
+When you call the mailer:
+<pre name="code" class="ruby">WelcomeMailer.welcome(@user.id).deliver</pre>
+
+... you need to use ids and look the object up in the mailer, instead of marshalling the entire object, like so:
+
+<pre name="code" class="ruby">
+class WelcomeMailer < ActionMailer::Base
+  def welcome(id)
+    @user = User.find(id)
+    ...
+  end
+end
+</pre>
+</p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>
+
+<h4><a href="" target="_blank"></a></h4>
+<p></p>

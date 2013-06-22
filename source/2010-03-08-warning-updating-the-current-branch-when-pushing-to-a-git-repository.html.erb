@@ -1,0 +1,35 @@
+---
+layout: article
+title: ! '"warning: updating the current branch" when pushing to a git repository'
+post_date: 2010-03-08 04:05:07.000000000 -06:00
+---
+I pushed some changes after updating git on my server to git 1.6+ and now I get this:
+<pre name="code" class="css">$ git push origin master
+...
+warning: updating the current branch
+warning: Updating the currently checked out branch may cause confusion,
+warning: as the index and work tree do not reflect changes that are in HEAD.
+warning: As a result, you may see the changes you just pushed into it
+warning: reverted when you run 'git diff' over there, and you may want
+warning: to run 'git reset --hard' before starting to work to recover.
+warning: 
+warning: You can set 'receive.denyCurrentBranch' configuration variable to
+warning: 'refuse' in the remote repository to forbid pushing into its
+warning: current branch.
+warning: To allow pushing into the current branch, you can set it to 'ignore';
+warning: but this is not recommended unless you arranged to update its work
+warning: tree to match what you pushed in some other way.
+warning: 
+warning: To squelch this message, you can set it to 'warn'.
+warning: 
+warning: Note that the default will change in a future version of git
+warning: to refuse updating the current branch unless you have the
+warning: configuration variable set to either 'ignore' or 'warn'.
+</pre>
+
+Woah!  After some research, this is because I didn't set up my remote folder as "bare". A non-bare repository has a working copy attached to it, and this warning is telling you that said working copy exists and is currently checked out to the branch you're trying to push to.
+
+This is bad, because if you were pushing to a co-worker's machine, then when they go to commit or run a diff, things will go awry.  In this case, I just didn't set up the repository correctly (it was the first one I'd done!) so I wasn't in danger of losing anything.
+
+The fix is to use <code>--bare</code>:
+<code>git init --bare</code> or <code>git clone --bare</code>

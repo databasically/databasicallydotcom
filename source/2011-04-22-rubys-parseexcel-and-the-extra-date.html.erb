@@ -1,0 +1,24 @@
+---
+layout: article
+title: Ruby's ParseExcel and the Extra Date
+post_date: 2011-04-22 15:55:15.000000000 -05:00
+---
+We have a feature in one of our application which allows the user to upload data from an Excel spreadsheet. One of the columns read in is a date field. Because we're dealing with end users, sometimes those dates come in as "Date" objects, sometimes they come in as "String"s, and sometimes they come in as a number.
+
+When Excel saves a date as a numeric, it is that value's number of days since January 0, 1900 (No, we can't say Dec 31, 1899). So a spreadsheet would store "May 1, 2011" as 40664 if it was formatted as a number.
+
+That's great, peachy even, but if you'll notice, 40664 days from Dec 31, 1899 is May 2, 2011, not May 1st. What happened? Compatibility.
+
+When Microsoft introduced Excel way back when, Lotus123 dominated the spreadsheet marking. In order for Microsoft to be able to compete, it had to be compatible with Lotus123. It had to be compatible with all the formulas, all the features, and all the bugs. One of those bugs had to do with an erroneous leap day in 1900. This means that when you read in numbers from a spreadsheet in order to translate them to a date, you have to account for that extra leap day.
+
+The solution? Just subtract one from the numeric. It might look something like this (from the Rails console):
+<pre name='code' class="ruby">Date.civil(1899, 12, 31) + 40664.days - 1.day</pre>
+We could have did that anyway and just chalked it up to something weird, but now, at least, we know why it's weird.
+
+<strong>Notes:</strong>
+
+<ul>
+<li>OpenOffice is also fully compatible with that bug.</li>
+<li><a href="http://www.cpearson.com/excel/datetime.htm">Dates and Times in Excel</a></li>
+</ul>
+

@@ -1,0 +1,9 @@
+---
+layout: article
+title: Turn off email logging in Rails
+post_date: 2008-05-27 00:48:08.000000000 -05:00
+---
+Oftentimes, I don't need every single email saved into the log file.  When I'm developing, they get in the way. In a production environment, they take up a lot of room make the log harder to read.
+
+So, I normally put this in my environment.rb:
+<pre name="code" class="ruby">ActionMailer::Base.logger = nil</pre>

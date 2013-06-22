@@ -1,0 +1,18 @@
+---
+layout: article
+title: ! 'Ubuntu postfix error -- postdrop: warning: unable to look up public/pickup:
+  No such file or directory'
+post_date: 2009-12-02 14:40:36.000000000 -06:00
+---
+I installed postfix and got this error:
+<code>postdrop: warning: unable to look up public/pickup: No such file or directory.</code>
+<!--more-->
+Turns out that sendmail was previously installed and that was messing things up.  I had to stop sendmail and make the appropriate directory and restart postfix.
+
+Specifically:
+<code>
+mkfifo /var/spool/postfix/public/pickup
+ps aux | grep mail
+kill <sendmail process id>
+sudo /etc/init.d/postfix restart
+</sendmail></code>

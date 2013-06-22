@@ -1,0 +1,10 @@
+---
+layout: article
+title: ! 'Overriding Rails'' automatic timestamps: updated_at & created_at'
+post_date: 2010-07-05 03:15:55.000000000 -05:00
+---
+When converting something in a project, I found that I needed to updated a field for every record in a Request table.  No problem, except this client grabs a SQL dump and run reports on it.  So, Rails' automatic timestamping of the updated_at field made all of the Requests look like they'd just been updated.  Which they had, but not by users.
+
+So, this rake task will reset all of them, presuming you have something to set them to.  In my case, I found the latest comment date and used that, but you could figure it out some other way.
+
+<script src="http://gist.github.com/463959.js"></script>

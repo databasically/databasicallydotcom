@@ -1,0 +1,28 @@
+---
+layout: article
+title: Hide zero balance clients in Harvest Uninvoiced Report
+post_date: 2011-09-09 04:42:01.000000000 -05:00
+---
+<strong>UPDATE:</strong> Check out the updated bookmarklet for more functionality:
+<a href="http://databasically.com/2011/12/16/even-better-hiding-zero-balance-clientsprojects-in-harvest-uninvoiced-report/" title="Even better: hiding zero balance clients/projects in Harvest Uninvoiced Report">Even better: hiding zero balance clients/projects in Harvest Uninvoiced Report</a>
+<hr>
+
+I love the Harvest <a href="http://www.getharvest.com/blog/2011/05/the-uninvoiced-report-for-time-expenses/">Uninvoiced Report</a>. I actually built the same thing for myself using the Harvest API, so I could run it at will and see what client balances were.
+
+The Harvest provided one goes a couple steps further, showing expenses and giving a link to create an invoice.
+
+One thing, though:
+
+<img src="http://f.cl.ly/items/2c1j033w3j0z1W3d1T0r/harvest-uninvoiced.png" alt="harvest uninvoiced" height="322" width="584" />
+
+We have a lot of clients and there might be a while that we don't do something for someone. Showing all of these clients that don't have a balance makes it hard to focus on the ones that <strong>do</strong> have a balance. This is the 'Uninvoiced' report, after all, which I tend to use for "who do I need to invoice?"
+
+Digging in, we can use some javascript to find the rows that are non-invoice-able and hide them:
+<script src="https://gist.github.com/1205514.js"> </script>
+
+Here's a bookmarklet for you:
+<a href="javascript:$$('tbody%20.btn-disabled').each(function(element,%20index)%20{%20element.up('tbody').hide()%20});void(0);">Harvest Hide Uninvoiceable</a>
+
+Drag it to your bookmarks bar, go to the uninvoiced report, and click to hide.
+
+Questions and improvements welcome, best way to get ahold of me is to <a href="http://twitter.com/wesgarrison">follow me on Twitter</a>.

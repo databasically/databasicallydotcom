@@ -1,0 +1,15 @@
+---
+layout: article
+title: Converting erb to haml in rails3
+post_date: 2010-09-19 16:17:59.000000000 -05:00
+---
+I'm taking over a project that's just started and prefer to use haml. In setting up my environment to work with rails3 and haml, here's the best way I found to convert the fledgling app to haml.
+<h2>Install gems</h2>
+<script src="http://gist.github.com/586872.js?file=Gemfile"></script>
+
+<h2>Run this</h2>
+<script src="http://gist.github.com/586872.js?file=convert-to-haml.rb"></script>
+
+This will convert all .erb files in app/views into .haml files right next to them, leaving the originals in case you need to refer to them to fix somethig the converter missed.
+
+This isn't rails 3 specific, except for the Gemfile part, really.

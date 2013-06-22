@@ -1,0 +1,15 @@
+---
+layout: article
+title: Running rails migrations in other databases
+post_date: 2010-09-24 05:04:56.000000000 -05:00
+---
+We have a set of Ruby on Rails applications that shares user logins, so we put that table in a database and connect to it from each application.
+
+If an app needs to add a column to the shared table, you can create a migration that accesses that other database.   
+
+First, create an entry in your <code>database.yml</code> file (we name ours "user_development", etc.).
+
+Then, establish that connection in your database migration and do your migration stuff:
+<script src="http://gist.github.com/594886.js"> </script>
+
+This has the benefit of keeping all the migrations local to the app they're needed for, but it stores the schema of the users table in the users database where it belongs.

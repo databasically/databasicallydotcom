@@ -1,0 +1,32 @@
+---
+layout: article
+title: WSUS 3.0 memory usage and how to adjust it
+post_date: 2008-11-10 09:52:54.000000000 -06:00
+---
+I set up a new Windows 2003 R2 Small Business Server (SBS) last week and I'm going over it and tweaking things.
+
+While looking at the task manager, I noticed a process that was using 1.6 GB of RAM.  This sqlserver.exe process was going wild!
+
+I turned on the process IDs in Task Manager (View &gt; Select Columns) so I could get a process ID for the offending process.  For me, it was process id <strong>1664</strong>.  Then, I turned to the console for some troubleshooting:
+<pre name="code" class="vb:nogutter">C:\tasklist /svc /fi "PID eq 1664"</pre>
+You should change your process id to match if you're running this at home.
+<pre name="code" class="vb:nogutter">Image Name                     PID Services
+========================= ======== =======================
+sqlservr.exe                  1664 MSSQL$MICROSOFT##SSEE</pre>
+﻿﻿﻿
+Microsoft SSEE shows in the services panel as Windows Internal Database, which is the database for Windows Software Update Services.  Now that we know the instance name, we can reconfigure it:
+
+<pre name="code" class="vb:nogutter">C:\osql -E -S <servername>MICROSOFT##SSEE
+﻿1> sp_configure ’show advanced options’, 1;
+2> reconfigure;
+3> go
+Configuration option ’show advanced options’ changed from 0 to 1.
+  Run the RECONFIGURE statement to install.
+1> sp_configure ‘max server memory’, 512;
+2> reconfigure;
+3> go
+Configuration option ‘max server memory (MB)’ changed from
+  2147483647 to 512. Run the RECONFIGURE statement to install.
+1> exit</servername></pre>
+
+While you're at it, you may want to reconfigure the SBSMONITORING database instance if you're running SBS.  I set mine to 70 MB.

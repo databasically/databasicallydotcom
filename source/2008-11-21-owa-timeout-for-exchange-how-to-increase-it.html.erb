@@ -1,0 +1,17 @@
+---
+layout: article
+title: ! 'OWA timeout for Exchange: how to increase it'
+post_date: 2008-11-21 17:37:26.000000000 -06:00
+---
+Using the webmail interface for Exchange is super handy for users at home or on the road. However, I received several questions about being logged out and having to continually log back in.
+
+First, you have the option to select that you're logging on from a "private" or "public" computer. The default for "private" is 20 minutes, while the default for "public" is two hours.  If you log in at home on a weekend and are checking back every-so-often, this might be a pain because you'd be timed out every two hours.
+
+So, I poked around to find the setting that controls this.  Turns out there are registry keys for both of the values that you can modify.
+
+Browse to HKLM\System\CurrentControlSet\Services\MSExchangeWeb\OWA\ and you'll find two keys:
+<ul>
+	<li>PublicClientTimeout - timeout when someone picks public (default of 20 minutes)</li>
+	<li>TrustedClientTimeout - timeout when someone picks private (default of 120 minutes = 2 hours)</li>
+</ul>
+I suggest changing this to 1440 (for 12 hours) or 2880 (for 24 hours) so users can stay logged in longer.

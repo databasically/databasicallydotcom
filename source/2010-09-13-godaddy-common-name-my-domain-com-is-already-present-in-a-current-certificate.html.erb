@@ -1,0 +1,45 @@
+---
+layout: article
+title: ! 'Godaddy: Common name my.domain.com is already present in a current certificate'
+post_date: 2010-09-13 19:00:49.000000000 -05:00
+---
+When submitting a CSR for creating a new SSL certificate on <a href="http://bit.ly/dbgddyffa">godaddy.com</a> I received this error:
+
+<blockquote>Common name my.domain.com is already present in a current certificate</blockquote>
+
+For those searching for a quick answer: you need to <strong>renew</strong> the other certificate or get it <strong>revoked</strong>.
+
+I took this site over from another developer, so I didn't have access to the SSL account that he used to purchase the certificate. 
+
+My first call to general support told me I would have to prove an interest in the domain name, either through knowing the account login or some other method, like altering a DNS record or something.  He bounced me to SSL support for future help.
+
+Called godaddy SSL support (480-505-8852) and they said:
+
+The current certificate needs to be revoked, so current owner of domain needs to get involved. I asked if the DNS option was a possibility, because trying to get an email to a no-longer-there contact's email address sent on to me reliably could be problematic.
+
+After talking to a supervisor, I gave them my email address and they sent me an email:
+
+<blockquote>We need to validate your domain access or control. 
+
+Your domain's WHOIS record does not present a valid registrant and/or administrative email address, you will need to complete domain control verification.
+
+There are several alternative methods you can choose from below to complete domain control verification.
+
+This is a special code for you to use when completing one of the two methods below: abc123
+
+Domain Zone Control
+
+Access your domain name's DNS control panel and create a CNAME using the special code as the hostname. The points-to address does not matter. CNAME = abc123.mydomain.com
+
+Website Control Validation
+
+Create a webpage on your root domain using the special code above. Example: your domain name is mydomain.com and if the code is abc123 , you would create a webpage named abc123.html and upload it to the root domain so it resolves as mydomain.com/abc123.html. You must use html as the page extension.
+
+************************************************
+The webpage will also need to contain the special code in the body. We will not accept a blank page.
+************************************************</blockquote>
+
+I replied to that email after setting up the CNAME and making sure it worked.
+
+I waited the requested 15 minutes and called back in to get a status update.  The customer service rep grabbed a supervisor and they submitted it and I got on with my SSL request.
+

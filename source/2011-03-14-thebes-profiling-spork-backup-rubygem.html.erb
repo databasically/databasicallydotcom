@@ -1,0 +1,36 @@
+---
+layout: article
+title: Thebes, profiling spork, backup rubygem
+post_date: 2011-03-14 15:41:34.000000000 -05:00
+---
+<h1 id="thebes_a_new_minimal_sphinx_gem_for_rails">Thebes, a new minimal sphinx gem for Rails</h1>
+
+<p><a href="www.getharvest.com/blog/2011/03/thebes-a-new-minimal-sphinx-gem-for-rails/" title="Thebes">Link</a></p>
+
+<blockquote>
+  <p>Thebes is a wrapper around Sphinx, the search engine we use on most of our projects. Thebes differs from other solutions by staying as far away from your Rails code as possible. Instead of hiding the Sphinx configuration file behind a domain-specific language, this library assumes you will write Sphinx config files by hand. In Thebes, you edit an ERB template of your Sphinx configuration and populate it with variables at generation time. For developers needing the most flexible or fastest solution possible, this is a great way to work with Sphinx.</p>
+</blockquote>
+
+<p>We've been doing some interesting things with search and reporting that are going to require faster lookups than directly querying the database. From the article "the [Thinking Sphinx project] has a lot of complexity and ties to ActiveRecord 2.x code. Consequently, the porting of TS to Rails 3 isn’t turning out to be the smooth road we hoped for.  So, for Rails 3 projects, this looks like a good way to go if you're willing to get your hands dirty and build some sphinx files yourself.</p>
+
+<h1 id="profiling_spork_for_faster_start_up_time">Profiling Spork for faster start-up time</h1>
+
+<p><a href="http://opinionated-programmer.com/2011/02/profiling-spork-for-faster-start-up-time/" title="Profiling Spork">Link</a></p>
+
+<p>Spork allows you to preload Rails environment files into a process, then it forks that process and runs your tests against the new process.  In essence, your tests will start faster because they're not loading everything.  You can specify files you want to be reloaded each time (for instance, model files).</p>
+
+<p>The code:</p>
+
+<script src="https://gist.github.com/869238.js"> </script>
+
+<p>This prints out everything being loaded up, so you can move files that don't change into the preload block for that extra bit of snappiness.</p>
+
+<h1 id="backup_a_rubygem_for_database_and_file_backups">Backup, a rubygem for database and file backups</h1>
+
+<p><a href="https://github.com/meskyanichi/backup" title="Backup rubygem">Link</a></p>
+
+<blockquote>
+  <p>Backup is a RubyGem (for UNIX-like operating systems: Linux, Mac OSX) that allows you to configure and perform backups in a simple manner using an elegant Ruby DSL. It supports various databases (MySQL, PostgreSQL, MongoDB and Redis), it supports various storage locations (Amazon S3, Rackspace Cloud Files, Dropbox, any remote server through FTP, SFTP, SCP and RSync), it can archive files and folders, it can cycle backups, it can do incremental backups, it can compress backups, it can encrypt backups (OpenSSL or GPG), it can notify you about successful and/or failed backups (Mail or Twitter). It is very extensible and easy to add new functionality to. It's easy to use.</p>
+</blockquote>
+
+<p>Check out the <a href="https://github.com/meskyanichi/backup/blob/develop/README.md" title="README">README</a> for all the details, but this allows you to backup your app via command line, pushing to S3 or rsync'ing to another server.  You can schedule it with the fantastic <a href="https://github.com/javan/whenever" title="Whenever gem">Whenever gem</a> too.</p>

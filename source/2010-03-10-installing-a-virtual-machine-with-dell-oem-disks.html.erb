@@ -1,0 +1,21 @@
+---
+layout: article
+title: Installing A Virtual Machine With Dell OEM Disks
+post_date: 2010-03-10 21:53:07.000000000 -06:00
+---
+If you're willing to put in the effort (and assuming you're legal), it could work, but I'd suggest using a retail license which avoids the caveats you'll soon be reading about below:
+
+<strong>First, some helpful information:</strong>
+
+OEM Dell installation CDs depend on the SLP code in the Dell BIOS for activation.  If the installation program can't see the real bios, it can't activate.  With a commercially purchased installation CD this is not a problem as you have a COA that can be activated on line or by phone.  OEM installation CDs cannot be activated on line, and since Dell is responsible for support of an OEM disk that was issued by Dell, Microsoft will not normally give you an activation key if you call them.  You can try the phone method, of course, since so far as I can tell you are running only Windows XP Pro rather than both Vista and Windows XP.  Once you explain what you are doing they might grant you an activation code.
+
+If you are installing an OEM version onto a virtual machine, it will not activate as it cannot see the BIOS String of the real Dell machine. It is only seeing the Virtual BIOS which doesn't have the SLP String to activate.
+
+<strong>How to resolve this:</strong>
+<ol>
+	<li>Boot up XP Pro VM installation, and select the Telephone activation option for the XP activation.</li>
+	<li>Call MS. Try to go on to speak to a representative to explain further.</li>
+	<li>Here it's important to explain exactly what you're doing to the rep -- Explain that you simply want to activate this one XP license, on the Dell with which it was purchased, but you are doing so in a virtual machine. They can quickly confirm why it's not working, due to not seeing the real BIOS.</li>
+	<li>You should end up transferred to the Product Key Team.</li>
+	<li>Once connected with the Product Key Team, they should provide you with a new product key (after confirming you are installing XP on the Dell that it came with and installing just one instance) there are a couple more steps -- after entering the new product key, give the new activation code to the rep, get the confirmation to enter in the activation screen; and with luck, success!</li>
+</ol>

@@ -1,0 +1,14 @@
+---
+layout: article
+title: Deleting old files
+post_date: 2008-06-01 22:48:18.000000000 -05:00
+---
+<p>Oftentimes, I like to backup SQL databases to a local folder, then include that folder in my backup to tape/disk/network.  That way, the backup software doesn't have to be database aware; it's just backing up files.</p>
+
+<p>SQL Server allows you to schedule backups and there's an option to clear out the old backup files, but I've found it doesn't always work quite right.  I'd always struggled with a way to do this until I found the FORFILES command.</p>
+
+<p>Now, I'm not sure what version of Windows this appeared it, but I know it's in Windows Server 2003.</p>
+<p><pre name="code" lang="vb">forfiles /p e:\backup /m *.bak /d -2 /c "cmd /c del @file"</pre></p>
+<p>The /c option allows you to run any command, so I'm using the del command to delete all files older than a certain date.  Certainly, you could do whatever you want, like move them or copy or print their attributes.</p>
+<p>The /d is where you specify a date or a number of days. A plus gives you files after that date and a minus gives you files before that date.  In my example, files more that two days old are selected to be deleted.</p>
+<p>I never had a good way to do this before, so I was always resorting to a script written in another language or a customized batch file (and batch programming is not fun!)</p>

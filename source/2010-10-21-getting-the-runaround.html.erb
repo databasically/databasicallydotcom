@@ -1,0 +1,39 @@
+---
+layout: article
+title: Getting the Runaround
+post_date: 2010-10-21 19:03:23.000000000 -05:00
+---
+Yesterday was my third day on the job and to be honest, it wasn't a lot of fun. I'm learning a lot of things right now: a new project, new methodologies, and new technologies. Combine all of that with a seemingly useless RSpec error and you can imagine where my blood pressure was reaching.
+
+I had just added a new association to a FactoryGirl factory. I've not used FactoryGirl before, but it's easy enough to copy and paste from other factories in the directory. So far, so good. I wasn't watching the test output, but it was just one line, what could go wrong?
+
+Several updates and commits later, I thought I'd better make sure we were still "Green". Eh, not so much. Here's the output I was seeing repeated over and over again.
+<pre name="code" class="ruby">
+Failure/Error: Unable to find matching line from backtrace
+stack level too deep
+# /home/user/.rvm/gems/ruby-1.9.2-p0@xxx/gems/activerecord-3.0.0/lib/active_record/locking/optimistic.rb:62
+</pre>
+
+I'll not bore you with the details of my fruitless search to track this down. Suffice it to say, Wes - that would be my new boss - helped me back out my changes and track down the error.
+
+It turns out that my "simple" addition to the "facility" factory wasn't so simple. It actually resulted in a never ending loop of weeping and gnashing of teeth.
+
+There are three models which were being dealt with: Facility, User, and Department. Departments have many users; facilities have many departments, and a facility can have a user who is defined as a contact. The schema looks like this:
+
+<a href="http://databasically.com/wp-content/uploads/2010/10/roundabout.png"><img class="alignnone size-full wp-image-383" title="runaround" src="http://databasically.com/wp-content/uploads/2010/10/roundabout.png" alt="rounaround schema" width="485" height="326" /></a>
+
+In my "facility" factory, I was making an association to the "users" table. Unbeknownst to me, the "user" factory was making an association to "department", which was in turn making an association to "facility", which was making an association to "user", ad nauseum. The result: a "stack level too deep" error.
+
+The solution was to just create the user association with the "department" set to nil.
+
+Before:
+<code>
+t.association :contact, :factory =&gt; :user
+</code>
+
+After:
+<code>
+t.association :contact, :factory =&gt; :user, :department =&gt; nil
+</code>
+
+Hopefully this will make someone else's first week on the job go a little smoother and keep them from getting the runaround.

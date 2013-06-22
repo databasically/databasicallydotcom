@@ -1,0 +1,71 @@
+---
+layout: article
+title: Configuration for mailjet email delivery with Ruby on Rails
+post_date: 2011-06-07 10:00:03.000000000 -05:00
+---
+<p>Setting up mailjet.com to deliver your mail via Ruby on Rails?  Here's how, because their <a href="https://www.mailjet.com/docs/getting_started">Getting Started</a> is nothing but placeholder headers right now.<br>
+<div class="thumbnail"><a href="https://skitch.com/wesg/fdkc8/mailjet-real-time-emailing-mailjet.com"><img src="https://img.skitch.com/20110607-bmbfb3f4pjrcawsya4yab9dcic.preview.jpg" alt="Mailjet : Real-time Emailing - mailjet.com" /></a><br /></div>
+</p><!--more--><h2>Create an account</h2>
+<p>Go to <a href="https://www.mailjet.com">https://www.mailjet.com</a> and create an account.</p>
+<p>Note: the word "Faculatative" means "optional" on the signup form.</p>
+
+<h2>Add your sending address</h2>
+<ul>
+<li>Add a sending address (Accounts > <a href="https://www.mailjet.com/account/sender">Sender Addresses</a>)</li>
+<li>Update your Rails ActionMailer configuration
+<ul><li>Find the settings you need at: <a href="https://www.mailjet.com/account/setup">https://www.mailjet.com/account/setup</a><br>
+  <pre>
+    SMTP server: 
+    in.mailjet.com
+
+    Username (API Key): 
+    12345678901234567890
+
+    Password (Secret Key): 
+    99999999999999999999999999999999
+
+    Port: 
+    25 or 587 (some providers block port 25)
+
+    Use TLS: 
+    yes    
+  </pre></li>
+  <li>Set these settings in config/application.rb (or config/environments/production.rb): 
+  <pre name="code" class="ruby">
+    
+    config.action_mailer.raise_delivery_errors = false
+    config.action_mailer.perform_deliveries = true
+
+    config.action_mailer.smtp_settings = {
+      :address => "in.mailjet.com",
+      :enable_starttls_auto => true,
+      :port => 587,
+      :authentication => 'plain',
+      :user_name => "12345678901234567890",
+      :password => "99999999999999999999999999999999"
+    }
+    
+  </pre>
+  </li>
+  </ul></li>
+</ul>
+
+<h2>Setup domain authentication (SPF and/or DomainKeys/DKIM)</h2>
+<h3>SPF</h3>
+<p>
+  <img src="https://img.skitch.com/20110607-nmn91j4ukdp8yna3pup3qu1sb8.png" alt="My Account - mailjet.com" /><br>
+  Click <b>Domain DNS and SMTP setup</b>.<br>
+  Then, under <b>Domain Authentication</b>, click your domain.
+</p><p>Setting up SPF requires adding a DNS entry. Mailjet will look at your existing one and give you the one to replace it with.
+  It'll look something like: <br><code>domainname.com.	IN TXT "v=spf1 include:spf.mailjet.com mx ~all"</code><br>
+  In my DNS manager, I created a TXT record, gave it a name of "domainname.com." and set the value to the <br><code>'v=spf1 include:spf.mailjet.com mx ~all'</code> portion (without the quotes).  The full example they give you is for the DNS zone syntax, which you may or may not have.<br><br>
+
+  If you need help configuring this, <a href="/contact-us">we would be happy to help you</a>.</p>
+  <h3>DKIM</h3>
+  <p>
+  This is similar, a TXT record that has a key that identifies your server so mail can be sent.  Same deal.
+</p>
+
+<h2>Test</h2>
+<p>Deploy your changes and kick off something that sends a mailer.  We have a Notifier model that has a <code>test_email()</code> method that I just called from the console to push a test through.  I just went to the reports and saw it there.</p>
+<p>All in all, the service seems a little rough around the edges, mostly due to it being a French company that could use a little work on the translations and some serious love on the support documentations.  Hope this helps you get started with Mailjet configuration!</p>

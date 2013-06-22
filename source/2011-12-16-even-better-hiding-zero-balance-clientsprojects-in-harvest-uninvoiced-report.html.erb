@@ -1,0 +1,21 @@
+---
+layout: article
+title: ! 'Even better: hiding zero balance clients/projects in Harvest Uninvoiced
+  Report'
+post_date: 2011-12-16 03:51:27.000000000 -06:00
+---
+I got a few comments on the <a href="http://databasically.com/2011/09/09/hide-zero-balance-clients-in-harvest-uninvoiced-report/" title="Hide zero balance clients in Harvest Uninvoiced Report">original post</a> (<a href="http://databasically.com/2011/09/09/hide-zero-balance-clients-in-harvest-uninvoiced-report/">Hide zero balance clients in Harvest Uninvoiced Report</a>) about not suppressing projects that have a zero balance if the overall client has some billing.
+
+For instance, this report with some $0 projects and some $0 clients.  The previous bookmarklet would only hide the clients with a total of $0, which could still leave a lot of cruft floating around:
+<img src="http://f.cl.ly/items/2L330v0s0m0W0n2q0S3A/harvest-lots-of-zeros.png" alt="Lots of zeros!" width="547" height="441" />
+
+The new bookmarklet will reduce it down to this:
+<img src="http://f.cl.ly/items/1C37120f2h1u3c363822/harvest-no-zeros.png" alt="No more zeros!" width="548" height="88" />
+
+Here's the actual code:
+<script src="https://gist.github.com/1484362.js?file=gistfile1.js"></script>
+
+And here's a bookmarklet to drag to your browser bookmark bar:
+<a href="javascript:$$('tbody%20.btn-disabled').each(function(element,index){element.up('tbody').hide()});$$('td.ur-name%20a.gray').each(function(element,index){element.up('tr').hide()});void(0);">Harvest Hide Uninvoiced</a>
+
+Note: this is very dependent on the implementation of the Harvest report, so if this breaks in the future, you should <a href="http://twiter.com/wesgarrison">ping me on twitter</a> to let me know.

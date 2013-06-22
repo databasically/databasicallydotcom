@@ -1,0 +1,29 @@
+---
+layout: article
+title: A :limit of Rails' Migrations
+post_date: 2011-03-01 16:35:51.000000000 -06:00
+---
+Migrations in Ruby on Rails use the ":limit" symbol to set the maximum length of the underlying field's data type. Take for example, the following example migration:
+<pre name='code' class="ruby">create_table :things do |t|
+  t.string :name, :limit =&gt; 32
+  t.string :description
+  t.timestamps
+end
+</pre>
+By default, Rails will create :description as data type "varchar(255)" and :name as "varchar(32)" in a MySQL database. But did you know you can set :limit to be greater than 255?
+
+For whatever reason, many of us have gained the impression that 255 is the longest :string can be, but that just isn't the case. If I wanted the :description field in the example above to be greater than 255, I could just define it as follows:
+<pre name='code' class="ruby">t.string :description, :limit =&gt; 1024
+</pre>
+In fact, strings (i.e. varchars) in MySQL can hold up to 65,535 bytes of data.
+
+The opinionated nature of  Ruby on Rails is a great asset in most instances, but we have to be careful not to let its opinions :limit us.
+
+<strong>Note:</strong> I'm pretty sure Rails sets the default limit of strings to be 255 for two reasons: 1) cross database compatability, and 2) MySQL's InnoDB (utf-8) engine can't index varchar fields exceeding 255 characters.
+<h3>Further Reading</h3>
+<ul>
+	<li><a href="http://www.railsinside.com/misc/455-the-perils-of-opinionated-software-like-rails.html">The Perils Of Opinionated Software (like Rails)</a></li>
+	<li><a href="http://dev.mysql.com/doc/refman/5.0/en/data-types.html">MySQL Data Types</a></li>
+	<li><a href="http://dev.mysql.com/doc/refman/5.0/en/innodb-restrictions.html">Restrictions on InnoDB Tables</a></li>
+	<li><a href="http://dev.mysql.com/doc/refman/5.0/en/char.html">The CHAR and VARCHAR Data Types</a></li>
+</ul>

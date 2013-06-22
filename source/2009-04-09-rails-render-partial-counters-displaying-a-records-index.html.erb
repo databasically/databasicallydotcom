@@ -1,0 +1,12 @@
+---
+layout: article
+title: ! 'Rails render partial counters: displaying a record&#039;s index in a collection'
+post_date: 2009-04-09 15:34:09.000000000 -05:00
+---
+I always forget that you can reference the index of an item in a collection when you're using a partial:
+<pre name="code" class="ruby">&lt;%= render :partial => 'item', :object => @items %>
+# in _item.html.erb
+&lt;%= item_counter %></pre>
+This is zero-based, so you might want to +1 if you want the count to start at 1.
+
+It's an easy way to number lines in a partial, which I find I do fairly often and I can never remember the syntax for getting that index counter!

@@ -1,0 +1,32 @@
+---
+layout: article
+title: Installing sqlite headers on ubuntu (sqlite3.h not found)
+post_date: 2010-03-05 22:21:47.000000000 -06:00
+---
+I was setting up <a href="http://integrityapp.com/">Integrity</a> for the first time and ran into this on my server when bundling gems:
+
+<pre name="code" class="ruby">~$ bundle install
+...
+Installing do_sqlite3 (0.10.0) from rubygems repository at 
+  http://gemcutter.org/ with native extensions 
+  /usr/local/lib/site_ruby/1.8/rubygems/installer.rb:482:in 
+  `build_extensions': 
+ERROR: Failed to build gem native extension. 
+  (Gem::Installer::ExtensionBuildError)
+
+/usr/bin/ruby1.8 extconf.rb
+checking for sqlite3.h... no
+*** extconf.rb failed ***
+...
+</pre>
+
+The key is the line: <code>checking for sqlite3.h... no</code>
+The <code>do_sqlite3</code> gem gets compiled natively, but the development headers weren't installed on the system and so the compilation won't work.
+
+Install them:
+
+<pre name="code" class="ruby">~$ sudo apt-get install sqlite3
+~$ sudo apt-get install libsqlite3-dev</pre>
+
+Then, re-bundle:
+<pre name="code" class="ruby">~$ bundle install</pre>

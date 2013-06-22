@@ -1,0 +1,31 @@
+---
+layout: article
+title: rspec2, rails3, and spork with drb to get faster tests
+post_date: 2010-09-17 01:52:12.000000000 -05:00
+---
+I started using rspec2 and rails3 on a project and wanted faster tests.
+
+<pre class="code" name="ruby">Gemfile:
+gem 'spork'
+
+bundle install
+
+spork --bootstrap
+</pre>
+
+Bootstrapping will edit your spec_helper.rb file with some instructions.  I had a vanilla spec_helper file, so everything got moved into the <code>Spork.prefork</code> block.
+
+Also, I'm using autotest, so I added <code>--drb</code> to my .rspec file.
+
+Finally:
+<pre class="code" name="ruby">
+spork &
+autotest
+</pre>
+
+I only had 15 tests at the time that I did this, but they went from running in 6 seconds to running in 1.5 seconds. Significant.
+
+<strong>UPDATE:</strong>
+
+From the comments, here's a fix for running rake on Windows ("can't find executable rake"):
+<script src="http://gist.github.com/519744.js"> </script>

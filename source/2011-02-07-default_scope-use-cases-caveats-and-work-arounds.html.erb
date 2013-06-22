@@ -1,0 +1,41 @@
+---
+layout: article
+title: ! 'default_scope: Use Cases, Caveats, and Work Arounds'
+post_date: 2011-02-07 14:57:09.000000000 -06:00
+---
+In Ruby on Rails, named scopes are class methods used to restrict and organize the data searched for. In SQL terms, a named scope adds to the conditional (WHERE) and sorting (ORDER) sections of a query. See <a href="http://railscasts.com/episodes/108-named-scope">Railscast #108</a> for more information.
+
+In Rails 2.3.x, a new type of scoping was added to the API: the default_scope. By using "default_scope", one could restrict the data retrieved by every query without the need for extra method calls; it would just happen by "default". If you wanted to have your data sorted in a particular manner, you could add "default_scope, :order =&gt; 'created_at DESC'" to your model. From then on, all data retrieved would be ordered by "created_at" in a "descending" manner.
+<h2>Caveats</h2>
+In general, default_scope should be avoided if possible. Here are a few reasons:
+<ul>
+	<li>Out of site, out of mind: Because you don't see that you are scoping your data as you query it, it's easy to forget that it is in actuality being filtered. This can lead to a lot of head scratching until you remember the default_scope.</li>
+	<li>default_scope is inherited: All subclasses of the original model will inherit the default scoping. This may not be the behavior you desire.</li>
+	<li>Extra overhead: It's one thing if you need your data sorted every single time, it's quite another if you don't. By using default_scope, you may be unnecessarily burdening your database.</li>
+</ul>
+<h2>Use Cases</h2>
+Like curry, default_scope is not inherently evil (obscure Phineas and Ferb reference), and there are instances where using it makes good sense. As an example, here at Databasically, we use default_scope to limit data retrieved by one application to a subset of what is available in a table. There will never be an instance where all the available data will be required, and so we limit it by default.
+
+Here are the two use cases:
+<ul>
+	<li>When <strong>only</strong> a subset of the data is ever required</li>
+	<li>When the data must be returned in a specific order <strong>every</strong> time</li>
+</ul>
+<h2>Work Arounds</h2>
+I highlighted the words "only" and "every" in the section on use cases to make a point: default_scope should be used with caution. The fact is, however, that it's not an "only" and "every" world, and as such, we need work arounds. In our case, it's by using "with_exclusive_scope" and the undocumented "unscoped" (Rails 3.x only)
+
+with_exclusive_scope example:
+<pre name='code' class="ruby">Article.with_exclusive_scope { find(:all) }
+</pre>
+unscoped example (Rails 3.x only):
+<pre name='code' class="ruby">Article.unscoped
+</pre>
+<h2>Conclusion</h2>
+In general, we like to keep our code as DRY as possible, but in cases like default_scope, we prefer to be more explicit. We recognize the value of default_scope, but only use it when we absolutely need to, and even then we try to think of alternative methods.
+
+How about you? We would really like to hear from you about your experiences with default scopings. What considerations do you take into account when choosing whether or not to use default_scope?
+<h2>Further Reading</h2>
+<ul>
+	<li><a href="http://ryandaigle.com/articles/2008/11/18/what-s-new-in-edge-rails-default-scoping">What's New in Edge Rails: Default Scoping</a></li>
+	<li><a href="http://stackoverflow.com/questions/2073419/overriding-default-scope-in-rails">Overriding default_scope in Rails</a></li>
+</ul>

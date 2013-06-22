@@ -1,0 +1,51 @@
+---
+layout: article
+title: Clearing a stuck POP mailbox with Ruby Net::Telnet
+post_date: 2009-05-18 23:12:57.000000000 -05:00
+---
+A client's mailbox was full. Outlook tried to download all messages before deleting them, and I don't know a setting to make it retrieve/delete a set number.
+<!--more-->
+So, knowing that you can telnet to a POP server, I wrote up a little ruby script to delete the first 1000 messages without bothering to retrieve them.
+<pre class="ruby" name="code">require 'net/telnet'
+
+pop = Net::Telnet::new("Host" =&gt; "pop.server.com",
+  "Port" =&gt; 110,
+  "Telnetmode" =&gt; false,
+  "Timeout"    =&gt; false,
+  "Prompt" =&gt; /^\+OK/n)
+pop.cmd("user " + "name@domain.com") { |c| print c }
+pop.cmd("pass " + "P@ssword") { |c| print c }
+pop.cmd("stat") { |c| print c }
+1.upto(1000) do |i|
+  pop.cmd("dele #{i}")
+  puts i if 0 == i % 100
+end
+pop.cmd("stat") { |c| print c }
+
+pop.cmd("quit") { |c| print c }</pre>
+Here's the output:
+<pre class="ruby" name="code">+OK hello from popgate 2.43 on pop.server.com
++OK password required.
++OK maildrop ready, 50139 messages (1474122084 octets) (1477758478)
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1000
++OK message 1000 marked deleted
++OK 49139 1462508238</pre>
+I put the STAT lines in there so I could see how many messages were there at the start and finish of the script running.
+
+The Ruby POP3 library has a delete_all(), but the last day or so of mail hadn't been retrieved at all, so I couldn't just nuke the mailbox and start over.  I only needed to clear some space so that I could connect normally (and set the client to delete-on-retrieve).  You could mimic that by parsing the STAT response for the number of messages. I leave that as an exercise to the reader.
+
+I made some more tweaks after writing this post and added support for growl:
+<pre class="ruby" name="code">system "growlnotify -m '#{i} of 1000 deleted'
+ -d popdelete" if 0 == i % 25</pre>
+That way I could just watch the growl window in the corner to see how it was doing.  The <i>-d</i> flag groups the notifications so that I didn't get a separate notification window for each message; the new message updates the previous notification window.
+
+When I was searching for a solution before writing my own, I looked for "pop delete all" and "pop clear" and "pop commands" and "pop command delete all".  Hope that helps someone else find this article.

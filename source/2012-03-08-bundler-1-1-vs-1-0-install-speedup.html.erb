@@ -1,0 +1,36 @@
+---
+layout: article
+title: Bundler 1.1 vs 1.0 install speedup
+post_date: 2012-03-08 20:11:57.000000000 -06:00
+---
+<a href="http://gembundler.com/">Bundler</a> 1.1 went official yesterday.  One of the big improvements is speed.  Previous versions of bundler would need to download all of the rubygems information in order to build a dependency tree.
+
+Whenever you see <code>Fetching source index for http://rubygems.org/</code> when you do a <code>bundle install</code>, that's bundler downloading the file with all of the gems' information.
+
+Now, bundler 1.1 is smarter about this.  It can ask rubygems.org directly to give it the dependencies for a list of gems (see this post for a better explanation of the actual <a href="http://patshaughnessy.net/2011/10/14/why-bundler-1-1-will-be-much-faster">rubygems bundler API calls</a>) and use that to start downloading the gems.
+
+Here are my results, for a project with a brand new empty gemset:
+
+<pre name="code" class="ruby">
+$ gem install bundler -v=1.0.18 && time bundle install
+Installing ...
+Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.
+
+real	48.174s
+user	38.411s
+sys	19.535s
+
+$ gem install bundler -v=1.1.0 && time bundle install
+Fetching gem metadata from http://rubygems.org/.......
+Fetching gem metadata from http://rubygems.org/..
+
+Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.
+
+real	22.015s
+user	28.377s
+sys	18.442s
+</pre>
+
+Speedy!
+
+Check out the <code>bundle install --verbose</code> option if you want more insight into what bundler is doing, too.

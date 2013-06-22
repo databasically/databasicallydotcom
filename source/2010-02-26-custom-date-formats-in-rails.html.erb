@@ -1,0 +1,15 @@
+---
+layout: article
+title: Custom date formats in Rails
+post_date: 2010-02-26 14:58:05.000000000 -06:00
+---
+I like to keep my date formats all together, instead of having <code>.strftime()</code> mixed into my code.
+<!--more-->
+Create a file <code>/config/initializers/custom_date_formats.rb</code>
+
+Load your formats into <code>Time::DATE_FORMATS</code>
+<pre name="code" class="ruby">Time::DATE_FORMATS[:ymd] = "%Y-%m-%d"</pre>
+
+Use like so:
+<pre name="code" class="ruby">@christmas_post.created_at.to_s(:ymd)
+# => "2009-12-25"</pre>

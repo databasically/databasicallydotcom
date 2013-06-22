@@ -1,0 +1,84 @@
+---
+layout: article
+title: Git Branching After the Fact
+post_date: 2011-02-14 21:26:37.000000000 -06:00
+---
+We have a pretty simple <a href="http://git-scm.com/">Git</a> work flow here at <a href="http://databasically.com">Databasically</a>: Just work in master. There are a couple reasons for this: we're not a large team, and we have a very rapid (i.e. daily) release cycle. I had been used to creating branches for every new feature, so when I found out we primarily work on the "master" branch, I was a bit shocked.
+
+I know what you're thinking, "But what if you go down a path and realize you need to branch in order to put in a 'hotfix', or you find out the story is more involved than initially  thought?": you just create a branch after the fact. Here's how to do it in just a few easy steps:
+<h2>Step 1: Know where you are and where you want to go</h2>
+The first thing you need to know is where you are and where you want to go.
+
+<a href="http://databasically.com/wp-content/uploads/2011/02/git_head1.png"><img class="alignnone size-full wp-image-450" title="git_head" src="http://databasically.com/wp-content/uploads/2011/02/git_head1.png" alt="" width="589" height="109" /></a>
+
+In the case (completely contrived example) above, I need to add a fix to what is in production (SHA: fa87cd9). So I want to roll everything back and start working from that hash point.
+<h2>Step 2: Create a new branch</h2>
+Now that we know where we want to go, we need to first create a new branch. We create a branch in order to force Git to remember our current line of work. In some ways, you can think of Git branches as inodes in Unix/Linux: as long as a file descriptor [branch] is pointing to an inode, it can't be fully deleted [reset]. To do this, we're just going to issue the "git branch &lt;branch name&gt;" command.
+
+I should note that before you do this, make sure you're clean. "Add" and "commit", or "stash", what you're currently working on.
+
+<a href="http://databasically.com/wp-content/uploads/2011/02/gitbranch1.png"><img class="alignnone size-full wp-image-451" title="gitbranch" src="http://databasically.com/wp-content/uploads/2011/02/gitbranch1.png" alt="" width="629" height="168" /></a>
+
+So here, I created the branch "hotfix" and you can see that HEAD, master, and hotfix are all pointing to the same SHA. You can make sure your branch exists, by issuing the "git branch" command. Now, we can make our changes in master and push to production.
+<h2>Step 3: There is No ... step 3</h2>
+This means you, Bruce.
+<h2>Step 4: Reset Master</h2>
+Now that we have a branch (created in step 2) we'll reset HEAD to our chosen hash. We do that using git's "reset" command:
+<blockquote>
+<pre>git reset --hard fa87cd9</pre>
+</blockquote>
+The log will look something like this:
+
+<a href="http://databasically.com/wp-content/uploads/2011/02/git_resetlog.png"><img class="alignnone size-full wp-image-452" title="git_resetlog" src="http://databasically.com/wp-content/uploads/2011/02/git_resetlog.png" alt="" width="526" height="94" /></a>
+
+After making our change and committing, our log looks like this:
+
+<a href="http://databasically.com/wp-content/uploads/2011/02/git_afterreset.png"><img class="alignnone size-full wp-image-453" title="git_afterreset" src="http://databasically.com/wp-content/uploads/2011/02/git_afterreset.png" alt="" width="550" height="103" /></a>
+
+Now we can push that into production and get back to what we were working on.
+<h2>Step 5: Rebase and Merge</h2>
+<h3>Step 5a: Rebase Master</h3>
+In order to get back to what we were working on, we need to first rebase the changes we made in master into production. To do that, first checkout hotfix and run git rebase master
+<blockquote>
+<pre>git checkout hotfix
+git rebase master
+</pre>
+</blockquote>
+By rebasing master, we replay those changes made in master onto our "hotfix" branch. Our hotfix branch should now look like this:
+
+<a href="http://databasically.com/wp-content/uploads/2011/02/git_rebase.png"><img class="alignnone size-full wp-image-454" title="git_rebase" src="http://databasically.com/wp-content/uploads/2011/02/git_rebase.png" alt="" width="590" height="129" /></a>
+
+Notice where HEAD and hotfix are, and notice also where master is. It is now safe to merge everything back to master - and without leaving those unsightly branch paths.
+<h3>Step 5b: Merge</h3>
+First things first: check out master. Next: merge hotfix
+<blockquote>
+<pre>git checkout master
+git merge hotfix</pre>
+</blockquote>
+You output will look something like this:
+
+<a href="http://databasically.com/wp-content/uploads/2011/02/git_hotfix.png"><img class="alignnone size-full wp-image-455" title="git_hotfix" src="http://databasically.com/wp-content/uploads/2011/02/git_hotfix.png" alt="" width="470" height="149" /></a>
+
+And your log will look like this:
+
+<a href="http://databasically.com/wp-content/uploads/2011/02/git_final.png"><img class="alignnone size-full wp-image-456" title="git_final" src="http://databasically.com/wp-content/uploads/2011/02/git_final.png" alt="" width="635" height="120" /></a>
+
+And everything is caught up. At this point you can delete the hotfix branch:
+<blockquote>
+<pre>git branch -d hotfix
+</pre>
+</blockquote>
+<h2>Conclusion</h2>
+This model works well for us, but I'm sure as we grow we'll likely have to adopt more involved models such as the <a href="http://nvie.com/posts/a-successful-git-branching-model/">"A successful Git branching model</a>" used by <a href="http://nvie.com">nvie.com</a>. As we grow and modify our processes, we'll be sure to let you know what we find to work and what we find which doesn't.
+<h3>Further Reading</h3>
+<ul>
+	<li><a href="http://git-scm.com/">The Git SCM</a></li>
+	<li><a href="http://nvie.com/posts/a-successful-git-branching-model/">A Successful Git Branching Model</a></li>
+	<li><a href="http://progit.org/book/">Pro Git Book</a></li>
+	<li><a href="http://gitimmersion.com/">Git Immersion</a></li>
+</ul>
+<h3>Notes:</h3>
+In this post, I have been calling "git log" with my alias "git lol" here is the details of the alias:
+<blockquote>
+<pre>log --graph --decorate --date=local --pretty=format:'%h %cd (%an) %s%d'</pre>
+</blockquote>

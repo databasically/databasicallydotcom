@@ -1,0 +1,77 @@
+---
+layout: article
+title: ! 'Git: Commit Early, Commit Often'
+post_date: 2011-03-14 16:28:36.000000000 -05:00
+---
+<h2>Don't Be Afraid of Commitment</h2>
+
+The phrase "save early, save often" was a mantra of early computer science. It's good advice, but it's only half the story. If you've ever sat down for a fast and furious coding session only to realize hours later that you removed something important, you know the frustration of not being able to get it back. It can mean hours lost.
+
+Getting in the habit of regular commits has a number of benefits. First, you can go back to any previously committed version if your coding goes off-track. You can reference earlier parts of your work even if you don't need to revert to them. Best of all, it an actually have a positive impact on your code itself.
+
+<h2>Better Code through Committing</h2>
+
+Just as Test-Driven Development influences us to write a larger number of shorter/simpler methods, frequent committing pushes us to think of atomic changes. Atomic in this context means the smallest possible self-sufficient change. Consider this snippet from <em>git log</em>:
+
+
+<pre name='code' class="ruby">
+commit b0e77532b5a8cf236d95f1b3324aabc194568c60
+Author: Wally
+Date:   Tue Feb 29 23:58:05 2011 -0600
+
+added comments to blog posts
+</pre>
+
+This is an example of a commit done at the end of a feature. Lots of code has probably gone into this, and if you wanted to see any of the steps along the way, you're out of luck. It's also not very easy to see what was changed in the app.
+<h2>An Example of Frequent Commits</h2>
+Now look at this version:
+
+<pre name='code' class="ruby">
+commit e8bba8ad1a4b5c1353c328b505bfa2a9f4816d07
+Author: Alice
+Date:   Tue Feb 29 14:58:05 2011 -0600
+
+added edit/delete links to each comment if user has permissions
+
+commit 8bba8ad1a4b5c1353c328b505bfa2a9f4816d07e
+Author: Alice
+Date:   Tue Feb 29 13:58:05 2011 -0600
+
+allowed admins to edit/update/delete any comments
+
+commit bba8ad1a4b5c1353c328b505bfa2a9f4816d07e8
+Author: Alice
+Date:   Tue Feb 29 11:58:05 2011 -0600
+
+restricted edit/update/delete actions to user's own comments
+
+commit ba8ad1a4b5c1353c328b505bfa2a9f4816d07e8b
+Author: Alice
+Date:   Tue Feb 29 11:36:20 2011 -0600
+
+created controller/views
+
+commit a8ad1a4b5c1353c328b505bfa2a9f4816d07e8bb
+Author: Alice
+Date:   Tue Feb 29 10:03:31 2011 -0600
+
+made comments nestable in the model
+
+commit 8ad1a4b5c1353c328b505bfa2a9f4816d07e8bba
+Author: Alice
+Date:   Tue Feb 29 9:39:24 2011 -0600
+
+defined activerecord associations among users, posts, and comments
+
+commit ad1a4b5c1353c328b505bfa2a9f4816d07e8bba8
+Author: Alice
+Date:   Tue Feb 29 08:38:01 2011 -0600
+
+added base comment model and migrations
+</pre>
+
+You can clearly see the evolution of this feature, and it makes sense. Not only can you step back (if user permissions were implemented incorrectly, for instance) but Alice was "forced" to think about each logical step of her development process, instead of jumping in head first. It's engineering 101 - break a problem in its atomic elements, and attack each of those.
+
+Incidentally, this can also help explain to coworkers, bosses, and clients why a seemingly simple task took longer than expected. As you squirm and attempt to justify what you know is an elegant solution, you might not remember all the steps that got you there.
+
+Git remembers.

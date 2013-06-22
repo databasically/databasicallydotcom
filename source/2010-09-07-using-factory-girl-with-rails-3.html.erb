@@ -1,0 +1,15 @@
+---
+layout: article
+title: Using Factory Girl with Rails 3
+post_date: 2010-09-07 17:23:42.000000000 -05:00
+---
+Setting up a new project, I couldn't get FactoryGirl working.  From the README:
+
+<blockquote>If you want to use factory_girl with Rails 3, see <a href="http://github.com/thoughtbot/factory_girl_rails">http://github.com/thoughtbot/factory_girl_rails</a></blockquote>
+
+I added this to my Gemfile:
+<pre name="code" class="ruby">gem 'factory_girl_rails'</pre>
+
+A <code>bundle install</code> to install and done.
+
+Note: I'm using rspec2 and putting my factories in <code>spec/factories/*_factory.rb</code> and I've seen references to <code>spec/support/factories/*_factory.rb</code> as well.  I'm not sure if either is the blessed location.

@@ -1,0 +1,12 @@
+---
+layout: article
+title: ! 'git: You asked me to pull without telling me which branch ...'
+post_date: 2009-07-01 20:17:44.000000000 -05:00
+---
+Received this error when trying to pull from a remote origin:
+<pre>You asked me to pull without telling me which branch you
+want to merge with, and 'branch.master.merge' in
+your configuration file does not tell me either.</pre>
+<!--more-->
+To fix, I added this to .git/config:
+<script src="http://gist.github.com/190290.js"></script>

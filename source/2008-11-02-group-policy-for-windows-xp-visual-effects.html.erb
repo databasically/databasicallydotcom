@@ -1,0 +1,14 @@
+---
+layout: article
+title: Group Policy for Windows XP Visual Effects
+post_date: 2008-11-02 15:49:19.000000000 -06:00
+---
+I wanted to alter the setting in this GUI box with a Group Policy, so all users in the domain would have this setting applied automatically:
+
+<strong>Start -&gt; Settings -&gt; Control Panel -&gt; System -&gt; Tab “Advanced” and then “Settings” in the “Performance” box -&gt; Adjust for Best Performance</strong>
+
+I dug around and discovered that those options are stored in the registry key <strong>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ Explorer\VisualEffects\VisualFXSetting</strong> - where 0 is "let Windows choose", "2" is “adjust to best performance" and "3" is "adjust to best appearance".
+
+I adjusted this registry key with Group Policy.  The registry gets changed and the GUI recognizes that, but it doesn't actually change the appearance!
+
+Turns out that there's <a href="http://groups.google.com/group/microsoft.public.windowsxp.general/browse_thread/thread/9b78f3c86fed6311/d34da0876e2878e4?lnk=st&amp;q=VisualFXSetting+Group+Policy&amp;rnum=6" target="_blank">an API call that must occur to change the visual settings</a>, which has to be done via a program that doesn't exist.  Guess I've got a reason to learn C# now.

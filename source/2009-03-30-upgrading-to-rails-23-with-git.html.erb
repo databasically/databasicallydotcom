@@ -1,0 +1,15 @@
+---
+layout: article
+title: Upgrading to Rails 2.3 with git
+post_date: 2009-03-30 01:19:32.000000000 -05:00
+---
+I upgraded an application to Rails 2.3, starting with making a new empty branch and using that merge back to a staging branch, which is very well described by <a href="http://blog.new-bamboo.co.uk/2009/3/17/upgrading-rails-with-git">Olly at the Bamboo Blog</a>.
+
+I had a few issues, which I thought I would collect here in case anyone else has them.
+<!--more-->
+<ul>
+	<li>A merge conflict means that 'git status' will show the file as unmerged, if you need to find which files failed the merge.</li>
+	<li>This nuked my copy of <a href="http://github.com/technoweenie/restful-authentication/tree/master">restful_authentication</a> that I'd cloned into vendor/plugins which I downloaded from the tarball instead.</li>
+	<li>I hadn't renamed application.rb to application_controller.rb, so I didn't get a merge conflict but I also didn't have any of my original code in the new application_controller.rb that was auto-generated. My symptom of this was "current_user" didn't work because restful_authentication wasn't being loaded.</li>
+</ul>
+All in all, there were a lot of changes to various Rails files that I was glad I caught using this method.

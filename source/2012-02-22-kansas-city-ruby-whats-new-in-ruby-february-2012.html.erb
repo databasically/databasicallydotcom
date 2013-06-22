@@ -1,0 +1,54 @@
+---
+layout: article
+title: ! 'Kansas City Ruby:  What''s New in Ruby - February 2012'
+post_date: 2012-02-22 01:36:55.000000000 -06:00
+---
+At the beginning of each Kansas City Ruby meeting, I do a quick presentation on some new neat things from the last month in Ruby news.
+
+<iframe src="https://docs.google.com/present/embed?id=dgw9ksj_1cbtfshfp&amp;autoStart=true&amp;loop=true" frameborder="0" width="410" height="342"></iframe>
+
+&nbsp;
+<h2>What's New In Ruby</h2>
+<h3>February 2012</h3>
+<h4>Ruby on Rails 3.2 released</h4>
+<a href="http://weblog.rubyonrails.org/">http://weblog.rubyonrails.org/</a>
+<ul>
+	<li>Faster development mode</li>
+	<li>End of Ruby 1.8.7</li>
+	<li>
+<pre>puts Person.active.limit(5).explain</pre>
+</li>
+	<li>Automatically shows when &gt; half a second</li>
+	<li>TaggedLogger</li>
+</ul>
+<h4></h4>
+<h4>ActiveRecord Store</h4>
+<pre>class User &lt; ActiveRecord::Base
+  store :settings, accessors: [ :color, :homepage ]
+end</pre>
+<pre>u = User.new(color: 'black', homepage: '37signals.com')
+u.color # Accessor stored attribute</pre>
+<pre>  # Any attribute, even if not specified with an accessor
+u.settings[:country] = 'Denmark'</pre>
+<h3>RubyMine 4.0 released</h3>
+<a href="http://blog.jetbrains.com/ruby/2012/02/rubymine-4-is-here-to-make-you-feel-the-productivity/">http://blog.jetbrains.com/ruby/2012/02/rubymine-4-is-here-to-make-you-feel-the-productivity/</a>
+
+RubyMine is a popular Ruby and Rails IDE by JetBrains (the folks behind IntelliJ IDEA).
+
+A focus has been put on improving its performance and UI, but it now also supports all of Rails 3.2 features, including CoffeeScript compilation right from the IDE.
+<h3>Spree 1.0 Released</h3>
+<a href="http://spreecommerce.com/">http://spreecommerce.com/</a>
+
+Spree is almost certainly the most popular, fully featured Rails-based e-commerce system and its creators are proud to announce the release of version 1.0.0.
+<h3>Strano</h3>
+<a href="https://github.com/joelmoss/strano">https://github.com/joelmoss/strano</a>
+The Github backed Capistrano deployment management UI.
+<h3>Guard::RSpectacle</h3>
+<a href="https://github.com/netzpirat/guard-rspectacle">https://github.com/netzpirat/guard-rspectacle</a>
+Guard::RSpectacle automatically tests your application with RSpec when files are modified.
+<h3>Lightning Talks</h3>
+<ul>
+	<li>Samuel Mullen: using search provider shortcuts in Google Chrome, <a href="http://samuelmullen.com/2012/02/power-up-search-in-google-chrome/">blog post</a></li>
+	<li>Jaime Bellmyer: searching with <a href="http://leap2.com/">leap2</a></li>
+	<li>Advanced REST Client: help view API responses with Chrome app <a href="https://chrome.google.com/webstore/detail/hgmloofddffdnphfgcellkdfbfbjeloo">link</a></li>
+</ul>

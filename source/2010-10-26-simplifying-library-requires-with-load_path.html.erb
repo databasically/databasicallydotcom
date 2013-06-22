@@ -1,0 +1,28 @@
+---
+layout: article
+title: Simplifying Library Requires With $LOAD_PATH
+post_date: 2010-10-26 13:44:29.000000000 -05:00
+---
+When creating scripts or libraries which load custom libraries or modules in the past, I've generally loaded them in the following manner:
+
+<code>require File.join(File.dirname(__FILE__), "lib/foo")
+require File.join(File.dirname(__FILE__), "lib/bar")
+require File.join(File.dirname(__FILE__), "lib/baz")</code>
+
+This loads libraries by calling each of them with their absolute path. "File.dirname" gets the directory name for the current file (__FILE__). And "File.join" joins that directory name to "lib/xxx".
+
+Loading libraries in this way isn't the <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a>est way of doing things, so I was happy when I ran across this in the <a href="http://github.com/mynyml/watchr">Watchr</a> source code:
+
+<code>$LOAD_PATH.unshift(File.dirname(__FILE__))</code>
+
+$LOAD_PATH is a global array variable holding all the paths from which ruby loads libraries. Ruby searches for libraries proceeding from the path in element 0 to the path in the last element until it finds the requested library.
+
+The above snippet of code from <a href="http://github.com/mynyml/watchr">Watchr</a> places the current path at the front of the load path (unshift). Now, all following "require"s will look there first and then proceed normally through the standard paths.
+
+So now, rather than specifically calling each library with an absolute path, I can use the following:
+<code>
+$LOAD_PATH.unshift(File.dirname(__FILE__))</code>
+
+require 'foo'
+require 'bar'
+require 'baz'

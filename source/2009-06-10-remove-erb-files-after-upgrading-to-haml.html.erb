@@ -1,0 +1,18 @@
+---
+layout: article
+title: Remove ERB files after upgrading to haml
+post_date: 2009-06-10 19:43:43.000000000 -05:00
+---
+I converted an application to <a href="http://haml.hamptoncatlin.com/">haml</a> and wanted to get rid of my previous ERb templates.
+<!--more-->
+<pre class="ruby" name="code">
+find ./app/views -name "*.html.erb" -print0 | xargs -0 rm</pre>
+
+<h3>Explanation</h3>
+<ul>
+	<li><code>find() ./app/views -name "*.html.erb"</code> returns a list of all ERb view templates.</li>
+	<li><code>-print0</code> formats the output specially.</li>
+	<li><code>xargs</code> is a program that takes a list and runs a command for each item in that list.</li>
+	<li><code>-0</code> means the input format is specially formatted by <code>-print0</code></li>
+	<li><code>rm</code> is the command we want to run for each found file</li></ul>
+So, each found file will get deleted. Bask in your newfound haml-ness.
