@@ -1,4 +1,10 @@
 /*Custom Styles*/
+
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
 a{
   -moz-transition:color 0.15s linear;
   -o-transition:color 0.15s linear;
@@ -52,36 +58,36 @@ a{
   margin-bottom:1.5em;
 }
 /*EFFECTS*/
-.hover{ 
+.hover{
   opacity:.5;
   -webkit-transition:all .3s ease-in-out;
   -moz-transition:all .3s ease-in-out;
   -ms-transition:all .3s ease-in-out;
   -o-transition:all .3s ease-in-out;
   transition:all .3s ease-in-out;
-} 
+}
 .entry:hover .hover{
   opacity:1;
-} 
+}
 /*NAV*/
 nav.primary{
   margin-bottom:10px;
 }
-nav.primary ul li a:active, nav.primary ul li a.selected{ 
+nav.primary ul li a:active, nav.primary ul li a.selected{
   background:#0099FF;
   color:#fff;
-} 
-nav.primary li { 
+}
+nav.primary li {
   float:left;
   list-style:none;
-} 
+}
 .navbar .nav > li{
   position: relative;
 }
 nav.primary ul li a:active, nav.primary ul li a.selected{
   background:;
   text-shadow:none;
-} 
+}
 .navbar .nav .dropdown-toggle .caret{
   border-top-color:#fff;
   color:#fff;
@@ -105,12 +111,12 @@ nav.primary ul li a:active, nav.primary ul li a.selected{
 .navbar .nav > li > .dropdown-menu::after{
   border:0;
 }
-.page { 
+.page {
   float:left;
   width:100%;
-} 
+}
 
-.entry { 
+.entry {
   cursor:pointer;
   float:left;
   margin-right:20px;
@@ -122,7 +128,7 @@ nav.primary ul li a:active, nav.primary ul li a.selected{
 .entry:hover{
 }
 
-nav.primary ul li a { 
+nav.primary ul li a {
   color:#000;
   display:block;
   font-size:18px;
@@ -133,7 +139,7 @@ nav.primary ul li a {
   width:166px;
   text-align:center;
 }
-nav.primary ul li a:hover { 
+nav.primary ul li a:hover {
   background-position:center bottom;
   color:#eee;
   background:#0099FF;
@@ -162,21 +168,21 @@ div.navbar-inner{
 }
 
 /*ISOTOPE GALLERY*/
-.isotope-item { 
+.isotope-item {
   z-index:2;
 }
-.isotope-hidden.isotope-item { 
+.isotope-hidden.isotope-item {
   pointer-events:none;
   z-index:1;
 }
-.isotope, 
-.isotope .isotope-item { 
+.isotope,
+.isotope .isotope-item {
   -webkit-transition-duration:0.8s;
   -moz-transition-duration:0.8s;
   transition-duration:0.8s;
   z-index:999;
 }
-.isotope { 
+.isotope {
   -webkit-transition-property:height, width;
   -moz-transition-property:height, width;
   transition-property:height, width;
@@ -184,7 +190,7 @@ div.navbar-inner{
 .isotope .isotope-item img{
   z-index:1030!important;
 }
-.isotope .isotope-item img:hover { 
+.isotope .isotope-item img:hover {
   -webkit-transition:all 0.3s ease;
 box-shadow: 0 0 30px rgba(0, 0, 0, 0.67);
 -moz-box-shadow: 0 0 30px rgba(0, 0, 0, 0.67);
