@@ -87,9 +87,10 @@ class MiddlemanPost
 
   def front_matter
     {
-      # 'layout'        => 'post',
+      'layout'        => 'article',
       'title'         => data[:post_title].force_encoding("UTF-8").to_s,
       'excerpt'       => data[:post_excerpt].to_s,
+      'post_date'     => data[:post_date]
       # 'wordpress_id'  => post[:ID],
       # 'wordpress_url' => post[:guid],
       # 'categories'    => categories,
