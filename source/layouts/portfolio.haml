@@ -55,13 +55,7 @@
           %h3.muted
             %a{:href => '/'} Databasically
 
-        .row-fluid
-          .span12
-            %h1= current_page.data.title
-            - if current_page.data.post_date
-              %h3.muted.pull-right
-                =current_page.data.post_date.strftime('%b %e %Y')
-            = yield
+          = yield
 
       %footer.footer
         .container
