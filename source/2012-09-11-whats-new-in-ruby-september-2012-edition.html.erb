@@ -28,21 +28,21 @@ For instance, this <a href="https://gist.github.com/3295184" target="_blank">gis
 <h4><a href="http://gembundler.com/v1.2/whats_new.html" target="_blank">Bundler 1.2 Released</a></h4>
 <h5>Specify the Ruby version and/or engine you want</h5>
 <p>
-<pre name="code" class="ruby">ruby "1.9.3", :engine => "jruby", :engine_version => "1.6.7"</pre>
+<% code('ruby') do %>ruby "1.9.3", :engine => "jruby", :engine_version => "1.6.7"<% end %>
 </p>
 
 <h5>Package :git and :path Dependencies</h5>
 <p>
-<pre name="code" class="ruby">bundle package --all</pre>
+<% code('ruby') do %>bundle package --all<% end %>
 The bundle package command can also package :git and :path dependencies besides .gem files. This needs to be explicitly enabled via the --all option. Once used, the --all option will be remembered.
 </p>
 
 <h5>Local Git Repos</h5>
 <p><blockquote>Now when developing against a remote git repository, you can use a local git repo and keep the remote version for deployment. You can do this by setting a local git override:
-<pre name="code" class="ruby">bundle config local.GEM_NAME /path/to/local/git/repository</pre></blockquote>
+<% code('ruby') do %>bundle config local.GEM_NAME /path/to/local/git/repository<% end %></blockquote>
 
 Then, you can use your local development copy with a standard command:
-<pre name="code" class="ruby">gem 'rack', :github => 'rack/rack', :branch => 'master'</pre>
+<% code('ruby') do %>gem 'rack', :github => 'rack/rack', :branch => 'master'<% end %>
 </p>
 
 

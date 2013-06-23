@@ -4,19 +4,19 @@ title: ! 'TemplateError: wrong number of arguments in default_url_options()'
 post_date: 2009-01-30 11:18:24.000000000 -06:00
 ---
 During an app upgrade to Rails 2.2.2, I came across this error that baffled me for a few minutes:
-<pre name="code" class="ruby">ActionView::TemplateError
+<% code('ruby') do %>ActionView::TemplateError
     (wrong number of arguments (0 for 1)) on line #34
     of app/views/account/_dashboard_header.rhtml:
 
 34: &lt;%= link_to 'My Dashboard', my_dashboard_url &gt;</pre>
 
 Checking out the backtrace:
-<pre name="code" class="ruby">(eval):3:in `default_url_options'
+<% code('ruby') do %>(eval):3:in `default_url_options'
 (eval):3:in `my_dashboard_url'
 app/views/account/_dashboard_header.rhtml:34</pre>
 
 Confusing.  Why would this named route suddenly stop working?  I did a search for default_url_options and found that I had overridden that function:
-<pre name="code" class="ruby">if production_mode?
+<% code('ruby') do %>if production_mode?
   def default_url_options()
     { :protocol =&gt; 'https://' }
   end

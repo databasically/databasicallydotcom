@@ -15,7 +15,7 @@ The fix from the nginx documentation: <a href="http://wiki.nginx.org/HttpProxyMo
 
 My proxy config after this:
 
-<pre name="code" class="ruby">
+<% code('ruby') do %>
   location / {
     proxy_pass http://127.0.0.1:3010;
     proxy_read_timeout 240s;

@@ -7,6 +7,9 @@
 # Reload browser when files change
 activate :livereload
 
+# syntax highlighting
+activate :syntax
+
 activate :blog do |blog|
   # blog.prefix = "blog"
   # blog.permalink = ":year/:month/:day/:title.html"

@@ -12,7 +12,7 @@ As a followup to a <a href="http://stackoverflow.com/questions/3993619/time-sele
 </ul>
 <h3>What zones are available?</h3>
 You can get a list of timezones with rake tasks:
-<pre name="code" class="ruby"># Displays names of all time zones recognized by the Rails TimeZone class, grouped by offset.
+<% code('ruby') do %># Displays names of all time zones recognized by the Rails TimeZone class, grouped by offset.
 rake time:zones:all
 
 # Displays names of time zones recognized by the Rails TimeZone class with the same offset as the system local time
@@ -22,15 +22,15 @@ rake time:zones:local
 rake time:zones:us</pre>
 <h3>Setting the default time zone</h3>
 In your environment.rb (Rails 2) or application.rb (Rails 3) file, you can set the default timezone:
-<pre name="code" class="ruby">config.time_zone = 'Central Time (US &amp; Canada)'</pre>
+<% code('ruby') do %>config.time_zone = 'Central Time (US &amp; Canada)'<% end %>
 
 What does this do?  By setting an application-wide timezone, any datetime will be stored in UTC in the database, but will be translated when we access it.
 <h3>Set a timezone for a user</h3>
 You can use <a href="http://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/time_zone_select">time_zone_select</a> to get a list of timezones for a user to pick from. The third argument is a list of "priority" zones that will appear first.
-<pre name="code" class="ruby"> time_zone_select( "user", 'time_zone', TimeZone.us_zones, :default =&gt; "Pacific Time (US &amp; Canada)")</pre>
+<% code('ruby') do %> time_zone_select( "user", 'time_zone', TimeZone.us_zones, :default =&gt; "Pacific Time (US &amp; Canada)")<% end %>
 
 Once the value is saved in the database, you'll want to set it for each request, per user:
-<pre name="code" class="ruby">  before_filter :set_timezone
+<% code('ruby') do %>  before_filter :set_timezone
 
   def set_timezone
     # current_user.time_zone #=&gt; 'Central Time (US &amp; Canada)'

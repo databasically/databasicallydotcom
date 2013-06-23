@@ -8,27 +8,27 @@ I only need to do this every couple years when I renew an SSL certificate and th
 So, here's how:
 
 Edit the virtual alias file:
-<pre name="code" class="ruby">
+<% code('ruby') do %>
 (sudo) vi /etc/postfix/virtual
 </pre>
 
 Add your alias and the address(es) it forwards to:
-<pre name="code" class="ruby">
+<% code('ruby') do %>
 ssladmin@example.com   realemail@example.com
 contact@example.com    sales@gmail.com,support@gmail.com
 </pre>
 
 Reload the postfix virtual table:
-<pre name="code" class="ruby">
+<% code('ruby') do %>
 postmap /etc/postfix/virtual
 </pre>
 
 Also make sure you have following line in /etc/postfix/main.cf file:
-<pre name="code" class="ruby">
+<% code('ruby') do %>
 virtual_alias_maps = hash:/etc/postfix/virtual
 </pre>
 
 If you didn't have that and you just added it, reload all of postfix:
-<pre name="code" class="ruby">
+<% code('ruby') do %>
 service postfix reload
 </pre>

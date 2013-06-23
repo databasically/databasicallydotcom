@@ -8,14 +8,14 @@ Nobody likes bad data. There is little worse than having malformed or incorrect 
 Now, in Rails3, validations not only support these legacy methods, but validations also implement <a href="http://thelucid.com/about/">Jamie Hill</a>'s new "<a href="http://thelucid.com/2010/01/08/sexy-validation-in-edge-rails-rails-3/">Sexy Validations</a>". With this new implementation, the focus is transfered from the validation itself to the attribute to be validated:
 
 Prior to Rails3:
-<pre name="code" class="ruby">class User &lt; ActiveRecord::Base
+<% code('ruby') do %>class User &lt; ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username
   validates_length_of :username, :minimum =&gt; 6, :maximum =&gt; 32
 end
 </pre>
 Rails3:
-<pre name="code" class="ruby">class User &lt; ActiveRecord::Base
+<% code('ruby') do %>class User &lt; ActiveRecord::Base
   validates :user, :presence =&gt; true, :uniqueness =&gt; true, :length =&gt; 6..32
 end
 </pre>
@@ -24,15 +24,15 @@ As you can see, in the first example, the focus is on the validation itself, in 
 But what if we need a validator which doesn't currently exist in Rails or is unique to our project? Answer: Custom Validators.
 
 The first thing you will need to do is create a directory under your project's "lib" directory. It's not necessary to do this, but it helps with organization. From your projects root directory, execute the following command:
-<pre name="code" class="ruby">mkdir lib/validators
+<% code('ruby') do %>mkdir lib/validators
 </pre>
 In your "config/application.rb" file, you will need to add the following line to let the Rails engine know where all of your custom validations are:
-<pre name="code" class="ruby">config.autoload_paths += Dir["#{config.root}/lib/**/"]
+<% code('ruby') do %>config.autoload_paths += Dir["#{config.root}/lib/**/"]
 </pre>
 For the purpose of example, we're going to implement a validator to check the validity of an email address using a regular expression created by James Watts and Francisco Jose Martin Moreno (<a href="http://fightingforalostcause.net/misc/2006/compare-email-regex.php">http://fightingforalostcause.net/misc/2006/compare-email-regex.php</a>).
 
 Create the file "email_pattern_validator.rb" under your lib/validators directory and add the following code to it:
-<pre name="code" class="ruby">class EmailPatternValidator &lt; ActiveModel::EachValidator
+<% code('ruby') do %>class EmailPatternValidator &lt; ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     if value.nil? || !value.match(/^([\w\!\#$\%\&amp;\'\*\+\-\/\=\?\^\`{\|\}\~]+\.)*[\w\!\#$\%\&amp;\'\*\+\-\/\=\?\^\`{\|\}\~]+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,6})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)$/i)
       record.errors[attribute] &lt;&lt; "Not a valid email address"
@@ -49,7 +49,7 @@ Second, the method "validate_each" receives three values: the record to be saved
 Lastly, The "record.errors" records errors for the attribute (database column) upon which errors are found.
 
 Now, in our models we can use the follow bit of code to check the validity of email address:
-<pre name="code" class="ruby">validates :email, :email_pattern =&gt; true
+<% code('ruby') do %>validates :email, :email_pattern =&gt; true
 </pre>
 Please note that the validator "email_pattern" matches the file name and class name we created sans the "_validator". That's part of that whole "Convention over Configuration" thing I keep hearing about. If it's a valid email address, we're golden; if not, we'll have the "Not a valid email address" error applied to our model instance.
 

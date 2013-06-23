@@ -6,10 +6,10 @@ post_date: 2011-06-03 10:01:43.000000000 -05:00
 Sometimes, you have one commit you want to get into production, but it's located after other changes that you're not ready to merge in yet.  How can you get that single git commit into a different branch?
 
 First, you have to know the SHA of the commit you want:
-<pre class="ruby">  git checkout branch-with-commit-on-it
+<% code('ruby') do %>  git checkout branch-with-commit-on-it
   git log</pre>
 Highlight and copy the SHA of the commit you want to grab.
-<pre class="ruby">  git checkout master
+<% code('ruby') do %>  git checkout master
 
   # -n =&gt; don't commit, just merge changes so we can review and commit ourself
   git cherry-pick -n [The commit’s SHA-1 Hash]

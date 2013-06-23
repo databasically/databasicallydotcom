@@ -9,7 +9,7 @@ So, there are a couple ways that we use to do pending cucumber scenarios:
 
 <h2>Write a non-defined step</h2>
 By default, a non-defined step will stop the execution of the scenario.
-<pre name="code" class="ruby">
+<% code('ruby') do %>
   Scenario: login with valid credentials
     Given this is pending
     ...
@@ -19,14 +19,14 @@ This will show the scenario along with a note about defining the step.
 <h2>Create a pending step</h2>
 
 In one of your step definition files, add a step:
-<pre name="code" class="ruby">
+<% code('ruby') do %>
   Given /^PENDING/ do
     pending
   end
 </pre>
 
 Then you can use it like:
-<pre name="code" class="ruby">
+<% code('ruby') do %>
   Scenario: login with valid credentials
     Given PENDING I have valid credentials
 </pre>

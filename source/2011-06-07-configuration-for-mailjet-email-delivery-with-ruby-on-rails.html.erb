@@ -15,24 +15,24 @@ post_date: 2011-06-07 10:00:03.000000000 -05:00
 <li>Update your Rails ActionMailer configuration
 <ul><li>Find the settings you need at: <a href="https://www.mailjet.com/account/setup">https://www.mailjet.com/account/setup</a><br>
   <pre>
-    SMTP server: 
+    SMTP server:
     in.mailjet.com
 
-    Username (API Key): 
+    Username (API Key):
     12345678901234567890
 
-    Password (Secret Key): 
+    Password (Secret Key):
     99999999999999999999999999999999
 
-    Port: 
+    Port:
     25 or 587 (some providers block port 25)
 
-    Use TLS: 
-    yes    
+    Use TLS:
+    yes
   </pre></li>
-  <li>Set these settings in config/application.rb (or config/environments/production.rb): 
-  <pre name="code" class="ruby">
-    
+  <li>Set these settings in config/application.rb (or config/environments/production.rb):
+  <% code('ruby') do %>
+
     config.action_mailer.raise_delivery_errors = false
     config.action_mailer.perform_deliveries = true
 
@@ -44,7 +44,7 @@ post_date: 2011-06-07 10:00:03.000000000 -05:00
       :user_name => "12345678901234567890",
       :password => "99999999999999999999999999999999"
     }
-    
+
   </pre>
   </li>
   </ul></li>
