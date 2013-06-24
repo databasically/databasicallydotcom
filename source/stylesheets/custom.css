@@ -321,13 +321,12 @@ ul.contactlinks{
   font-size:12px;
 }
 #contact-form label {
-  color:#ff1440;
   float:left;
   font-size:13px;
   font-weight:400;
   line-height:30px;
   text-align:left;
-  width:100px;
+  width:120px;
 }
 #contact-form .holder {
   position:relative;
