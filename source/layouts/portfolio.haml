@@ -1,13 +1,17 @@
 = partial 'layouts/head'
 %body
   .navbar.navbar-static-top
-    .navbar-inner
+    .navbar-inner{:style => "-webkit-box-shadow: none; background-image: none;"}
       .container
         %a.navbar-brand
           %img{:src => "images/databasically-logo-with-text.png", :alt => "logo"}
-        %ul.nav.pull-right
+        %ul.nav.nav-pills.pull-right
           %li
-            %a{:href => "index.html"} <- go back
+            %a{:href => "/"} Home
+          %li
+            %a{:href => "/articles"} Articles
+          %li
+            %a{:href => "#"} Contact
   
   .container
     = yield  
