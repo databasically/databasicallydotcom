@@ -111,6 +111,14 @@ nav.primary ul li a:active, nav.primary ul li a.selected{
 .navbar .nav > li > .dropdown-menu::after{
   border:0;
 }
+
+.nav-list li.logo a {
+  background-color: white;
+}
+.nav-list li.logo a:hover {
+  background-color: white;
+}
+
 .page {
   float:left;
   width:100%;
