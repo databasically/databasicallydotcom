@@ -37,4 +37,20 @@
         .field.span8
           %textarea#Field7.input-textarea.m-wrap.m-ctrl-large{:name => "Field7", :spellcheck => "true", :tabindex => "3", :onkeyup => "", :value => "", :placeholder => "Project or work comments"}
         .field.span8
+          %fieldset
+            %h4 Budget
+            %input#radioDefault_6{:name => "Field6", :type => "hidden", :value => ""}
+            %label.radio
+              %input#Field6_0{:name => "Field6", :type => "radio", :value => "I am not sure yet", :tabindex => "4", :checked => "checked"}
+              I am not sure yet
+            %label.radio
+              %input#Field6_1{:name => "Field6", :type => "radio", :value => "&lt; $20k", :tabindex => "5"}
+              less than $20k
+            %label.radio
+              %input#Field6_2{:name => "Field6", :type => "radio", :value => "$20k - $100k", :tabindex => "6"}
+              $20k - $100k
+            %label.radio
+              %input#Field6_3{:name => "Field6", :type => "radio", :value => "$100k+", :tabindex => "7"}
+              $100k+
+        .field.span8
           %input.m-btn.blue#saveform{:name => "saveForm", :type => "submit", :value => "Work with the best"}
