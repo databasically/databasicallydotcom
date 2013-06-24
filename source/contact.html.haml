@@ -1,26 +1,6 @@
-/ Original form
-#form
-  %h3 Contact Form
-  %form#contact-form{:action => "sendmail.php", :method => "post"}
-    %fieldset
-      .row
-        .holder.span8
-          .message
-            .top
-            .contents
-              #alert
-            .bottom
-        .field.span8
-          %input#name.input-text.m-wrap.m-ctrl-large{:name => "name", :placeholder => "Your Name", :type => "text", :value => ""}/
-        .field.span8
-          %input#email.input-text.m-wrap.m-ctrl-large{:name => "email", :placeholder => "Your Email Address", :type => "text", :value => ""}/
-        .field.span8
-          %textarea#message.input-textarea.m-wrap.m-ctrl-large{:name => "message", :placeholder => "Your Message"}
-        .field.span8
-          %input.m-btn.blue{:type => "submit", :value => "Submit"}/
 / Wufoo form
 #form
-  %h3 Some bullshit
+  %h3 Let's start a discussion
   %form#form5#contact-form{:name => "form5", :autocomplete => "off", :enctype => "multipart/form-data", :method => "post", :novalidate => "", :action => "https://databasically1.wufoo.com/forms/s7x1x7/#public"}
     %fieldset
       .row
@@ -53,4 +33,4 @@
               %input#Field6_3{:name => "Field6", :type => "radio", :value => "$100k+", :tabindex => "7"}
               $100k+
         .field.span8
-          %input.m-btn.blue#saveform{:name => "saveForm", :type => "submit", :value => "Work with the best"}
+          %input.m-btn.blue#saveform{:name => "saveForm", :type => "submit", :value => "Let's talk"}
