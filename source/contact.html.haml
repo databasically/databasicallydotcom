@@ -1,0 +1,40 @@
+/ Original form
+#form
+  %h3 Contact Form
+  %form#contact-form{:action => "sendmail.php", :method => "post"}
+    %fieldset
+      .row
+        .holder.span8
+          .message
+            .top
+            .contents
+              #alert
+            .bottom
+        .field.span8
+          %input#name.input-text.m-wrap.m-ctrl-large{:name => "name", :placeholder => "Your Name", :type => "text", :value => ""}/
+        .field.span8
+          %input#email.input-text.m-wrap.m-ctrl-large{:name => "email", :placeholder => "Your Email Address", :type => "text", :value => ""}/
+        .field.span8
+          %textarea#message.input-textarea.m-wrap.m-ctrl-large{:name => "message", :placeholder => "Your Message"}
+        .field.span8
+          %input.m-btn.blue{:type => "submit", :value => "Submit"}/
+/ Wufoo form
+#form
+  %h3 Some bullshit
+  %form#form5#contact-form{:name => "form5", :autocomplete => "off", :enctype => "multipart/form-data", :method => "post", :novalidate => "", :action => "https://databasically1.wufoo.com/forms/s7x1x7/#public"}
+    %fieldset
+      .row
+        .holder.span8
+          .message
+            .top
+            .contents
+              #alert
+            .bottom
+        .field.span8
+          %input#Field3.input-text.m-wrap.m-ctrl-large{:name => "Field3 name", :type => "text", :value => "", :tabindex => "1", :onkeyup => "", :placeholder => "Your name"}/
+        .field.span8
+          %input#Field4.input-text.m-wrap.m-ctrl-large{:name => "Field4", :type => "email", :spellcheck => "false", :value => "", :maxlength => "255", :tabindex => "2", :placeholder => "Your email"}/
+        .field.span8
+          %textarea#Field7.input-textarea.m-wrap.m-ctrl-large{:name => "Field7", :spellcheck => "true", :tabindex => "3", :onkeyup => "", :value => "", :placeholder => "Project or work comments"}/
+        .field.span8
+          %input.m-btn.blue#saveform{:name => "saveForm", :type => "submit", :value => "Work with the best"}
