@@ -171,3 +171,9 @@ title: Databasically
     / #map.container.hidden-phone
     %div{:style => "text-align: center;"}
       %a.btn.btn-large{:href => "/contact", :style => "font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; font-size: 300%; padding: 20px; background-color: #E01B00; background-image: none; color: #ffffff;"} Let's talk about you
+
+:javascript
+  $("ul.nav li a[href^='#']").on('click', function(e) {
+   e.preventDefault();
+   $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 300);
+  });
