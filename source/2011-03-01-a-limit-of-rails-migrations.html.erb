@@ -1,20 +1,20 @@
 ---
 layout: article
 title: A :limit of Rails' Migrations
-post_date: 2011-03-01 16:35:51.000000000 -06:00
+post_date: 2011-03-01
 ---
 Migrations in Ruby on Rails use the ":limit" symbol to set the maximum length of the underlying field's data type. Take for example, the following example migration:
-<pre name='code' class="ruby">create_table :things do |t|
+<% code("ruby") do %>create_table :things do |t|
   t.string :name, :limit =&gt; 32
   t.string :description
   t.timestamps
 end
-</pre>
+<% end %>
 By default, Rails will create :description as data type "varchar(255)" and :name as "varchar(32)" in a MySQL database. But did you know you can set :limit to be greater than 255?
 
 For whatever reason, many of us have gained the impression that 255 is the longest :string can be, but that just isn't the case. If I wanted the :description field in the example above to be greater than 255, I could just define it as follows:
-<pre name='code' class="ruby">t.string :description, :limit =&gt; 1024
-</pre>
+<% code("ruby") do %>t.string :description, :limit =&gt; 1024
+<% end %>
 In fact, strings (i.e. varchars) in MySQL can hold up to 65,535 bytes of data.
 
 The opinionated nature of  Ruby on Rails is a great asset in most instances, but we have to be careful not to let its opinions :limit us.

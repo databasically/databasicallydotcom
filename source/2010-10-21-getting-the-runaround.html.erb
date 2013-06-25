@@ -1,18 +1,18 @@
 ---
 layout: article
 title: Getting the Runaround
-post_date: 2010-10-21 19:03:23.000000000 -05:00
+post_date: 2010-10-21
 ---
 Yesterday was my third day on the job and to be honest, it wasn't a lot of fun. I'm learning a lot of things right now: a new project, new methodologies, and new technologies. Combine all of that with a seemingly useless RSpec error and you can imagine where my blood pressure was reaching.
 
 I had just added a new association to a FactoryGirl factory. I've not used FactoryGirl before, but it's easy enough to copy and paste from other factories in the directory. So far, so good. I wasn't watching the test output, but it was just one line, what could go wrong?
 
 Several updates and commits later, I thought I'd better make sure we were still "Green". Eh, not so much. Here's the output I was seeing repeated over and over again.
-<% code('ruby') do %>
+<% code("ruby") do %>
 Failure/Error: Unable to find matching line from backtrace
 stack level too deep
 # /home/user/.rvm/gems/ruby-1.9.2-p0@xxx/gems/activerecord-3.0.0/lib/active_record/locking/optimistic.rb:62
-</pre>
+<% end %>
 
 I'll not bore you with the details of my fruitless search to track this down. Suffice it to say, Wes - that would be my new boss - helped me back out my changes and track down the error.
 

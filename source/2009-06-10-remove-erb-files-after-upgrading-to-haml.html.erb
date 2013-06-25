@@ -1,12 +1,12 @@
 ---
 layout: article
 title: Remove ERB files after upgrading to haml
-post_date: 2009-06-10 19:43:43.000000000 -05:00
+post_date: 2009-06-10
 ---
 I converted an application to <a href="http://haml.hamptoncatlin.com/">haml</a> and wanted to get rid of my previous ERb templates.
 <!--more-->
-<pre class="ruby" name="code">
-find ./app/views -name "*.html.erb" -print0 | xargs -0 rm</pre>
+<% code("ruby") do %>
+find ./app/views -name "*.html.erb" -print0 | xargs -0 rm<% end %>
 
 <h3>Explanation</h3>
 <ul>

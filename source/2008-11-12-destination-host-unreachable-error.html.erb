@@ -1,10 +1,10 @@
 ---
 layout: article
 title: Destination Host Unreachable error
-post_date: 2008-11-12 10:05:35.000000000 -06:00
+post_date: 2008-11-12
 ---
 I came in to a maddening issue this morning.
-
+<br><br>
 The server in question wasn't available over the network.  Troubleshooting:
 <ul>
 	<li>The server could ping the loopback and static IP it was assigned.</li>
@@ -14,8 +14,8 @@ The server in question wasn't available over the network.  Troubleshooting:
 </ul>
 Looking at the System event log, I saw this:
 <blockquote>Event 4292 (IPSec): The IPSec driver has entered Block mode. IPSec will discard all inbound and outbound TCP/IP network traffic that is not permitted by boot-time IPSec Policy exemptions.
-
+<br><br>
 User Action: To restore full unsecured TCP/IP connectivity, disable the IPSec services, and then restart the computer.  For detailed troubleshooting information, review the events in the Security event log.</blockquote>
 The security log wasn't helpful at all.
-
+<br><br>
 I found this <a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;870910" target="_blank">MSKB that fixed the issue of IPSec being corrupted</a>. Repairing IPSec and restarting restored network connectivity. I'm not sure that this had anything to do with the original problem, but it showed up after installing Blackberry Enterprise Server 4.1 and rebooting for that installation.

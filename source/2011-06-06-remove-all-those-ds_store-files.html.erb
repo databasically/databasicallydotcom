@@ -1,17 +1,17 @@
 ---
 layout: article
 title: Remove all those .DS_Store files
-post_date: 2011-06-06 14:36:17.000000000 -05:00
+post_date: 2011-06-06
 ---
 I don't like committing .DS_Store files into my projects, so here's an easy way to remove them:
 
 Run this from your project folder:
-<% code('ruby') do %>
+<% code("ruby") do %>
 # Recursively erase all .DS_Store files in this folder and below
 find . -name \.DS_Store -exec rm -v {} \;
-</pre>
+<% end %>
 
 Also, you can prevent the DS_Store files from being created.  Run this from the Terminal:
-<% code('ruby') do %>
+<% code("ruby") do %>
 defaults write com.apple.desktopservices DSDontWriteNetworkStores true
-</pre>
+<% end %>

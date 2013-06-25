@@ -1,16 +1,16 @@
 ---
 layout: article
 title: ! 'git: failed to push some refs'
-post_date: 2009-06-26 13:23:25.000000000 -05:00
+post_date: 2009-06-26
 ---
 I'm really digging git, but its error messages are less than helpful at times.
-
-<pre class="ruby" name="code">git push origin master
-error: failed to push some refs to origin</pre>
-
+<br><br>
+<% code("ruby") do %>git push origin master
+error: failed to push some refs to origin<% end %>
+<br><br>
 Most likely, there are changes in the remote repo that you need to pull first:
-<pre class="ruby" name="code">git pull origin master</pre>
-
+<% code("ruby") do %>git pull origin master<% end %>
+<br><br>
 Resolve any conflicts, then you can push to the remote git repo.
-
+<br><br>
 I'm not sure why "failed to push some refs" couldn't include "(do you need to pull?)"

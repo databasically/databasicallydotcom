@@ -1,14 +1,14 @@
 ---
 layout: article
 title: ! 'Use vim to remove ^M end of line characters '
-post_date: 2011-08-31 08:48:47.000000000 -05:00
+post_date: 2011-08-31
 ---
 Sometimes, when you open a file in vim, the end-of-line (EOL) characters are messed up. You'll especially see this if you move a file from Windows to Unix.  You'll see a ^M at the end of each line.
 
 How do you remove all of these ^M characters from vim?
-<% code('ruby') do %>:%s/^M//g<% end %>
+<% code("ruby") do %>:%s/^M//g<% end %>
 The most difficult part of this is entering the control character.  You type ^V to get that, making the actual keys you press this:
-<% code('ruby') do %>:%s/&lt;control&gt;V&lt;control&gt;M//g<% end %>
+<% code("ruby") do %>:%s/&lt;control&gt;V&lt;control&gt;M//g<% end %>
 Breaking it down:
 <ul>
 	<li><code>:%s</code> - search and replace using regular expressions</li>

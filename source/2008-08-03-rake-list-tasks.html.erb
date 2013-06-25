@@ -1,23 +1,23 @@
 ---
 layout: article
 title: Rake list tasks
-post_date: 2008-08-03 23:37:53.000000000 -05:00
+post_date: 2008-08-03
 ---
 I can never remember the exact name of a rake task, so I use this all the time:
-<% end %>
+<% code("ruby") do %>&gt; rake -T<% end %>
 You can also filter the list of tasks that's shown. For instance, if you only want to see the database tasks:
-<% end %>
+<% code("ruby") do %>&gt; rake -T db<% end %>
 The -T option is handy when you just need to remember the exact wording.  It's not so handy when you're trying to figure out what the rake task list description is.  For that, use -D:
-<% code('ruby') do %>&gt; rake -D
+<% code("ruby") do %>&gt; rake -D
 ....
 rake test:units
     Run tests for units / Run the unit tests in test/unit
 ....
-</pre>
+<% end %>
 The output is longer, but you can see the full description. You can also filter by the task name to limit the output so you don't have to scroll through the full list of tasks.
-
+<br><br>
 On Rails 2.1.0, here's the full <code>rake -T</code> output:
-<% code('ruby') do %>rake db:abort_if_pending_migrations  # Raises an error if there are pending...
+<% code("ruby") do %>rake db:abort_if_pending_migrations  # Raises an error if there are pending...
 rake db:charset                      # Retrieves the charset for the curren...
 rake db:collation                    # Retrieves the collation for the curr...
 rake db:create                       # Create the database defined in confi...
@@ -77,4 +77,4 @@ rake tmp:clear                       # Clear session, cache, and socket fil...
 rake tmp:create                      # Creates tmp directories for sessions...
 rake tmp:pids:clear                  # Clears all files in tmp/pids
 rake tmp:sessions:clear              # Clears all files in tmp/sessions
-rake tmp:sockets:clear               # Clears all files in tmp/sockets</pre>
+rake tmp:sockets:clear               # Clears all files in tmp/sockets<% end %>

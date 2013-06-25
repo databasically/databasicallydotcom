@@ -1,30 +1,30 @@
 ---
 layout: article
 title: ! 'RubyGems error on update: undefined local variable or method `remote_gemspecs&#039;'
-post_date: 2008-11-23 22:49:39.000000000 -06:00
+post_date: 2008-11-23
 ---
 I updated rubygems:
-<% code('ruby') do %>&gt;sudo gem update --system
+<% code("ruby") do %>&gt;sudo gem update --system
 Password:
 Updating RubyGems
 Updating rubygems-update
 Successfully installed rubygems-update-1.3.1
 ERROR:  While executing gem ... (NameError)
     undefined local variable or method `remote_gemspecs' for
-   #&lt;gem ::Commands::UpdateCommand:0x14df818&gt;</pre>
+   #&lt;gem ::Commands::UpdateCommand:0x14df818&gt;<% end %>
 ... but received this error:
-<% end %>
+<% code("ruby") do %>undefined local variable or method `remote_gemspecs'<% end %>
 Reading the release notes prompted me to install the rubygems-update gem separately:
-<% code('ruby') do %>&gt;sudo gem install rubygems-update
-Successfully installed rubygems-update-1.3.1</pre>
+<% code("ruby") do %>&gt;sudo gem install rubygems-update
+Successfully installed rubygems-update-1.3.1<% end %>
 Finally, run the update_rubygems command to actually update:
-<% code('ruby') do %>&gt;sudo update_rubygems
+<% code("ruby") do %>&gt;sudo update_rubygems
 Installing RubyGems 1.3.1
 mkdir -p /usr/local/lib/ruby/site_ruby/1.8
 mkdir -p /usr/local/bin
 install -c -m 0644 rbconfig/datadir.rb /usr/local/lib/ruby/site_ruby/1.8/rbconfig/datadir.rb
 .... more installation
-
+<br><br>
 &gt; gem -v
-1.3.1</pre>
+1.3.1<% end %>
 Finally!

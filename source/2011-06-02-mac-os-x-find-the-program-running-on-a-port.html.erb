@@ -1,17 +1,17 @@
 ---
 layout: article
 title: ! 'Mac OS X: find the program running on a port'
-post_date: 2011-06-02 10:01:55.000000000 -05:00
+post_date: 2011-06-02
 ---
 Sometimes, there's a program running on a port and you don't know what it is.  How do you find out?
 
 <!--more-->
 
 I find this happens when I start a webserver up to test something locally and then I forget about it.  So, if I wanted to find out what was running on port 80:
-<% code('ruby') do %>  sudo lsof -i :80 # checks port 80
+<% code("ruby") do %>  sudo lsof -i :80 # checks port 80
 
   COMMAND   PID USER   FD   TYPE    DEVICE SIZE/OFF NODE NAME
-  ruby    64888   wg    6u  IPv4 0x6ddd270      0t0  TCP *:gds_db (LISTEN)</pre>
+  ruby    64888   wg    6u  IPv4 0x6ddd270      0t0  TCP *:gds_db (LISTEN)<% end %>
 &nbsp;
 
 This command shows a list of open files. The -i option checks for internet addresses with the colon symbol representing a port (instead of an actual IP address).  Note, I've only used this on Mac OS X.  I'm not sure if there's an equivalent for *nix or if it's available in some package.

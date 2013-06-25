@@ -1,14 +1,14 @@
 ---
 layout: article
 title: ! 'git: pull is not possible because you have unmerged files.'
-post_date: 2010-07-01 16:53:52.000000000 -05:00
+post_date: 2010-07-01
 ---
 I saw this error message the other day and I had no clue what it meant.  I'd never seen that error before!
 
 For reference, I was trying to pull from a remote branch and got the error message:
-<% code('ruby') do %>Pull is not possible because you have unmerged files.<% end %>
+<% code("ruby") do %>Pull is not possible because you have unmerged files.<% end %>
 
-A google search revealed this commit (<a href="http://github.com/git/git/commit/d38a30df7dd54c5c6883af1de1a03ec7d523cee5">d38a30df7dd54c5c6883</a>) to the git source on January 12, 2010.
+A google search revealed this commit (<a href="http://github.com/git/git/commit/d38a30df7dd54c5c6883af1de1a03ec7d523cee5">d38a30df7dd54c5c6883</a>) to the git source on January 12, 2010.  
 
 The error messages have been updated to be much clearer. Before, you'd get "needs merge" or "error building trees" errors, which didn't really mean much.
 

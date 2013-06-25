@@ -1,10 +1,10 @@
 ---
 layout: article
 title: ! '"warning: updating the current branch" when pushing to a git repository'
-post_date: 2010-03-08 04:05:07.000000000 -06:00
+post_date: 2010-03-08
 ---
 I pushed some changes after updating git on my server to git 1.6+ and now I get this:
-<pre name="code" class="css">$ git push origin master
+<% code("shell") do %>$ git push origin master
 ...
 warning: updating the current branch
 warning: Updating the currently checked out branch may cause confusion,
@@ -25,7 +25,7 @@ warning:
 warning: Note that the default will change in a future version of git
 warning: to refuse updating the current branch unless you have the
 warning: configuration variable set to either 'ignore' or 'warn'.
-</pre>
+<% end %>
 
 Woah!  After some research, this is because I didn't set up my remote folder as "bare". A non-bare repository has a working copy attached to it, and this warning is telling you that said working copy exists and is currently checked out to the branch you're trying to push to.
 

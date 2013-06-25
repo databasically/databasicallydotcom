@@ -1,20 +1,19 @@
 ---
 layout: article
 title: ! 'Error: "It seems your ruby installation is missing psych (for YAML output)"'
-post_date: 2012-10-15 05:29:40.000000000 -05:00
+post_date: 2012-10-15
 ---
 Using rvm 1.16.3 to install ruby 1.9.3-p286 and received this error my Ubuntu (9.04) server:
 
-<% code('ruby') do %>
-It seems your ruby installation is missing psych (for YAML output).
+<% code("ruby") do %>It seems your ruby installation is missing psych (for YAML output). 
 To eliminate this warning, please install libyaml and reinstall your ruby.
 <% end %>
 
 I had to install libtool first:
-<% code('ruby') do %>sudo apt-get install libtool<% end %>
+<% code("ruby") do %>sudo apt-get install libtool<% end %>
 
 Then install libyaml via RVM:
-<% code('ruby') do %>rvm pkg install libyaml<% end %>
+<% code("ruby") do %>rvm pkg install libyaml<% end %>
 
 Then reinstalled Ruby with:
-<% code('ruby') do %>rvm reinstall all --force<% end %>
+<% code("ruby") do %>rvm reinstall all --force<% end %>

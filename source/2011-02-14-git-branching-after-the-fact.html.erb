@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Git Branching After the Fact
-post_date: 2011-02-14 21:26:37.000000000 -06:00
+post_date: 2011-02-14
 ---
 We have a pretty simple <a href="http://git-scm.com/">Git</a> work flow here at <a href="http://databasically.com">Databasically</a>: Just work in master. There are a couple reasons for this: we're not a large team, and we have a very rapid (i.e. daily) release cycle. I had been used to creating branches for every new feature, so when I found out we primarily work on the "master" branch, I was a bit shocked.
 
@@ -25,7 +25,7 @@ This means you, Bruce.
 <h2>Step 4: Reset Master</h2>
 Now that we have a branch (created in step 2) we'll reset HEAD to our chosen hash. We do that using git's "reset" command:
 <blockquote>
-<pre>git reset --hard fa87cd9</pre>
+<% code("shell") do %>git reset --hard fa87cd9<% end %>
 </blockquote>
 The log will look something like this:
 
@@ -40,9 +40,9 @@ Now we can push that into production and get back to what we were working on.
 <h3>Step 5a: Rebase Master</h3>
 In order to get back to what we were working on, we need to first rebase the changes we made in master into production. To do that, first checkout hotfix and run git rebase master
 <blockquote>
-<pre>git checkout hotfix
+<% code("shell") do %>git checkout hotfix
 git rebase master
-</pre>
+<% end %>
 </blockquote>
 By rebasing master, we replay those changes made in master onto our "hotfix" branch. Our hotfix branch should now look like this:
 
@@ -52,8 +52,8 @@ Notice where HEAD and hotfix are, and notice also where master is. It is now saf
 <h3>Step 5b: Merge</h3>
 First things first: check out master. Next: merge hotfix
 <blockquote>
-<pre>git checkout master
-git merge hotfix</pre>
+<% code("shell") do %>git checkout master
+git merge hotfix<% end %>
 </blockquote>
 You output will look something like this:
 
@@ -65,8 +65,8 @@ And your log will look like this:
 
 And everything is caught up. At this point you can delete the hotfix branch:
 <blockquote>
-<pre>git branch -d hotfix
-</pre>
+<% code("shell") do %>git branch -d hotfix
+<% end %>
 </blockquote>
 <h2>Conclusion</h2>
 This model works well for us, but I'm sure as we grow we'll likely have to adopt more involved models such as the <a href="http://nvie.com/posts/a-successful-git-branching-model/">"A successful Git branching model</a>" used by <a href="http://nvie.com">nvie.com</a>. As we grow and modify our processes, we'll be sure to let you know what we find to work and what we find which doesn't.
@@ -80,5 +80,5 @@ This model works well for us, but I'm sure as we grow we'll likely have to adopt
 <h3>Notes:</h3>
 In this post, I have been calling "git log" with my alias "git lol" here is the details of the alias:
 <blockquote>
-<pre>log --graph --decorate --date=local --pretty=format:'%h %cd (%an) %s%d'</pre>
+<% code("shell") do %>log --graph --decorate --date=local --pretty=format:'%h %cd (%an) %s%d'<% end %>
 </blockquote>

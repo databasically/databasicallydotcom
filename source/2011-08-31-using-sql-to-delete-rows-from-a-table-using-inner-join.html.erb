@@ -1,24 +1,24 @@
 ---
 layout: article
 title: Using SQL to delete rows from a table using INNER JOIN to another table
-post_date: 2011-08-31 03:22:45.000000000 -05:00
+post_date: 2011-08-31
 ---
 Oftentimes, one wants to delete some records from a table based on criteria in another table. How do you delete from one of those tables without removing the records in both table?
-<pre class="ruby" name="code">DELETE DeletingFromTable
+<% code("ruby") do %>DELETE DeletingFromTable
  FROM DeletingFromTable INNER JOIN CriteriaTable
  ON DeletingFromTable.field_id = CriteriaTable.id
- WHERE CriteriaTable.criteria = "value";</pre>
+ WHERE CriteriaTable.criteria = "value";<% end %>
 The key is that you specify <strong>the name of the table to be deleted</strong> from as the <strong>SELECT</strong>. So, the JOIN and WHERE do the selection and limiting, while the DELETE does the deleting.
 
 You're not limited to just one table, though. If you have a many-to-many relationship (for instance, Magazines and Subscribers, joined by a Subscription) and you're removing a Subscriber, you need to remove any potential records from the join model as well.
 
-<pre class="ruby" name="code">
+<% code("ruby") do %>
 DELETE subscribers, subscriptions
  FROM subscribers INNER JOIN subscriptions 
    ON subscribers.id = subscriptions.subscriber_id
  INNER JOIN magazines 
    ON subscriptions.magazine_id = magazines.id
  WHERE subscribers.name='Wes';
-</pre>
+<% end %>
 
 Deleting records with a join could also be done with a LEFT JOIN and a WHERE to see if the joined table was NULL, so that you could remove records in one table that didn't have a match (like in preparation for adding a relationship.)  Example post to come.

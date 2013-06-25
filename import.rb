@@ -69,13 +69,10 @@ class MiddlemanPost
     File.open(filename, "w") do |f|
       f.puts front_matter
       f.puts "---"
-      f.puts content_with_escaped_entities
+      f.puts content
     end
   end
 
-  def content_with_escaped_entities
-    content.gsub('<%=', '&lt;%=')
-  end
   ## where can we put these to generate the correct end url?
   ##  source/2011-10-18-middleman.html(.markdown)
   ## /2013/12/25/slug/
@@ -90,7 +87,7 @@ class MiddlemanPost
       'layout'        => 'article',
       'title'         => data[:post_title].force_encoding("UTF-8").to_s,
       'excerpt'       => data[:post_excerpt].to_s,
-      'post_date'     => data[:post_date]
+      'post_date'     => data[:post_date].to_date
       # 'wordpress_id'  => post[:ID],
       # 'wordpress_url' => post[:guid],
       # 'categories'    => categories,
@@ -100,7 +97,32 @@ class MiddlemanPost
 
   def content
     # TODO: escape .erb tags or use a different preprocessor
-    data[:post_content]
+    replace_tags(
+      escape_entities(
+        data[:post_content]
+      )
+    )
+
+  end
+
+  def escape_entities(string)
+    string.gsub('<%=', '&lt;%=')
+  end
+
+  def replace_tags(string)
+    string
+      .gsub('<pre name="code" class="ruby">', '<% code("ruby") do %>')
+      .gsub('<pre class="ruby" name="code">', '<% code("ruby") do %>')
+      .gsub('<pre class="ruby">',             '<% code("ruby") do %>')
+      .gsub('<pre class="code" name="ruby">', '<% code("ruby") do %>')
+      .gsub('<pre name=\'code\' class="ruby">', '<% code("ruby") do %>')
+      .gsub('<pre name="code" lang="vb">', '<% code("shell") do %>')
+      .gsub('<pre name="code" class="vb:nogutter">', '<% code("shell") do %>')
+      .gsub('<pre name="code" class="css">', '<% code("shell") do %>')  # not really css originally!
+      .gsub('<pre>', '<% code("shell") do %>')  # convert everything else to shell
+      .gsub('</pre>', '<% end %>')
+      .gsub(/\n\n/, "\n<br><br>\n")
+
   end
 end
 

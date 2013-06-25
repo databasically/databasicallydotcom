@@ -1,7 +1,7 @@
 ---
 layout: article
 title: ! 'default_scope: Use Cases, Caveats, and Work Arounds'
-post_date: 2011-02-07 14:57:09.000000000 -06:00
+post_date: 2011-02-07
 ---
 In Ruby on Rails, named scopes are class methods used to restrict and organize the data searched for. In SQL terms, a named scope adds to the conditional (WHERE) and sorting (ORDER) sections of a query. See <a href="http://railscasts.com/episodes/108-named-scope">Railscast #108</a> for more information.
 
@@ -25,11 +25,11 @@ Here are the two use cases:
 I highlighted the words "only" and "every" in the section on use cases to make a point: default_scope should be used with caution. The fact is, however, that it's not an "only" and "every" world, and as such, we need work arounds. In our case, it's by using "with_exclusive_scope" and the undocumented "unscoped" (Rails 3.x only)
 
 with_exclusive_scope example:
-<pre name='code' class="ruby">Article.with_exclusive_scope { find(:all) }
-</pre>
+<% code("ruby") do %>Article.with_exclusive_scope { find(:all) }
+<% end %>
 unscoped example (Rails 3.x only):
-<pre name='code' class="ruby">Article.unscoped
-</pre>
+<% code("ruby") do %>Article.unscoped
+<% end %>
 <h2>Conclusion</h2>
 In general, we like to keep our code as DRY as possible, but in cases like default_scope, we prefer to be more explicit. We recognize the value of default_scope, but only use it when we absolutely need to, and even then we try to think of alternative methods.
 

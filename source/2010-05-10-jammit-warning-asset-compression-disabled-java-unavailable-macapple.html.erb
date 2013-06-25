@@ -1,19 +1,19 @@
 ---
 layout: article
 title: ! 'Jammit Warning: Asset compression disabled -- Java unavailable (Mac/Apple)'
-post_date: 2010-05-10 20:42:02.000000000 -05:00
+post_date: 2010-05-10
 ---
 I set up <a href="http://documentcloud.github.com/jammit/">Jammit</a> locally on my Mac running Leopard and was receiving this error:
 <blockquote>
-<pre>Jammit Warning: Asset compression disabled -- Java unavailable
-</pre>
+<% code("shell") do %>Jammit Warning: Asset compression disabled -- Java unavailable
+<% end %>
 </blockquote><br /><br /><br />
 <p>I checked out Java:</p>
-<pre>&gt; java -version
+<% code("shell") do %>&gt; java -version
 java version "1.5.0_22"
 Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_22-b03-333-9M3125)
 Java HotSpot(TM) Client VM (build 1.5.0_22-147, mixed mode, sharing)
-</pre>
+<% end %>
 <br /><br /><br /><p><br />Odd.  Poking into the jammit source, I saw that java 1.4 is required to use the YUI javascript compressor, but I had selected the google closure compiler which requires java 1.6, hence the [unclear] error message.
 
 On Leopard, if you've run all your System Updates, you probably have java 1.6, but you have to select it as the default:  Applications &gt; Utilities &gt; Java Preferences &gt; drag new version to top</p>

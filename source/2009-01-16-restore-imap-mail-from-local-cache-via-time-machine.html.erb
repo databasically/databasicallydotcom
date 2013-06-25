@@ -1,20 +1,20 @@
 ---
 layout: article
 title: Restore IMAP mail from local cache via Time Machine
-post_date: 2009-01-16 17:11:53.000000000 -06:00
+post_date: 2009-01-16
 ---
 I had a real scary moment last night.  I was cleaning off my server and deleted the home directory for my databasically email account. I don't host the website on that server, so I thought removing the home directory would be fine.  However, I do host the mail on that server and it's stored in the home directory.
-
+<br><br>
 I had Apple Mail.app running and connected to that mailbox.  I didn't really notice it until a few minutes later when a message came in on another account.
-
+<br><br>
 My work account was blank.  Empty. Also, I had a nice exclamation point saying the account couldn't be found.
-
+<br><br>
 Whoops.  Oh hell.
-
+<br><br>
 I have my computer hooked to an external hard drive which I'm using as my Time Machine (the built-in Mac backup software) drive.  I poked through the folders from an hour ago and found all my mail.
-
+<br><br>
 The mail is stored in ~/Library/Mail/, where each IMAP account has a folder called <strong>IMAP-user@host</strong>. This folder contains many folders with the .imapmbox extension.
-
+<br><br>
 Here's how I restored my mailbox:
 <ul>
 	<li>Recreated my home directory and made sure that the email address still worked.  You may want to set up a new account if you're moving hosts or whatever.  Get a working IMAP account up and running.</li>
@@ -26,5 +26,5 @@ Here's how I restored my mailbox:
 	<li>Drag your mail to your new/restored IMAP mailbox.  I copied 5000 messages at a time without an issue.</li>
 </ul>
 Hopefully you never need this information.
-
+<br><br>
 If it helped you out or if you have any other information, please let me know in the comments.

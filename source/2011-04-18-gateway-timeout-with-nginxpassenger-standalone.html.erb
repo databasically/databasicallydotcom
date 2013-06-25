@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Gateway timeout with nginx/passenger standalone
-post_date: 2011-04-18 15:18:52.000000000 -05:00
+post_date: 2011-04-18
 ---
 I needed to run Rails apps with both ruby 1.8.7 and 1.9.2 on the same server.
 
@@ -15,9 +15,9 @@ The fix from the nginx documentation: <a href="http://wiki.nginx.org/HttpProxyMo
 
 My proxy config after this:
 
-<% code('ruby') do %>
+<% code("ruby") do %>
   location / {
     proxy_pass http://127.0.0.1:3010;
     proxy_read_timeout 240s;
   }
-</pre>
+<% end %>

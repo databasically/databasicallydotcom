@@ -1,24 +1,24 @@
 ---
 layout: article
 title: ! 'TemplateError: wrong number of arguments in default_url_options()'
-post_date: 2009-01-30 11:18:24.000000000 -06:00
+post_date: 2009-01-30
 ---
 During an app upgrade to Rails 2.2.2, I came across this error that baffled me for a few minutes:
-<% code('ruby') do %>ActionView::TemplateError
+<% code("ruby") do %>ActionView::TemplateError
     (wrong number of arguments (0 for 1)) on line #34
     of app/views/account/_dashboard_header.rhtml:
-
-34: &lt;%= link_to 'My Dashboard', my_dashboard_url &gt;</pre>
-
+<br><br>
+34: &lt;%= link_to 'My Dashboard', my_dashboard_url &gt;<% end %>
+<br><br>
 Checking out the backtrace:
-<% code('ruby') do %>(eval):3:in `default_url_options'
+<% code("ruby") do %>(eval):3:in `default_url_options'
 (eval):3:in `my_dashboard_url'
-app/views/account/_dashboard_header.rhtml:34</pre>
-
+app/views/account/_dashboard_header.rhtml:34<% end %>
+<br><br>
 Confusing.  Why would this named route suddenly stop working?  I did a search for default_url_options and found that I had overridden that function:
-<% code('ruby') do %>if production_mode?
+<% code("ruby") do %>if production_mode?
   def default_url_options()
     { :protocol =&gt; 'https://' }
   end
-end</pre>
+end<% end %>
 Aha!  Back in the day, default_url_options didn't have any default options, so I wasn't bothering to merge my desired options with the options parameter.  I fixed it with a <a href="http://api.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Hash/ReverseMerge.html">reverse_merge</a> so any passed-in options would still exist.

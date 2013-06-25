@@ -1,15 +1,15 @@
 ---
 layout: article
 title: ! 'git: merge a single commit'
-post_date: 2011-06-03 10:01:43.000000000 -05:00
+post_date: 2011-06-03
 ---
 Sometimes, you have one commit you want to get into production, but it's located after other changes that you're not ready to merge in yet.  How can you get that single git commit into a different branch?
 
 First, you have to know the SHA of the commit you want:
-<% code('ruby') do %>  git checkout branch-with-commit-on-it
-  git log</pre>
+<% code("ruby") do %>  git checkout branch-with-commit-on-it
+  git log<% end %>
 Highlight and copy the SHA of the commit you want to grab.
-<% code('ruby') do %>  git checkout master
+<% code("ruby") do %>  git checkout master
 
   # -n =&gt; don't commit, just merge changes so we can review and commit ourself
   git cherry-pick -n [The commit’s SHA-1 Hash]
@@ -18,7 +18,7 @@ Highlight and copy the SHA of the commit you want to grab.
   git diff –cached
 
   # commit if all is well
-  git commit -a -m “merge SHA1 ..."</pre>
+  git commit -a -m “merge SHA1 ..."<% end %>
 If you're feeling confident, you can skip the -n and merge the single commit in directly and save a minute.
 
 Note, this isn't a merge, so it's possible you could have some conflicts down the road when you merge the original commit into this branch.  You're creating a brand new commit object.

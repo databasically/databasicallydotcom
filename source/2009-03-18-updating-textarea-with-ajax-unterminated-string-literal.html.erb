@@ -1,14 +1,14 @@
 ---
 layout: article
 title: ! 'Updating textarea with Ajax: unterminated string literal'
-post_date: 2009-03-18 13:04:01.000000000 -05:00
+post_date: 2009-03-18
 ---
 If you try to update a textarea with newlines in it via Ajax, you may get an "Unterminated string literal" error.  The update coming back may look like this:
-<% code('ruby') do %>$('textarea_to_update').value='line one
+<% code("ruby") do %>$('textarea_to_update').value='line one
 line two
-line three';</pre>
-
+line three';<% end %>
+<br><br>
 This will fail because the javascript will interpret the newline as the end of the command.
-
+<br><br>
 So, replace those newlines with the newline character and the textarea will get updated correctly:
-<% code('ruby') do %>textarea_value.gsub!(/\n/, '\n')<% end %>
+<% code("ruby") do %>textarea_value.gsub!(/\n/, '\n')<% end %>

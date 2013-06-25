@@ -1,7 +1,7 @@
 ---
 layout: article
 title: ! 'Git: Commit Early, Commit Often'
-post_date: 2011-03-14 16:28:36.000000000 -05:00
+post_date: 2011-03-14
 ---
 <h2>Don't Be Afraid of Commitment</h2>
 
@@ -14,19 +14,19 @@ Getting in the habit of regular commits has a number of benefits. First, you can
 Just as Test-Driven Development influences us to write a larger number of shorter/simpler methods, frequent committing pushes us to think of atomic changes. Atomic in this context means the smallest possible self-sufficient change. Consider this snippet from <em>git log</em>:
 
 
-<pre name='code' class="ruby">
+<% code("ruby") do %>
 commit b0e77532b5a8cf236d95f1b3324aabc194568c60
 Author: Wally
 Date:   Tue Feb 29 23:58:05 2011 -0600
 
 added comments to blog posts
-</pre>
+<% end %>
 
 This is an example of a commit done at the end of a feature. Lots of code has probably gone into this, and if you wanted to see any of the steps along the way, you're out of luck. It's also not very easy to see what was changed in the app.
 <h2>An Example of Frequent Commits</h2>
 Now look at this version:
 
-<pre name='code' class="ruby">
+<% code("ruby") do %>
 commit e8bba8ad1a4b5c1353c328b505bfa2a9f4816d07
 Author: Alice
 Date:   Tue Feb 29 14:58:05 2011 -0600
@@ -68,7 +68,7 @@ Author: Alice
 Date:   Tue Feb 29 08:38:01 2011 -0600
 
 added base comment model and migrations
-</pre>
+<% end %>
 
 You can clearly see the evolution of this feature, and it makes sense. Not only can you step back (if user permissions were implemented incorrectly, for instance) but Alice was "forced" to think about each logical step of her development process, instead of jumping in head first. It's engineering 101 - break a problem in its atomic elements, and attack each of those.
 

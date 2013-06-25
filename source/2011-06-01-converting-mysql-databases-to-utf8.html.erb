@@ -1,14 +1,14 @@
 ---
 layout: article
 title: Converting mysql databases to UTF8
-post_date: 2011-06-01 10:01:26.000000000 -05:00
+post_date: 2011-06-01
 ---
 UTF8 is the way to go when you're creating a new database for an application, but how do you get your existing applications upgraded?
 
 <!--more-->
 
 We dump the database and then import it with the new character set so we can test things out:
-<% code('ruby') do %># Export your latin1 encoded database
+<% code("ruby") do %># Export your latin1 encoded database
 mysqldump
     --user=username
     --password=password
@@ -22,5 +22,5 @@ mysql
     --password=password
     --default-character-set=utf8
     dbname
-    &lt; dump.sql</pre>
+    &lt; dump.sql<% end %>
 Note: wrapped for your reading convenience; these should all be on one line if you're typing them at the command line.

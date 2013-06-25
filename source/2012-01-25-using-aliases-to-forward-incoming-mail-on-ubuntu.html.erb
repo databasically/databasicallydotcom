@@ -1,34 +1,34 @@
 ---
 layout: article
 title: ! 'Using aliases to forward incoming mail on Ubuntu '
-post_date: 2012-01-25 08:13:26.000000000 -06:00
+post_date: 2012-01-25
 ---
 I only need to do this every couple years when I renew an SSL certificate and they want to verify domain ownership by sending to some non-standard address like <code>ssladmin@example.com</code>.
 
 So, here's how:
 
 Edit the virtual alias file:
-<% code('ruby') do %>
+<% code("ruby") do %>
 (sudo) vi /etc/postfix/virtual
-</pre>
+<% end %>
 
 Add your alias and the address(es) it forwards to:
-<% code('ruby') do %>
+<% code("ruby") do %>
 ssladmin@example.com   realemail@example.com
 contact@example.com    sales@gmail.com,support@gmail.com
-</pre>
+<% end %>
 
 Reload the postfix virtual table:
-<% code('ruby') do %>
+<% code("ruby") do %>
 postmap /etc/postfix/virtual
-</pre>
+<% end %>
 
 Also make sure you have following line in /etc/postfix/main.cf file:
-<% code('ruby') do %>
+<% code("ruby") do %>
 virtual_alias_maps = hash:/etc/postfix/virtual
-</pre>
+<% end %>
 
 If you didn't have that and you just added it, reload all of postfix:
-<% code('ruby') do %>
+<% code("ruby") do %>
 service postfix reload
-</pre>
+<% end %>

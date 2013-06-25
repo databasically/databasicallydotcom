@@ -1,7 +1,7 @@
 ---
 layout: article
 title: ! 'Kansas City Ruby:  What''s New in Ruby - February 2012'
-post_date: 2012-02-22 01:36:55.000000000 -06:00
+post_date: 2012-02-22
 ---
 At the beginning of each Kansas City Ruby meeting, I do a quick presentation on some new neat things from the last month in Ruby news.
 
@@ -16,20 +16,20 @@ At the beginning of each Kansas City Ruby meeting, I do a quick presentation on 
 	<li>Faster development mode</li>
 	<li>End of Ruby 1.8.7</li>
 	<li>
-<pre>puts Person.active.limit(5).explain</pre>
+<% code("shell") do %>puts Person.active.limit(5).explain<% end %>
 </li>
 	<li>Automatically shows when &gt; half a second</li>
 	<li>TaggedLogger</li>
 </ul>
 <h4></h4>
 <h4>ActiveRecord Store</h4>
-<pre>class User &lt; ActiveRecord::Base
+<% code("shell") do %>class User &lt; ActiveRecord::Base
   store :settings, accessors: [ :color, :homepage ]
-end</pre>
-<pre>u = User.new(color: 'black', homepage: '37signals.com')
-u.color # Accessor stored attribute</pre>
-<pre>  # Any attribute, even if not specified with an accessor
-u.settings[:country] = 'Denmark'</pre>
+end<% end %>
+<% code("shell") do %>u = User.new(color: 'black', homepage: '37signals.com')
+u.color # Accessor stored attribute<% end %>
+<% code("shell") do %>  # Any attribute, even if not specified with an accessor
+u.settings[:country] = 'Denmark'<% end %>
 <h3>RubyMine 4.0 released</h3>
 <a href="http://blog.jetbrains.com/ruby/2012/02/rubymine-4-is-here-to-make-you-feel-the-productivity/">http://blog.jetbrains.com/ruby/2012/02/rubymine-4-is-here-to-make-you-feel-the-productivity/</a>
 
