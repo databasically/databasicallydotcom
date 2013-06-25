@@ -24,10 +24,7 @@
       .span9
         = yield
 
-  %footer.footer
-    .container
-      %p.pull-right
-        %a{:href => "#"} Back to top
+  = partial 'layouts/footer'
   :javascript
     // Function to slabtext the H1 headings
     function slabTextHeadlines() {
@@ -40,4 +37,3 @@
     $(function() {
       slabTextHeadlines();
     });
-  = partial 'layouts/footer'

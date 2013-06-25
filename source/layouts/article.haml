@@ -20,10 +20,7 @@
             =current_page.data.post_date.strftime('%b %e %Y')
         = yield
 
-  %footer.footer
-    .container
-      %p.pull-right
-        %a{:href => "#"} Back to top
+  = partial 'layouts/footer'
   :javascript
     // Function to slabtext the H1 headings
     function slabTextHeadlines() {
@@ -37,4 +34,3 @@
     $(window).load(function() {
         slabTextHeadlines();
     });
-  = partial 'layouts/footer'
