@@ -13,10 +13,10 @@
         %a{:href => '/'} Databasically
 
     .row-fluid
-      .span12
+      .span12.article
         %h1= current_page.data.title
         - if current_page.data.post_date
-          %h3.muted.pull-right
+          %h3.muted.pull-right.post_date
             =current_page.data.post_date.strftime('%b %e %Y')
         = yield
 
@@ -29,7 +29,8 @@
     function slabTextHeadlines() {
         $("h1").slabText({
             // Don't slabtext the headers if the viewport is under 380px
-            "viewportBreakpoint":380
+            "viewportBreakpoint":380,
+            "minCharsPerLine":9
         });
     };
 

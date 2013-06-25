@@ -504,3 +504,8 @@ i.portfolio {
 ul.icons-ul li {
   padding-bottom: 10px;
 }
+
+.article h3.post_date {
+  padding-left: 10px;
+  margin: -5px 0 0 0;
+}
