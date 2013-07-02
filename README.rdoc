@@ -1,1 +1,9 @@
 == databasically.com website
+
+deploy.sh will push to github and heroku
+
+heroku buildpack will call `rake assets:precompile` which calls `middleman build`
+
+The rackup file `config.ru` sets up a static webserver and redirects unknown requests to the 404 file.
+
+You can generate the full site locally with `middleman build [--verbose] [--clean]`
