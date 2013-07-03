@@ -1,0 +1,80 @@
+---
+layout: article
+title: "Kansas City Ruby RTanque League: Round One Results"
+post_date: 2013-07-03
+---
+These are the results for round one of the 2013
+= link_to "KC Ruby", 'http://meetup.com/kcruby'
+RTanque League.
+
+%h2 Results: Win, Loss, Avg Health Left
+
+%table.table.table-bordered
+  %thead
+    %th Rank
+    %th Bot
+    %th Wins
+    %th Losses
+    %th Health
+  %tbody
+    - [['wallhugger', 0, 5, 38.3],                               |
+      ['hacker', 0, 8, 5.3],                                     |
+      ['Seek&amp;Destroy', 2, 5, 23.2],                          |
+      ['jamesior_bot', 3, 4, 41.3],                              |
+      ['jonaldomo', 3, 5, 27.7],                                 |
+      ['Dwight Schrute', 5, 3, 30.7],                            |
+      ['Darren', 6, 3, 51.3],                                    |
+      ['MacGyver', 6, 3, 39.1],                                  |
+      ['dalek', 6, 2, 62.3],                                     |
+      ['twitch', 8, 1, 36.2]]                                    |
+      .sort {|x,y| y[1]*100 + y.last <=> x[1]*100 + x.last}      |
+      .each_with_index do |bot, rank0|                           |
+      %tr
+        %td= rank0 + 1
+        %td= bot[0]
+        %td= bot[1]
+        %td= bot[2]
+        %td= bot[3]
+
+%p For losses, remaining health is 0.  For draws, both bots get their remaining health.
+
+%h2 Details
+
+%p
+  Some matches were infinite, so I capped each match at 5000 ticks.
+  %br
+  %i
+    I'll update this with questions if you have them. Post to the meetup thread.
+
+
+%h2 Viewing the replays
+
+%p Every match has been recorded, so you can grab the download and watch them to see what went well and what you need to improve on.
+
+%h4 Download the matches
+%p
+  (zipped YAML):
+  = link_to "download", 'https://s3.amazonaws.com/databasically/articles_files/kcruby-rtanque-2013-round-1-replays.zip'
+  %br
+  Unzip to your rtanque directory.
+
+%h4 Grab the databasically fork of RTanque
+%p This has the record/replay logic that hasn't been merged into master yet.
+%pre
+  :preserve
+    # A sample Gemfile
+    source "https://rubygems.org"
+
+    gem 'rtanque', :path => "/Users/wg/code/rtanque/databasically-rtanque"
+%p Bundle.
+%pre
+  :preserve
+    bundle update rtanque
+%p Find the name of the match you want to watch, start it with:
+%pre
+  :preserve
+    bundle exec rtanque replay replays/bot--vs--bot.yml
+
+
+
+
