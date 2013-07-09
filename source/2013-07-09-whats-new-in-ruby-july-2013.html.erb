@@ -1,0 +1,141 @@
+---
+layout: article
+title: ! 'What''s New in Ruby: July 2013'
+post_date: 2013-07-09
+---
+Every month, <a href="http://meetup.com/kcruby">Kansas City Ruby</a> (#kcruby) reviews a subset of Peter Cooper's fantastic <a href="http://rubyweekly.com/?utm_source=databasically">Ruby Weekly</a> selections, along with other items picked up around the web.
+
+
+<h4><a href="http://weblog.rubyonrails.org/2013/6/25/Rails-4-0-final/" target="_blank">Rails 4.0 Final is out!</a></h4>
+<p>
+  <blockquote>
+  A big focus has been on making it dead simple to build modern web applications that are screaming fast without needing to go the client-side JS/JSON server route. Much of this work was pioneered for Rails in the new version of Basecamp and focuses on three aspects:
+  <br>
+  <br>
+  <ol>
+    <li>Make it super easy to do Russian Doll-caching through key-based expiration with automatic dependency management of nested templates (explored first in the cache_digests plugin).</li>
+    <li>Speed-up the client-side with Turbolinks, which essentially turns your app into a single-page javascript application in terms of speed, but with none of the developmental drawbacks (except, maybe, compatibility issues with some existing JavaScript packages).</li>
+    <li>Declarative etags makes it even easier to ensure you're taking advantage of HTTP freshness.</li>
+  </ol>
+</blockquote>
+Also:
+<blockquote>Declarative etags makes it even easier to ensure you're taking advantage of HTTP freshness.</blockquote>
+Also:
+<blockquote>Active Resource, Active Record Observers, and Action Pack page and action caching are all examples of things that are no longer in core, but lives on in plugins.</blockquote>
+<blockquote>We encourage you to peruse the CHANGELOGs for all the Rails frameworks and delight over the hundreds of improvements we've made to Rails 4.0: <a href="https://github.com/rails/rails/blob/v4.0.0/actionpack/CHANGELOG.md">Action Pack</a>, <a href="https://github.com/rails/rails/blob/v4.0.0/activemodel/CHANGELOG.md">Active Model</a>, <a href="https://github.com/rails/rails/blob/v4.0.0/activerecord/CHANGELOG.md">Active Record</a>, <a href="https://github.com/rails/rails/blob/v4.0.0/activesupport/CHANGELOG.md">Active Support</a>, <a href="https://github.com/rails/rails/blob/v4.0.0/railties/CHANGELOG.md">Rails</a>.
+</blockquote>
+
+Finally, you can check out the <a href="http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#upgrading-from-rails-3-2-to-rails-4-0">upgrade guide</a> or the <a href="http://railscasts.com/episodes/415-upgrading-to-rails-4">Railscast screencast</a>.
+</p>
+
+
+<h4><a href="http://www.kalzumeus.com/2013/06/17/if-your-business-uses-rails-2-3-you-need-to-move-to-a-supported-option-asap/" target="_blank">If Your Business Uses Rails 2.3 You Need To Move To A Supported Option ASAP</a></h4>
+<p>
+  <blockquote>Executive summary for your CTO: If your company runs Rails 2.3 apps, switch to <a href="http://www.railslts.com/">Rails LTS</a>, a commercially supported fork of Rails.  If you do not do this, and do not take one of the more elaborate mitigation steps as described below, your Rails applications will be compromised, you will lose the servers you run on, and your business will suffer substantial losses.</blockquote>
+
+  <blockquote>
+    <h5>Your Options If You Are Currently On Rails 2.3.X</h5>
+    <ol>
+      <li>Do nothing and, with probability of 100%, get your server owned.</li>
+      <li>Rewrite your applications for Rails 3 or Rails 4, which are currently supported.</li>
+      <li>Support Rails 2.3 yourself</li>
+      <li>Pray that someone supports Rails 2.3 for you</li>
+      <li>Pay for a commercial fork of Rails 2.3</li>
+    </ol>
+
+
+
+  </blockquote>
+</p>
+
+
+<h4><a href="http://blog.steveklabnik.com/posts/2013-06-25-removing-turbolinks-from-rails-4" target="_blank">Removing Turbolinks from Rails 4
+</a></h4>
+<p>
+  <blockquote>
+    If you don't want to use Turbolinks with your Rails 4 application, it's easy! Just do this:
+    <ol>
+        <li> Remove the gem 'turbolinks' line from your Gemfile.</li>
+        <li>Remove the //= require turbolinks from your app/assets/javascripts/application.js.</li>
+        <li>Remove the two "data-turbolinks-track" => true hash key/value pairs from your app/views/layouts/application.html.erb.</li>
+    </ol>
+   Done!
+  </blockquote>
+</p>
+
+
+<h4><a href="http://railssecurity.com/" target="_blank">Free one-month course on fixing common Rails vulnerabilities, via email</a></h4>
+<p>
+  <blockquote>
+You’ll get a new lesson every few days for the next month. By the end, your critical Rails app will be a veritable Fort Knox.
+<br><br>
+What you’ll learn:
+<br><br>
+Lesson 1: Three Rails security risks you won’t find in the official guide
+<br>
+Lesson 2: The attack vector behind 87% of one year's detected vulnerabilities
+<br>
+Lesson 3: Surprise! Rails is still vulnerable to SQL injection
+<br>
+Lesson 4: Catching security issues before they reach production
+<br>
+Lesson 5: The power of automated security audits
+<br>
+Lesson 6: Three surprising ways that Ruby's dynamic nature is a risk
+<br>
+Lesson 7: A few Bad Ideas you might have accidentally implemented
+  </blockquote>
+</p>
+
+
+<h4><a href="https://blog.engineyard.com/2013/whats-new-and-awesome-in-ruby-2" target="_blank">What's New and Awesome in Ruby 2</a></h4>
+<p>
+  <h5>Faster</h5>
+  <blockquote>Ruby 2 has a few patches that dramatically improve performance. The biggest of these is a substantial optimization to Kernel#require, which speeds up Rails startup dramatically. </blockquote>
+
+  <h5>UTF-8 By Default</h5>
+  <blockquote>All Ruby scripts now default to UTF-8 encoding. This makes the #encoding: utf-8 magic comment no longer necessary.</blockquote>
+
+  And more: keywork arguments, lazy enumerators, literal symbol array syntax.
+</p>
+
+
+<h4><a href="" target="_blank"></a></h4>
+<p>
+</p>
+
+
+<h4><a href="" target="_blank"></a></h4>
+<p>
+</p>
+
+
+<h4><a href="" target="_blank"></a></h4>
+<p>
+</p>
+
+
+<h4><a href="" target="_blank"></a></h4>
+<p>
+</p>
+
+
+<h4><a href="" target="_blank"></a></h4>
+<p>
+</p>
+
+
+<h4><a href="" target="_blank"></a></h4>
+<p>
+</p>
+
+
+<h4><a href="" target="_blank"></a></h4>
+<p>
+</p>
+
+
+<h4><a href="" target="_blank"></a></h4>
+<p>
+</p>
+
