@@ -1,0 +1,103 @@
+---
+layout: article
+title: "Kansas City Ruby RTanque League: Round Two Results"
+post_date: 2013-07-09
+---
+These are the results for round one of the 2013
+= link_to "KC Ruby", 'http://meetup.com/kcruby'
+RTanque League.
+
+%h2 Results: Win, Loss, Avg Health Left
+
+%table.table.table-bordered
+  %thead
+    %th Rank
+    %th Bot
+    %th Wins
+    %th Losses
+    %th Health
+  %tbody
+    - [['joeandaverde', 11, 0, 69.0],                            |
+       ['THEtheChad', 9, 2, 58.0],                               |
+       ['dalek', 9, 2, 41.45454545454545],                       |
+       ['Darren', 8, 3, 41.72727272727273],                      |
+       ['twitch', 6, 5, 28.181818181818183],                     |
+       ['MacGyver', 4, 6, 24.545454545454547],                   |
+       ['DrunkBot', 4, 6, 18.545454545454547],                   |
+       ['sir ticks a lot', 4, 4, 39.54545454545455],             |
+       ['Seek&Destroy', 2, 7, 18.90909090909091],                |
+       ['jamesior_bot', 2, 8, 24.90909090909091],                |
+       ['hacker', 0, 10, 1.0909090909090908],                    |
+       ['wallhugger', 0, 6, 32.45454545454545],                  |
+      ]                                                          |
+      .sort {|x,y| y[1]*100 + y.last <=> x[1]*100 + x.last}      |
+      .each_with_index do |bot, rank0|                           |
+      %tr
+        %td= rank0 + 1
+        %td= bot[0]
+        %td= bot[1]
+        %td= bot[2]
+        %td= bot[3]
+
+%p For losses, remaining health is 0.  For draws, both bots get their remaining health.
+
+%h2 Details
+
+%p
+  Some matches were infinite, so I capped each match at 7500 ticks.
+  %br
+  %i
+    I'll update this with questions if you have them. Post to the meetup thread.
+
+%h2 Round Two Due: Sunday, July 14th at midnight
+%p
+  We're going to run the next round live at KC Ruby, so get your entry in.  Even if you didn't enter the previous rounds, you can still play!
+
+%h2 How to submit
+%p
+  %ul
+    %li upload your bot's code to a private gist
+    %li bot filename must end in .rb
+    %li please keep the same bot name in your class so we can compare
+    %li
+      fill out
+      = link_to "this google form", 'http://bit.ly/2013-kcruby-rtanque-signup'
+      with the following information:
+      %ul
+        %li your name
+        %li gist ID from above
+        %li twitter handle
+
+
+%h2 Viewing the replays
+
+%p Every match has been recorded, so you can grab the download and watch them to see what went well and what you need to improve on.
+
+%h4 Download the matches
+%p
+  (zipped YAML):
+  = link_to "download", 'https://s3.amazonaws.com/databasically/articles_files/kcruby-rtanque-2013-round-2-replays.zip'
+  (not uploaded yet)
+  %br
+  Unzip to your rtanque directory.
+
+%h4 Grab the databasically fork of RTanque
+%p This has the record/replay logic that hasn't been merged into master yet.
+%pre
+  :preserve
+    # A sample Gemfile
+    source "https://rubygems.org"
+
+    gem 'rtanque', :path => "/Users/wg/code/rtanque/databasically-rtanque"
+%p Bundle.
+%pre
+  :preserve
+    bundle update rtanque
+%p Find the name of the match you want to watch, start it with:
+%pre
+  :preserve
+    bundle exec rtanque replay replays/bot--vs--bot.yml
+
+
+
+
