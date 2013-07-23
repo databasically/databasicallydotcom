@@ -294,10 +294,10 @@ ul.contactlinks{
 #form fieldset {
   padding:0;
 }
-#contact-form .field {
+#form5 .field {
   padding:0 0 10px 0;
 }
-#contact-form .input-text {
+#form5 .input-text {
   background:#f5f5f5;
   border:1px solid #ebebeb;
   border-top:1px solid #bfbfbf;
@@ -306,7 +306,7 @@ ul.contactlinks{
   height:38px;
   padding:0 10px;
 }
-#contact-form .input-textarea {
+#form5 .input-textarea {
   background:#f5f5f5;padding:10px;
   border:1px solid #ebebeb;
   border-top:1px solid #bfbfbf;
@@ -316,11 +316,11 @@ ul.contactlinks{
   overflow:hidden;
   resize:none;
 }
-#contact-form .input-submit {
+#form5 .input-submit {
   cursor:pointer;
   font-size:12px;
 }
-#contact-form label {
+#form5 label {
   float:left;
   font-size:13px;
   font-weight:400;
@@ -328,10 +328,10 @@ ul.contactlinks{
   text-align:left;
   width:120px;
 }
-#contact-form .holder {
+#form5 .holder {
   position:relative;
 }
-#contact-form .message {
+#form5 .message {
   color:#fff;
   display:none;
   font-weight:bold;
@@ -339,31 +339,31 @@ ul.contactlinks{
   position:absolute;
   top:20px;
 }
-#contact-form .message .top {
+#form5 .message .top {
   background:#000;
   height:17px;
   line-height:0;
   width:428px;
 }
-#contact-form .message .contents {
+#form5 .message .contents {
   background:#000;
   padding:5px 0;
   width:428px;
 }
-#contact-form .message .bottom {
+#form5 .message .bottom {
   background:#000;
   height:14px;
   line-height:0;
   margin-left:-1px;
   width:428px;
 }
-#contact-form #alert {
+#form5 #alert {
   padding:0 20px;
 }
-#contact-form #alert ul {
+#form5 #alert ul {
   padding:10px 0 0 0;
 }
-#contact-form #alert ul li {
+#form5 #alert ul li {
   line-height:18px;
 }
 
