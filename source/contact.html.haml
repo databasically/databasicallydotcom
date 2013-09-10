@@ -4,7 +4,7 @@ layout: article
 / Wufoo form
 #form
   %h3 Let's start a discussion
-  %form{:id => "form5", :name => "form5", :autocomplete => "off", :enctype => "multipart/form-data", :method => "post", :novalidate => "", :action => "https://databasically1.wufoo.com/forms/s7x1x7/#public"}
+  %form#form5#contact-form{:name => "form5", :autocomplete => "off", :enctype => "multipart/form-data", :method => "post", :novalidate => "", :action => "https://databasically1.wufoo.com/forms/s7x1x7/#public"}
     %fieldset
       .row
         .holder.span8
@@ -14,32 +14,13 @@ layout: article
               #alert
             .bottom
         .field.span8
-          %input#Field3.input-text.m-wrap.m-ctrl-large{:name => "Field3", :type => "text", :value => "", :tabindex => "1", :onkeyup => "", :placeholder => "Your name"}/
+          %input#Field3.input-text.m-wrap.m-ctrl-large{:name => "Field3 name", :type => "text", :value => "", :tabindex => "1", :onkeyup => "", :placeholder => "Your name"}/
         .field.span8
           %input#Field4.input-text.m-wrap.m-ctrl-large{:name => "Field4", :type => "email", :spellcheck => "false", :value => "", :maxlength => "255", :tabindex => "2", :placeholder => "Your email"}/
         .field.span8
-          %textarea#Field7.input-textarea.m-wrap.m-ctrl-large{:name => "Field7", :spellcheck => "true", :tabindex => "3", :onkeyup => "", :value => "", :placeholder => "Project or work comments"}
+          %textarea#Field7.input-textarea.m-wrap.m-ctrl-large{:name => "Field7", :spellcheck => "true", :tabindex => "3", :onkeyup => "", :value => "", :placeholder => "Comments"}
         .field.span8
-          %fieldset
-            %h4 Budget
-            %input#radioDefault_6{:name => "Field6", :type => "hidden", :value => ""}
-            %label.radio
-              %input#Field6_0{:name => "Field6", :type => "radio", :value => "I am not sure yet", :tabindex => "4", :checked => "checked"}
-              I am not sure yet
-            %label.radio
-              %input#Field6_1{:name => "Field6", :type => "radio", :value => "&lt; $20k", :tabindex => "5"}
-              less than $20k
-            %br
-            %br
-
-            %label.radio
-              %input#Field6_2{:name => "Field6", :type => "radio", :value => "$20k - $100k", :tabindex => "6"}
-              $20k - $100k
-            %label.radio
-              %input#Field6_3{:name => "Field6", :type => "radio", :value => "$100k+", :tabindex => "7"}
-              $100k+
-        .field.span8
-          %input.m-btn.blue#saveForm{:name => "saveForm", :type => "submit", :value => "Let's talk"}
+          %input.m-btn.blue#saveform{:name => "saveForm", :type => "submit", :value => "Let's talk"}
       %ul
         %li.hide
           %label{:for => "comment"} Do Not Fill This Out
