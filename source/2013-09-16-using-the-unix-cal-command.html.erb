@@ -1,0 +1,180 @@
+---
+layout: article
+title: Using the Unix 'cal' commmand
+post_date: 2013-09-16
+---
+<p>Multiple times per day, I pull up a calendar to look at a date.  For example, I might need to find "what day of the week is Sept 1st" or "what was the week ending date of that week."
+</p>
+<p>Normally, I pull up the calendar in the OS X Dashboard:
+<div class='text-center'><img src="/images/os-x-dashboard-calendar.png" alt="os x dashboard calendar" >
+</div></p>
+<p>This works ok for one month, but scrolling to the past or future isn't quick, and you can't see more than one month.  Plus, it's sometimes hard to tell what month you're looking at or how to get back to the current month.</p>
+<p>Now, I turn to the <code>cal</code> command, available from *nix command lines.</p>
+<p>
+  <h4>Without arguments, <code>cal</code> shows the current month</h4>
+  <pre>
+$ cal
+   September 2013
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30
+  </pre>
+
+</p>
+
+<p>
+  <h4>You can pass just a year and <code>cal</code> shows that year</h4>
+  <h4><code>cal -y</code> is a shortcut for the current year</h4>
+  <pre>
+$ cal 2013
+                             2013
+
+      January               February               March
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+       1  2  3  4  5                  1  2                  1  2
+ 6  7  8  9 10 11 12   3  4  5  6  7  8  9   3  4  5  6  7  8  9
+13 14 15 16 17 18 19  10 11 12 13 14 15 16  10 11 12 13 14 15 16
+20 21 22 23 24 25 26  17 18 19 20 21 22 23  17 18 19 20 21 22 23
+27 28 29 30 31        24 25 26 27 28        24 25 26 27 28 29 30
+                                            31
+       April                  May                   June
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6            1  2  3  4                     1
+ 7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8
+14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15
+21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22
+28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29
+                                            30
+        July                 August              September
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6               1  2  3   1  2  3  4  5  6  7
+ 7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14
+14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21
+21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28
+28 29 30 31           25 26 27 28 29 30 31  29 30
+
+      October               November              December
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+       1  2  3  4  5                  1  2   1  2  3  4  5  6  7
+ 6  7  8  9 10 11 12   3  4  5  6  7  8  9   8  9 10 11 12 13 14
+13 14 15 16 17 18 19  10 11 12 13 14 15 16  15 16 17 18 19 20 21
+20 21 22 23 24 25 26  17 18 19 20 21 22 23  22 23 24 25 26 27 28
+27 28 29 30 31        24 25 26 27 28 29 30  29 30 31
+  </pre>
+
+</p>
+
+<p>
+  <h4>Pass [month] [year] and <code>cal</code> shows just the specified month</h4>
+  <pre>
+$ cal 12 2012
+   December 2012
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30 31
+</pre>
+
+</p>
+
+<p>
+  <h4>Or, just <code>cal -m [month]</code> to default to the current year</h4>
+  <pre>
+$ cal -m 12
+   December 2013
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31
+  </pre>
+</p>
+
+
+<p>
+  <h4>Get days of the year (Julian days) with <code>cal -j [month] [year]</code></h4>
+  <pre>
+$ cal -j 12 2012
+       December 2012
+ Su  Mo  Tu  We  Th  Fr  Sa
+                        336
+337 338 339 340 341 342 343
+344 345 346 347 348 349 350
+351 352 353 354 355 356 357
+358 359 360 361 362 363 364
+365 366
+  </pre>
+</p>
+
+
+
+<p>The new version of cal is <code>ncal</code>.  It transposes the calendar (days run down the side) and can feel cramped, but it can fit more across a screen.</p>
+
+<p>
+  <h4>Without arguments, <code>ncal</code> shows the current month.</h4>
+  <pre>
+$ ncal
+    September 2013
+Mo     2  9 16 23 30
+Tu     3 10 17 24
+We     4 11 18 25
+Th     5 12 19 26
+Fr     6 13 20 27
+Sa     7 14 21 28
+Su  1  8 15 22 29
+  </pre>
+
+</p>
+<p>
+  <h4>To show week numbers in the new format, use <code>ncal -w</code>.</h4>
+  <pre>
+$ ncal -yw
+                                  2013
+    January           February          March             April
+Mo     7 14 21 28        4 11 18 25        4 11 18 25     1  8 15 22 29
+Tu  1  8 15 22 29        5 12 19 26        5 12 19 26     2  9 16 23 30
+We  2  9 16 23 30        6 13 20 27        6 13 20 27     3 10 17 24
+Th  3 10 17 24 31        7 14 21 28        7 14 21 28     4 11 18 25
+Fr  4 11 18 25        1  8 15 22        1  8 15 22 29     5 12 19 26
+Sa  5 12 19 26        2  9 16 23        2  9 16 23 30     6 13 20 27
+Su  6 13 20 27        3 10 17 24        3 10 17 24 31     7 14 21 28
+    1  2  3  4  5     5  6  7  8  9     9 10 11 12 13    14 15 16 17 18
+    May               June              July              August
+Mo     6 13 20 27        3 10 17 24     1  8 15 22 29        5 12 19 26
+Tu     7 14 21 28        4 11 18 25     2  9 16 23 30        6 13 20 27
+We  1  8 15 22 29        5 12 19 26     3 10 17 24 31        7 14 21 28
+Th  2  9 16 23 30        6 13 20 27     4 11 18 25        1  8 15 22 29
+Fr  3 10 17 24 31        7 14 21 28     5 12 19 26        2  9 16 23 30
+Sa  4 11 18 25        1  8 15 22 29     6 13 20 27        3 10 17 24 31
+Su  5 12 19 26        2  9 16 23 30     7 14 21 28        4 11 18 25
+   18 19 20 21 22    22 23 24 25 26    27 28 29 30 31    31 32 33 34 35
+    September         October           November          December
+Mo     2  9 16 23 30     7 14 21 28        4 11 18 25        2  9 16 23 30
+Tu     3 10 17 24     1  8 15 22 29        5 12 19 26        3 10 17 24 31
+We     4 11 18 25     2  9 16 23 30        6 13 20 27        4 11 18 25
+Th     5 12 19 26     3 10 17 24 31        7 14 21 28        5 12 19 26
+Fr     6 13 20 27     4 11 18 25        1  8 15 22 29        6 13 20 27
+Sa     7 14 21 28     5 12 19 26        2  9 16 23 30        7 14 21 28
+Su  1  8 15 22 29     6 13 20 27        3 10 17 24        1  8 15 22 29
+   35 36 37 38 39 40 40 41 42 43 44    44 45 46 47 48    48 49 50 51 52  1
+  </pre>
+
+</p>
+<p>
+  <h4>Finally, calculate the date of Easter with <code>ncal -e</code></h4>
+  <pre>
+$ ncal -e 2014
+April 20 2014
+  </pre>
+
+</p>
+<p>
+  You can use <code>man cal</code> to get more details and examples.
+</p>
