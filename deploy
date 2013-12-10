@@ -1,1 +1,7 @@
+middleman build
+git add build
+DATE=$(date +"%Y%m%d%H%M")
+git commit -m 'build $DATE'
+git tag -a -m 'build $DATE' $DATE
 git push origin master && git push heroku master
+git push origin --tags
