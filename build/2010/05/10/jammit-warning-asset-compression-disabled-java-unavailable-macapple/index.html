@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <title>Jammit Warning: Asset compression disabled -- Java unavailable (Mac/Apple)</title>
+    <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <meta content='Ruby enthusiasts, mostly based in Kansas City, KS, USA.' name='description'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300' rel='stylesheet' type='text/css'>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+</html>
+<body>
+  <div class='container-narrow'>
+    <div class='masthead'>
+      <ul class='nav nav-pills pull-right'>
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        <li>
+          <a href='/articles'>Articles</a>
+        </li>
+        <li>
+          <a href='/contact'>Contact</a>
+        </li>
+      </ul>
+      <h3 class='muted'>
+        <a href='/'>Databasically</a>
+      </h3>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12 article'>
+        <h1>Jammit Warning: Asset compression disabled -- Java unavailable (Mac/Apple)</h1>
+        <h3 class='muted pull-right post_date'>
+          May 10 2010
+        </h3>
+        I set up <a href="http://documentcloud.github.com/jammit/">Jammit</a> locally on my Mac running Leopard and was receiving this error:
+        <blockquote>
+        <pre class="highlight shell">Jammit Warning: Asset compression disabled -- Java unavailable
+        </pre>
+        </blockquote><br /><br /><br />
+        <p>I checked out Java:</p>
+        <pre class="highlight shell">&amp;gt; java -version
+        java version <span class="s2">&quot;1.5.0_22&quot;</span>
+        Java<span class="o">(</span>TM<span class="o">)</span> 2 Runtime Environment, Standard Edition <span class="o">(</span>build 1.5.0_22-b03-333-9M3125<span class="o">)</span>
+        Java HotSpot<span class="o">(</span>TM<span class="o">)</span> Client VM <span class="o">(</span>build 1.5.0_22-147, mixed mode, sharing<span class="o">)</span>
+        </pre>
+        <br /><br /><br /><p><br />Odd.  Poking into the jammit source, I saw that java 1.4 is required to use the YUI javascript compressor, but I had selected the google closure compiler which requires java 1.6, hence the [unclear] error message.
+        
+        On Leopard, if you've run all your System Updates, you probably have java 1.6, but you have to select it as the default:  Applications &gt; Utilities &gt; Java Preferences &gt; drag new version to top</p>
+      </div>
+    </div>
+  </div>
+  <footer class='footer'>
+    <div class='container'>
+      <p class='pull-left muted'>
+        Established 2005 &middot; Databasically &copy;
+        2013
+      </p>
+      <p class='pull-right'>
+        <a href='#'>Back to top</a>
+      </p>
+    </div>
+  </footer>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2626511-3']);
+    _gaq.push(['_setDomainName', 'databasically.com']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script>
+    // Function to slabtext the H1 headings
+    function slabTextHeadlines() {
+        $("h1").slabText({
+            // Don't slabtext the headers if the viewport is under 380px
+            "viewportBreakpoint":380,
+            "minCharsPerLine":9
+        });
+    };
+    
+    $(window).load(function() {
+        slabTextHeadlines();
+    });
+  </script>
+</body>

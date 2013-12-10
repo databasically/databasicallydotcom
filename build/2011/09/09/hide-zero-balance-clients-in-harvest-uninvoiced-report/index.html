@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <title>Hide zero balance clients in Harvest Uninvoiced Report</title>
+    <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <meta content='Ruby enthusiasts, mostly based in Kansas City, KS, USA.' name='description'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300' rel='stylesheet' type='text/css'>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+</html>
+<body>
+  <div class='container-narrow'>
+    <div class='masthead'>
+      <ul class='nav nav-pills pull-right'>
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        <li>
+          <a href='/articles'>Articles</a>
+        </li>
+        <li>
+          <a href='/contact'>Contact</a>
+        </li>
+      </ul>
+      <h3 class='muted'>
+        <a href='/'>Databasically</a>
+      </h3>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12 article'>
+        <h1>Hide zero balance clients in Harvest Uninvoiced Report</h1>
+        <h3 class='muted pull-right post_date'>
+          Sep  9 2011
+        </h3>
+        <strong>UPDATE:</strong> Check out the updated bookmarklet for more functionality:
+        <a href="http://databasically.com/2011/12/16/even-better-hiding-zero-balance-clientsprojects-in-harvest-uninvoiced-report/" title="Even better: hiding zero balance clients/projects in Harvest Uninvoiced Report">Even better: hiding zero balance clients/projects in Harvest Uninvoiced Report</a>
+        <hr>
+        
+        I love the Harvest <a href="http://www.getharvest.com/blog/2011/05/the-uninvoiced-report-for-time-expenses/">Uninvoiced Report</a>. I actually built the same thing for myself using the Harvest API, so I could run it at will and see what client balances were.
+        
+        The Harvest provided one goes a couple steps further, showing expenses and giving a link to create an invoice.
+        
+        One thing, though:
+        
+        <img src="http://f.cl.ly/items/2c1j033w3j0z1W3d1T0r/harvest-uninvoiced.png" alt="harvest uninvoiced" height="322" width="584" />
+        
+        We have a lot of clients and there might be a while that we don't do something for someone. Showing all of these clients that don't have a balance makes it hard to focus on the ones that <strong>do</strong> have a balance. This is the 'Uninvoiced' report, after all, which I tend to use for "who do I need to invoice?"
+        
+        Digging in, we can use some javascript to find the rows that are non-invoice-able and hide them:
+        <script src="https://gist.github.com/1205514.js"> </script>
+        
+        Here's a bookmarklet for you:
+        <a href="javascript:$$('tbody%20.btn-disabled').each(function(element,%20index)%20{%20element.up('tbody').hide()%20});void(0);">Harvest Hide Uninvoiceable</a>
+        
+        Drag it to your bookmarks bar, go to the uninvoiced report, and click to hide.
+        
+        Questions and improvements welcome, best way to get ahold of me is to <a href="http://twitter.com/wesgarrison">follow me on Twitter</a>.
+      </div>
+    </div>
+  </div>
+  <footer class='footer'>
+    <div class='container'>
+      <p class='pull-left muted'>
+        Established 2005 &middot; Databasically &copy;
+        2013
+      </p>
+      <p class='pull-right'>
+        <a href='#'>Back to top</a>
+      </p>
+    </div>
+  </footer>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2626511-3']);
+    _gaq.push(['_setDomainName', 'databasically.com']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script>
+    // Function to slabtext the H1 headings
+    function slabTextHeadlines() {
+        $("h1").slabText({
+            // Don't slabtext the headers if the viewport is under 380px
+            "viewportBreakpoint":380,
+            "minCharsPerLine":9
+        });
+    };
+    
+    $(window).load(function() {
+        slabTextHeadlines();
+    });
+  </script>
+</body>

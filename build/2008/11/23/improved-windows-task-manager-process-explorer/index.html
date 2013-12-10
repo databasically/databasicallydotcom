@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <title>Improved Windows Task Manager: Process Explorer</title>
+    <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <meta content='Ruby enthusiasts, mostly based in Kansas City, KS, USA.' name='description'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300' rel='stylesheet' type='text/css'>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+</html>
+<body>
+  <div class='container-narrow'>
+    <div class='masthead'>
+      <ul class='nav nav-pills pull-right'>
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        <li>
+          <a href='/articles'>Articles</a>
+        </li>
+        <li>
+          <a href='/contact'>Contact</a>
+        </li>
+      </ul>
+      <h3 class='muted'>
+        <a href='/'>Databasically</a>
+      </h3>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12 article'>
+        <h1>Improved Windows Task Manager: Process Explorer</h1>
+        <h3 class='muted pull-right post_date'>
+          Nov 23 2008
+        </h3>
+        <p style="text-align: left;">Using the Task Manager can show you some interesting things about what's running on your system, but sometimes you have a service going amuck. Task Manager will only show you that "services.exe" is using a lot of CPU and you won't be able to easily tell what's actually running wild.</p>
+        <br><br>
+        Enter Process Explorer: (<a href="http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx" target="_blank">info on MS Technet</a> | <a href="http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx">download</a>)
+        <br><br>
+        So far, the graph window (see the second screenshot below) has been super helpful to me. I can set the scan interval to a couple seconds, let it run for a while, and come back. The graph not only stores the CPU usage, but also the process that was running! So, you can mouse-over the graph and get historical information about something chewing up CPU, memory, or I/O.
+        <br><br>
+        <div style="text-align:center;"><a href="http://www.databasically.com/wp-content/uploads/2008/11/proc_exp-1.jpg"><img class="size-medium wp-image-51 alignnone" title="Process Explorer" src="http://www.databasically.com/wp-content/uploads/2008/11/proc_exp-1-300x217.jpg" alt="" width="300" height="217" style="border: 5px #ddd solid;" /></a></div>
+        <br><br>
+        <div style="text-align:center;margin-top: 8px;margin-bottom: 20px;"><a href="http://www.databasically.com/wp-content/uploads/2008/11/proc_exp-2.jpg"><img class="size-medium wp-image-52 alignnone" title="Process Explorer" src="http://www.databasically.com/wp-content/uploads/2008/11/proc_exp-2-300x223.jpg" alt="" width="300" height="223"  style="border: 5px #ddd solid;"/></a></div>
+      </div>
+    </div>
+  </div>
+  <footer class='footer'>
+    <div class='container'>
+      <p class='pull-left muted'>
+        Established 2005 &middot; Databasically &copy;
+        2013
+      </p>
+      <p class='pull-right'>
+        <a href='#'>Back to top</a>
+      </p>
+    </div>
+  </footer>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2626511-3']);
+    _gaq.push(['_setDomainName', 'databasically.com']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script>
+    // Function to slabtext the H1 headings
+    function slabTextHeadlines() {
+        $("h1").slabText({
+            // Don't slabtext the headers if the viewport is under 380px
+            "viewportBreakpoint":380,
+            "minCharsPerLine":9
+        });
+    };
+    
+    $(window).load(function() {
+        slabTextHeadlines();
+    });
+  </script>
+</body>

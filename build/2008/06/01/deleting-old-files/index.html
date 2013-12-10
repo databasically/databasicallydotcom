@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <title>Deleting old files</title>
+    <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <meta content='Ruby enthusiasts, mostly based in Kansas City, KS, USA.' name='description'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300' rel='stylesheet' type='text/css'>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+</html>
+<body>
+  <div class='container-narrow'>
+    <div class='masthead'>
+      <ul class='nav nav-pills pull-right'>
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        <li>
+          <a href='/articles'>Articles</a>
+        </li>
+        <li>
+          <a href='/contact'>Contact</a>
+        </li>
+      </ul>
+      <h3 class='muted'>
+        <a href='/'>Databasically</a>
+      </h3>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12 article'>
+        <h1>Deleting old files</h1>
+        <h3 class='muted pull-right post_date'>
+          Jun  1 2008
+        </h3>
+        <p>Oftentimes, I like to backup SQL databases to a local folder, then include that folder in my backup to tape/disk/network.  That way, the backup software doesn't have to be database aware; it's just backing up files.</p>
+        <br><br>
+        <p>SQL Server allows you to schedule backups and there's an option to clear out the old backup files, but I've found it doesn't always work quite right.  I'd always struggled with a way to do this until I found the FORFILES command.</p>
+        <br><br>
+        <p>Now, I'm not sure what version of Windows this appeared it, but I know it's in Windows Server 2003.</p>
+        <p><pre class="highlight shell">forfiles /p e:<span class="se">\b</span>ackup /m <span class="k">*</span>.bak /d -2 /c <span class="s2">&quot;cmd /c del @file&quot;</span></pre></p>
+        <p>The /c option allows you to run any command, so I'm using the del command to delete all files older than a certain date.  Certainly, you could do whatever you want, like move them or copy or print their attributes.</p>
+        <p>The /d is where you specify a date or a number of days. A plus gives you files after that date and a minus gives you files before that date.  In my example, files more that two days old are selected to be deleted.</p>
+        <p>I never had a good way to do this before, so I was always resorting to a script written in another language or a customized batch file (and batch programming is not fun!)</p>
+      </div>
+    </div>
+  </div>
+  <footer class='footer'>
+    <div class='container'>
+      <p class='pull-left muted'>
+        Established 2005 &middot; Databasically &copy;
+        2013
+      </p>
+      <p class='pull-right'>
+        <a href='#'>Back to top</a>
+      </p>
+    </div>
+  </footer>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2626511-3']);
+    _gaq.push(['_setDomainName', 'databasically.com']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script>
+    // Function to slabtext the H1 headings
+    function slabTextHeadlines() {
+        $("h1").slabText({
+            // Don't slabtext the headers if the viewport is under 380px
+            "viewportBreakpoint":380,
+            "minCharsPerLine":9
+        });
+    };
+    
+    $(window).load(function() {
+        slabTextHeadlines();
+    });
+  </script>
+</body>

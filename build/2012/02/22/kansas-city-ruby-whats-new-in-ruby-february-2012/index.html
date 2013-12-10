@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <title>Kansas City Ruby:  What's New in Ruby - February 2012</title>
+    <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <meta content='Ruby enthusiasts, mostly based in Kansas City, KS, USA.' name='description'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300' rel='stylesheet' type='text/css'>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+</html>
+<body>
+  <div class='container-narrow'>
+    <div class='masthead'>
+      <ul class='nav nav-pills pull-right'>
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        <li>
+          <a href='/articles'>Articles</a>
+        </li>
+        <li>
+          <a href='/contact'>Contact</a>
+        </li>
+      </ul>
+      <h3 class='muted'>
+        <a href='/'>Databasically</a>
+      </h3>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12 article'>
+        <h1>Kansas City Ruby:  What's New in Ruby - February 2012</h1>
+        <h3 class='muted pull-right post_date'>
+          Feb 22 2012
+        </h3>
+        At the beginning of each Kansas City Ruby meeting, I do a quick presentation on some new neat things from the last month in Ruby news.
+        
+        <iframe src="https://docs.google.com/present/embed?id=dgw9ksj_1cbtfshfp&amp;autoStart=true&amp;loop=true" frameborder="0" width="410" height="342"></iframe>
+        
+        &nbsp;
+        <h2>What's New In Ruby</h2>
+        <h3>February 2012</h3>
+        <h4>Ruby on Rails 3.2 released</h4>
+        <a href="http://weblog.rubyonrails.org/">http://weblog.rubyonrails.org/</a>
+        <ul>
+        	<li>Faster development mode</li>
+        	<li>End of Ruby 1.8.7</li>
+        	<li>
+        <pre class="highlight shell">puts Person.active.limit<span class="o">(</span>5<span class="o">)</span>.explain</pre>
+        </li>
+        	<li>Automatically shows when &gt; half a second</li>
+        	<li>TaggedLogger</li>
+        </ul>
+        <h4></h4>
+        <h4>ActiveRecord Store</h4>
+        <pre class="highlight shell">class User &amp;lt; ActiveRecord::Base
+          store :settings, accessors: <span class="o">[</span> :color, :homepage <span class="o">]</span>
+        end</pre>
+        <pre class="highlight shell">u <span class="o">=</span> User.new<span class="o">(</span>color: <span class="s1">'black'</span>, homepage: <span class="s1">'37signals.com'</span><span class="o">)</span>
+        u.color <span class="c"># Accessor stored attribute</span></pre>
+        <pre class="highlight shell">  <span class="c"># Any attribute, even if not specified with an accessor</span>
+        u.settings[:country] <span class="o">=</span> <span class="s1">'Denmark'</span></pre>
+        <h3>RubyMine 4.0 released</h3>
+        <a href="http://blog.jetbrains.com/ruby/2012/02/rubymine-4-is-here-to-make-you-feel-the-productivity/">http://blog.jetbrains.com/ruby/2012/02/rubymine-4-is-here-to-make-you-feel-the-productivity/</a>
+        
+        RubyMine is a popular Ruby and Rails IDE by JetBrains (the folks behind IntelliJ IDEA).
+        
+        A focus has been put on improving its performance and UI, but it now also supports all of Rails 3.2 features, including CoffeeScript compilation right from the IDE.
+        <h3>Spree 1.0 Released</h3>
+        <a href="http://spreecommerce.com/">http://spreecommerce.com/</a>
+        
+        Spree is almost certainly the most popular, fully featured Rails-based e-commerce system and its creators are proud to announce the release of version 1.0.0.
+        <h3>Strano</h3>
+        <a href="https://github.com/joelmoss/strano">https://github.com/joelmoss/strano</a>
+        The Github backed Capistrano deployment management UI.
+        <h3>Guard::RSpectacle</h3>
+        <a href="https://github.com/netzpirat/guard-rspectacle">https://github.com/netzpirat/guard-rspectacle</a>
+        Guard::RSpectacle automatically tests your application with RSpec when files are modified.
+        <h3>Lightning Talks</h3>
+        <ul>
+        	<li>Samuel Mullen: using search provider shortcuts in Google Chrome, <a href="http://samuelmullen.com/2012/02/power-up-search-in-google-chrome/">blog post</a></li>
+        	<li>Jaime Bellmyer: searching with <a href="http://leap2.com/">leap2</a></li>
+        	<li>Advanced REST Client: help view API responses with Chrome app <a href="https://chrome.google.com/webstore/detail/hgmloofddffdnphfgcellkdfbfbjeloo">link</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class='footer'>
+    <div class='container'>
+      <p class='pull-left muted'>
+        Established 2005 &middot; Databasically &copy;
+        2013
+      </p>
+      <p class='pull-right'>
+        <a href='#'>Back to top</a>
+      </p>
+    </div>
+  </footer>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2626511-3']);
+    _gaq.push(['_setDomainName', 'databasically.com']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script>
+    // Function to slabtext the H1 headings
+    function slabTextHeadlines() {
+        $("h1").slabText({
+            // Don't slabtext the headers if the viewport is under 380px
+            "viewportBreakpoint":380,
+            "minCharsPerLine":9
+        });
+    };
+    
+    $(window).load(function() {
+        slabTextHeadlines();
+    });
+  </script>
+</body>

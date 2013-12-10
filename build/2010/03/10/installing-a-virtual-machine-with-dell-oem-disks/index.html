@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <title>Installing A Virtual Machine With Dell OEM Disks</title>
+    <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <meta content='Ruby enthusiasts, mostly based in Kansas City, KS, USA.' name='description'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300' rel='stylesheet' type='text/css'>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+</html>
+<body>
+  <div class='container-narrow'>
+    <div class='masthead'>
+      <ul class='nav nav-pills pull-right'>
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        <li>
+          <a href='/articles'>Articles</a>
+        </li>
+        <li>
+          <a href='/contact'>Contact</a>
+        </li>
+      </ul>
+      <h3 class='muted'>
+        <a href='/'>Databasically</a>
+      </h3>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12 article'>
+        <h1>Installing A Virtual Machine With Dell OEM Disks</h1>
+        <h3 class='muted pull-right post_date'>
+          Mar 10 2010
+        </h3>
+        If you're willing to put in the effort (and assuming you're legal), it could work, but I'd suggest using a retail license which avoids the caveats you'll soon be reading about below:
+        
+        <strong>First, some helpful information:</strong>
+        
+        OEM Dell installation CDs depend on the SLP code in the Dell BIOS for activation.  If the installation program can't see the real bios, it can't activate.  With a commercially purchased installation CD this is not a problem as you have a COA that can be activated on line or by phone.  OEM installation CDs cannot be activated on line, and since Dell is responsible for support of an OEM disk that was issued by Dell, Microsoft will not normally give you an activation key if you call them.  You can try the phone method, of course, since so far as I can tell you are running only Windows XP Pro rather than both Vista and Windows XP.  Once you explain what you are doing they might grant you an activation code.
+        
+        If you are installing an OEM version onto a virtual machine, it will not activate as it cannot see the BIOS String of the real Dell machine. It is only seeing the Virtual BIOS which doesn't have the SLP String to activate.
+        
+        <strong>How to resolve this:</strong>
+        <ol>
+        	<li>Boot up XP Pro VM installation, and select the Telephone activation option for the XP activation.</li>
+        	<li>Call MS. Try to go on to speak to a representative to explain further.</li>
+        	<li>Here it's important to explain exactly what you're doing to the rep -- Explain that you simply want to activate this one XP license, on the Dell with which it was purchased, but you are doing so in a virtual machine. They can quickly confirm why it's not working, due to not seeing the real BIOS.</li>
+        	<li>You should end up transferred to the Product Key Team.</li>
+        	<li>Once connected with the Product Key Team, they should provide you with a new product key (after confirming you are installing XP on the Dell that it came with and installing just one instance) there are a couple more steps -- after entering the new product key, give the new activation code to the rep, get the confirmation to enter in the activation screen; and with luck, success!</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <footer class='footer'>
+    <div class='container'>
+      <p class='pull-left muted'>
+        Established 2005 &middot; Databasically &copy;
+        2013
+      </p>
+      <p class='pull-right'>
+        <a href='#'>Back to top</a>
+      </p>
+    </div>
+  </footer>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2626511-3']);
+    _gaq.push(['_setDomainName', 'databasically.com']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script>
+    // Function to slabtext the H1 headings
+    function slabTextHeadlines() {
+        $("h1").slabText({
+            // Don't slabtext the headers if the viewport is under 380px
+            "viewportBreakpoint":380,
+            "minCharsPerLine":9
+        });
+    };
+    
+    $(window).load(function() {
+        slabTextHeadlines();
+    });
+  </script>
+</body>

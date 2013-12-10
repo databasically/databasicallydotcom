@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <title>What's new in Ruby: September 2012 edition</title>
+    <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <meta content='Ruby enthusiasts, mostly based in Kansas City, KS, USA.' name='description'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300' rel='stylesheet' type='text/css'>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+</html>
+<body>
+  <div class='container-narrow'>
+    <div class='masthead'>
+      <ul class='nav nav-pills pull-right'>
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        <li>
+          <a href='/articles'>Articles</a>
+        </li>
+        <li>
+          <a href='/contact'>Contact</a>
+        </li>
+      </ul>
+      <h3 class='muted'>
+        <a href='/'>Databasically</a>
+      </h3>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12 article'>
+        <h1>What's new in Ruby: September 2012 edition</h1>
+        <h3 class='muted pull-right post_date'>
+          Sep 11 2012
+        </h3>
+        Every month, <a href="http://meetup.com/kcruby">Kansas City Ruby</a> (#kcruby) reviews a subset of Peter Cooper's fantastic <a href="http://rubyweekly.com/?utm_source=databasically">Ruby Weekly</a> selections, along with other items picked up around the web.
+        
+        <h4><a href="http://weblog.rubyonrails.org/2012/8/9/ann-rails-3-2-8-has-been-released/" target="_blank">Rails 3.2.8 Released: important security fixes</a></h4>
+        <p>
+        
+        
+        <blockquote>This version contains three important security fixes, please upgrade immediately.
+        
+        <ul><li>CVE-2012-3463 Ruby on Rails Potential XSS Vulnerability in select_tag prompt</li>
+        <li>CVE-2012-3464 Potential XSS Vulnerability in Ruby on Rails</li>
+        <li>CVE-2012-3465 XSS Vulnerability in strip_tags</li></ul>
+        
+        <p style="padding-top:8px">One of security fixes impacts all users and is related to HTML escaping code. The other two fixes impacts people using select_tag's prompt option and strip_tags helper from ActionPack.</p>
+        
+        We are also removing all the deprecation warnings that we introduced in 3.2.x. We have decided to stop introducing API deprecations in all point releases going forward. From now on, it'll only happen in majors/minors.</blockquote>
+        </p>
+        
+        <h4><a href="http://spin.atomicobject.com/2012/08/20/using-thor-to-build-a-command-line-interface/" target="_blank">User Thor to Build a Command Line Interface</a></h4>
+        <p>
+        For instance, this <a href="https://gist.github.com/3295184" target="_blank">gist</a> builds a basic command line ruby program with commands and options.
+        </p>
+        
+        <h4><a href="http://gembundler.com/v1.2/whats_new.html" target="_blank">Bundler 1.2 Released</a></h4>
+        <h5>Specify the Ruby version and/or engine you want</h5>
+        <p>
+        <pre class="highlight ruby"><span class="n">ruby</span> <span class="s2">&quot;1.9.3&quot;</span><span class="p">,</span> <span class="ss">:engine</span> <span class="o">=&gt;</span> <span class="s2">&quot;jruby&quot;</span><span class="p">,</span> <span class="ss">:engine_version</span> <span class="o">=&gt;</span> <span class="s2">&quot;1.6.7&quot;</span></pre>
+        </p>
+        
+        <h5>Package :git and :path Dependencies</h5>
+        <p>
+        <pre class="highlight ruby"><span class="n">bundle</span> <span class="n">package</span> <span class="o">--</span><span class="n">all</span></pre>
+        The bundle package command can also package :git and :path dependencies besides .gem files. This needs to be explicitly enabled via the --all option. Once used, the --all option will be remembered.
+        </p>
+        
+        <h5>Local Git Repos</h5>
+        <p><blockquote>Now when developing against a remote git repository, you can use a local git repo and keep the remote version for deployment. You can do this by setting a local git override:
+        <pre class="highlight ruby"><span class="n">bundle</span> <span class="n">config</span> <span class="n">local</span><span class="o">.</span><span class="no">GEM_NAME</span> <span class="sr">/path/</span><span class="n">to</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">git</span><span class="o">/</span><span class="n">repository</span></pre></blockquote>
+        
+        Then, you can use your local development copy with a standard command:
+        <pre class="highlight ruby"><span class="n">gem</span> <span class="s1">'rack'</span><span class="p">,</span> <span class="ss">:github</span> <span class="o">=&gt;</span> <span class="s1">'rack/rack'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'master'</span></pre>
+        </p>
+        
+        
+        <p>
+        For a full list, check out the <a href="https://github.com/carlhuda/bundler/blob/1-2-stable/CHANGELOG.md" target="_blank">Bundler 1.2 release CHANGELOG</a></p>
+        
+        <h4><a href="" target="_blank"></a></h4>
+        <p></p>
+        
+        <h4><a href="" target="_blank"></a></h4>
+        <p></p>
+        
+        <h4><a href="" target="_blank"></a></h4>
+        <p></p>
+        
+        <h4><a href="" target="_blank"></a></h4>
+        <p></p>
+        
+        <h4><a href="" target="_blank"></a></h4>
+        <p></p>
+        
+        <h4><a href="" target="_blank"></a></h4>
+        <p></p>
+        
+        <h4><a href="" target="_blank"></a></h4>
+        <p></p>
+        
+        <h4><a href="" target="_blank"></a></h4>
+        <p></p>
+        
+        <h4><a href="" target="_blank"></a></h4>
+        <p></p>
+        
+        <h4><a href="" target="_blank"></a></h4>
+        <p></p>
+      </div>
+    </div>
+  </div>
+  <footer class='footer'>
+    <div class='container'>
+      <p class='pull-left muted'>
+        Established 2005 &middot; Databasically &copy;
+        2013
+      </p>
+      <p class='pull-right'>
+        <a href='#'>Back to top</a>
+      </p>
+    </div>
+  </footer>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2626511-3']);
+    _gaq.push(['_setDomainName', 'databasically.com']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script>
+    // Function to slabtext the H1 headings
+    function slabTextHeadlines() {
+        $("h1").slabText({
+            // Don't slabtext the headers if the viewport is under 380px
+            "viewportBreakpoint":380,
+            "minCharsPerLine":9
+        });
+    };
+    
+    $(window).load(function() {
+        slabTextHeadlines();
+    });
+  </script>
+</body>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <title>Gettings Started with Custom Rails3 Validators</title>
+    <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <meta content='Ruby enthusiasts, mostly based in Kansas City, KS, USA.' name='description'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300' rel='stylesheet' type='text/css'>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+</html>
+<body>
+  <div class='container-narrow'>
+    <div class='masthead'>
+      <ul class='nav nav-pills pull-right'>
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        <li>
+          <a href='/articles'>Articles</a>
+        </li>
+        <li>
+          <a href='/contact'>Contact</a>
+        </li>
+      </ul>
+      <h3 class='muted'>
+        <a href='/'>Databasically</a>
+      </h3>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12 article'>
+        <h1>Gettings Started with Custom Rails3 Validators</h1>
+        <h3 class='muted pull-right post_date'>
+          Nov  8 2010
+        </h3>
+        Nobody likes bad data. There is little worse than having malformed or incorrect values in your data stream. Thankfully, Ruby on Rails has a tool for mitigating the insertion of bad data: validations. Validations are ruby methods which are run prior to data being saved to your database. Prior to Rails3, they took the form of validates_presence_of, validates_uniqueness_of, validates_awesomeness_of, and so on.
+        
+        Now, in Rails3, validations not only support these legacy methods, but validations also implement <a href="http://thelucid.com/about/">Jamie Hill</a>'s new "<a href="http://thelucid.com/2010/01/08/sexy-validation-in-edge-rails-rails-3/">Sexy Validations</a>". With this new implementation, the focus is transfered from the validation itself to the attribute to be validated:
+        
+        Prior to Rails3:
+        <pre class="highlight ruby"><span class="k">class </span><span class="nc">User</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+          <span class="n">validates_presence_of</span> <span class="ss">:username</span>
+          <span class="n">validates_uniqueness_of</span> <span class="ss">:username</span>
+          <span class="n">validates_length_of</span> <span class="ss">:username</span><span class="p">,</span> <span class="ss">:minimum</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">6</span><span class="p">,</span> <span class="ss">:maximum</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">32</span>
+        <span class="k">end</span>
+        </pre>
+        Rails3:
+        <pre class="highlight ruby"><span class="k">class </span><span class="nc">User</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+          <span class="n">validates</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:presence</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:uniqueness</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">:length</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">6</span><span class="nf">..</span><span class="mi">32</span>
+        <span class="k">end</span>
+        </pre>
+        As you can see, in the first example, the focus is on the validation itself, in the second example the focus is on the field to be validated.
+        
+        But what if we need a validator which doesn't currently exist in Rails or is unique to our project? Answer: Custom Validators.
+        
+        The first thing you will need to do is create a directory under your project's "lib" directory. It's not necessary to do this, but it helps with organization. From your projects root directory, execute the following command:
+        <pre class="highlight ruby"><span class="n">mkdir</span> <span class="n">lib</span><span class="o">/</span><span class="n">validators</span>
+        </pre>
+        In your "config/application.rb" file, you will need to add the following line to let the Rails engine know where all of your custom validations are:
+        <pre class="highlight ruby"><span class="n">config</span><span class="nf">.autoload_paths</span> <span class="o">+=</span> <span class="no">Dir</span><span class="o">[</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">config</span><span class="nf">.root</span><span class="si">}</span><span class="s2">/lib/**/&quot;</span><span class="o">]</span>
+        </pre>
+        For the purpose of example, we're going to implement a validator to check the validity of an email address using a regular expression created by James Watts and Francisco Jose Martin Moreno (<a href="http://fightingforalostcause.net/misc/2006/compare-email-regex.php">http://fightingforalostcause.net/misc/2006/compare-email-regex.php</a>).
+        
+        Create the file "email_pattern_validator.rb" under your lib/validators directory and add the following code to it:
+        <pre class="highlight ruby"><span class="k">class </span><span class="nc">EmailPatternValidator</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">EachValidator</span>
+          <span class="k">def </span><span class="nf">validate_each</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">value</span><span class="nf">.nil?</span> <span class="o">||</span> <span class="o">!</span><span class="n">value</span><span class="nf">.match</span><span class="p">(</span><span class="sr">/^([\w\!\#$\%\&amp;amp;\'\*\+\-\/\=\?\^\`{\|\}\~]+\.)*[\w\!\#$\%\&amp;amp;\'\*\+\-\/\=\?\^\`{\|\}\~]+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,6})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)$/i</span><span class="p">)</span>
+              <span class="n">record</span><span class="nf">.errors</span><span class="o">[</span><span class="n">attribute</span><span class="o">]</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="s2">&quot;Not a valid email address&quot;</span>
+            <span class="k">end</span>
+          <span class="k">end</span>
+        <span class="k">end</span>
+        </pre>
+        Don't get caught up in the regular expression: You will go blind by the sheer awesomeness of it. Instead, look at the classname, the method, and the "record.errors" line.
+        
+        First, the class name must be the camelcase version of the file name and both names must end in validator. These conventions let the Rails engine know that this is a validator.
+        
+        Second, the method "validate_each" receives three values: the record to be saved, the attribute to be validated, and the value of the field to be validated. In our example, and likely in your own projects, this is what we validate against.
+        
+        Lastly, The "record.errors" records errors for the attribute (database column) upon which errors are found.
+        
+        Now, in our models we can use the follow bit of code to check the validity of email address:
+        <pre class="highlight ruby"><span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:email_pattern</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="kp">true</span>
+        </pre>
+        Please note that the validator "email_pattern" matches the file name and class name we created sans the "_validator". That's part of that whole "Convention over Configuration" thing I keep hearing about. If it's a valid email address, we're golden; if not, we'll have the "Not a valid email address" error applied to our model instance.
+        
+        This is just scratching the surface of what's possible with Rails3 validators. For more information, I would encourage you to check out the resources below. The last one is a reference to the email regular expression.
+        
+        References:
+        * <a href="http://thelucid.com/2010/01/08/sexy-validation-in-edge-rails-rails-3/">http://thelucid.com/2010/01/08/sexy-validation-in-edge-rails-rails-3/</a>
+        * <a href="http://omgbloglol.com/post/392895742/improved-validations-in-rails-3">http://omgbloglol.com/post/392895742/improved-validations-in-rails-3</a>
+        *<a href="http://lindsaar.net/2010/1/31/validates_rails_3_awesome_is_true"> http://lindsaar.net/2010/1/31/validates_rails_3_awesome_is_true</a>
+        * <a href="http://fightingforalostcause.net/misc/2006/compare-email-regex.php">http://fightingforalostcause.net/misc/2006/compare-email-regex.php</a>
+      </div>
+    </div>
+  </div>
+  <footer class='footer'>
+    <div class='container'>
+      <p class='pull-left muted'>
+        Established 2005 &middot; Databasically &copy;
+        2013
+      </p>
+      <p class='pull-right'>
+        <a href='#'>Back to top</a>
+      </p>
+    </div>
+  </footer>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2626511-3']);
+    _gaq.push(['_setDomainName', 'databasically.com']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script>
+    // Function to slabtext the H1 headings
+    function slabTextHeadlines() {
+        $("h1").slabText({
+            // Don't slabtext the headers if the viewport is under 380px
+            "viewportBreakpoint":380,
+            "minCharsPerLine":9
+        });
+    };
+    
+    $(window).load(function() {
+        slabTextHeadlines();
+    });
+  </script>
+</body>

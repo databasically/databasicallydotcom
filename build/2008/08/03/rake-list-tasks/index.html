@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <title>Rake list tasks</title>
+    <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <meta content='Ruby enthusiasts, mostly based in Kansas City, KS, USA.' name='description'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300' rel='stylesheet' type='text/css'>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+</html>
+<body>
+  <div class='container-narrow'>
+    <div class='masthead'>
+      <ul class='nav nav-pills pull-right'>
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        <li>
+          <a href='/articles'>Articles</a>
+        </li>
+        <li>
+          <a href='/contact'>Contact</a>
+        </li>
+      </ul>
+      <h3 class='muted'>
+        <a href='/'>Databasically</a>
+      </h3>
+    </div>
+    <div class='row-fluid'>
+      <div class='span12 article'>
+        <h1>Rake list tasks</h1>
+        <h3 class='muted pull-right post_date'>
+          Aug  3 2008
+        </h3>
+        I can never remember the exact name of a rake task, so I use this all the time:
+        <pre class="highlight ruby"><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">rake</span> <span class="o">-</span><span class="n">T</span></pre>You can also filter the list of tasks that's shown. For instance, if you only want to see the database tasks:
+        <pre class="highlight ruby"><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">rake</span> <span class="o">-</span><span class="n">T</span> <span class="n">db</span></pre>The -T option is handy when you just need to remember the exact wording.  It's not so handy when you're trying to figure out what the rake task list description is.  For that, use -D:
+        <pre class="highlight ruby"><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">rake</span> <span class="o">-</span><span class="n">D</span>
+        <span class="nf">....</span>
+        <span class="n">rake</span> <span class="nb">test</span><span class="ss">:units</span>
+            <span class="no">Run</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">units</span> <span class="o">/</span> <span class="no">Run</span> <span class="n">the</span> <span class="n">unit</span> <span class="n">tests</span> <span class="k">in</span> <span class="nb">test</span><span class="o">/</span><span class="n">unit</span>
+        <span class="nf">....</span>
+        </pre>The output is longer, but you can see the full description. You can also filter by the task name to limit the output so you don't have to scroll through the full list of tasks.
+        <br><br>
+        On Rails 2.1.0, here's the full <code>rake -T</code> output:
+        <pre class="highlight ruby"><span class="n">rake</span> <span class="n">db</span><span class="ss">:abort_if_pending_migrations</span>  <span class="c1"># Raises an error if there are pending...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:charset</span>                      <span class="c1"># Retrieves the charset for the curren...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:collation</span>                    <span class="c1"># Retrieves the collation for the curr...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:create</span>                       <span class="c1"># Create the database defined in confi...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:create:all</span>                   <span class="c1"># Create all the local databases defin...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:drop</span>                         <span class="c1"># Drops the database for the current R...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:drop:all</span>                     <span class="c1"># Drops all the local databases define...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:fixtures:identify</span>            <span class="c1"># Search for a fixture given a LABEL o...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:fixtures:load</span>                <span class="c1"># Load fixtures into the current envir...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate</span>                      <span class="c1"># Migrate the database through scripts...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate:redo</span>                 <span class="c1"># Rollbacks the database one migration...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:migrate:reset</span>                <span class="c1"># Resets your database using your migr...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:reset</span>                        <span class="c1"># Drops and recreates the database fro...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:rollback</span>                     <span class="c1"># Rolls the schema back to the previou...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:schema:dump</span>                  <span class="c1"># Create a db/schema.rb file that can ...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:schema:load</span>                  <span class="c1"># Load a schema.rb file into the database</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:sessions:clear</span>               <span class="c1"># Clear the sessions table</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:sessions:create</span>              <span class="c1"># Creates a sessions migration for use...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:shell</span>                        <span class="c1"># Launches the database shell using th...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:structure:dump</span>               <span class="c1"># Dump the database structure to a SQL...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:test:clone</span>                   <span class="c1"># Recreate the test database from the ...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:test:clone_structure</span>         <span class="c1"># Recreate the test databases from the...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:test:prepare</span>                 <span class="c1"># Prepare the test database and load t...</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:test:purge</span>                   <span class="c1"># Empty the test database</span>
+        <span class="n">rake</span> <span class="n">db</span><span class="ss">:version</span>                      <span class="c1"># Retrieves the current schema version...</span>
+        <span class="n">rake</span> <span class="n">doc</span><span class="ss">:app</span>                         <span class="c1"># Build the app HTML Files</span>
+        <span class="n">rake</span> <span class="n">doc</span><span class="ss">:clobber_app</span>                 <span class="c1"># Remove rdoc products</span>
+        <span class="n">rake</span> <span class="n">doc</span><span class="ss">:clobber_plugins</span>             <span class="c1"># Remove plugin documentation</span>
+        <span class="n">rake</span> <span class="n">doc</span><span class="ss">:clobber_rails</span>               <span class="c1"># Remove rdoc products</span>
+        <span class="n">rake</span> <span class="n">doc</span><span class="ss">:plugins</span>                     <span class="c1"># Generate documentation for all insta...</span>
+        <span class="n">rake</span> <span class="n">doc</span><span class="ss">:rails</span>                       <span class="c1"># Build the rails HTML Files</span>
+        <span class="n">rake</span> <span class="n">doc</span><span class="ss">:reapp</span>                       <span class="c1"># Force a rebuild of the RDOC files</span>
+        <span class="n">rake</span> <span class="n">doc</span><span class="ss">:rerails</span>                     <span class="c1"># Force a rebuild of the RDOC files</span>
+        <span class="n">rake</span> <span class="n">log</span><span class="ss">:clear</span>                       <span class="c1"># Truncates all *.log files in log/ to...</span>
+        <span class="n">rake</span> <span class="n">notes</span>                           <span class="c1"># Enumerate all annotations</span>
+        <span class="n">rake</span> <span class="n">notes</span><span class="ss">:fixme</span>                     <span class="c1"># Enumerate all FIXME annotations</span>
+        <span class="n">rake</span> <span class="n">notes</span><span class="ss">:optimize</span>                  <span class="c1"># Enumerate all OPTIMIZE annotations</span>
+        <span class="n">rake</span> <span class="n">notes</span><span class="ss">:todo</span>                      <span class="c1"># Enumerate all TODO annotations</span>
+        <span class="n">rake</span> <span class="n">rails</span><span class="ss">:freeze:edge</span>               <span class="c1"># Lock to latest Edge Rails or a speci...</span>
+        <span class="n">rake</span> <span class="n">rails</span><span class="ss">:freeze:gems</span>               <span class="c1"># Lock this application to the current...</span>
+        <span class="n">rake</span> <span class="n">rails</span><span class="ss">:unfreeze</span>                  <span class="c1"># Unlock this application from freeze ...</span>
+        <span class="n">rake</span> <span class="n">rails</span><span class="ss">:update</span>                    <span class="c1"># Update both configs, scripts and pub...</span>
+        <span class="n">rake</span> <span class="n">rails</span><span class="ss">:update:configs</span>            <span class="c1"># Update config/boot.rb from your curr...</span>
+        <span class="n">rake</span> <span class="n">rails</span><span class="ss">:update:javascripts</span>        <span class="c1"># Update your javascripts from your cu...</span>
+        <span class="n">rake</span> <span class="n">rails</span><span class="ss">:update:scripts</span>            <span class="c1"># Add new scripts to the application s...</span>
+        <span class="n">rake</span> <span class="n">routes</span>                          <span class="c1"># Print out all defined routes in matc...</span>
+        <span class="n">rake</span> <span class="n">secret</span>                          <span class="c1"># Generate a crytographically secure s...</span>
+        <span class="n">rake</span> <span class="n">stats</span>                           <span class="c1"># Report code statistics (KLOCs, etc) ...</span>
+        <span class="n">rake</span> <span class="nb">test</span>                            <span class="c1"># Test all units and functionals</span>
+        <span class="n">rake</span> <span class="nb">test</span><span class="ss">:functionals</span>                <span class="c1"># Run tests for functionalsdb:test:pre...</span>
+        <span class="n">rake</span> <span class="nb">test</span><span class="ss">:integration</span>                <span class="c1"># Run tests for integrationdb:test:pre...</span>
+        <span class="n">rake</span> <span class="nb">test</span><span class="ss">:plugins</span>                    <span class="c1"># Run tests for pluginsenvironment / R...</span>
+        <span class="n">rake</span> <span class="nb">test</span><span class="ss">:recent</span>                     <span class="c1"># Run tests for recentdb:test:prepare ...</span>
+        <span class="n">rake</span> <span class="nb">test</span><span class="ss">:uncommitted</span>                <span class="c1"># Run tests for uncommitteddb:test:pre...</span>
+        <span class="n">rake</span> <span class="nb">test</span><span class="ss">:units</span>                      <span class="c1"># Run tests for unitsdb:test:prepare /...</span>
+        <span class="n">rake</span> <span class="n">tmp</span><span class="ss">:cache:clear</span>                 <span class="c1"># Clears all files and directories in ...</span>
+        <span class="n">rake</span> <span class="n">tmp</span><span class="ss">:clear</span>                       <span class="c1"># Clear session, cache, and socket fil...</span>
+        <span class="n">rake</span> <span class="n">tmp</span><span class="ss">:create</span>                      <span class="c1"># Creates tmp directories for sessions...</span>
+        <span class="n">rake</span> <span class="n">tmp</span><span class="ss">:pids:clear</span>                  <span class="c1"># Clears all files in tmp/pids</span>
+        <span class="n">rake</span> <span class="n">tmp</span><span class="ss">:sessions:clear</span>              <span class="c1"># Clears all files in tmp/sessions</span>
+        <span class="n">rake</span> <span class="n">tmp</span><span class="ss">:sockets:clear</span>               <span class="c1"># Clears all files in tmp/sockets</span></pre>
+      </div>
+    </div>
+  </div>
+  <footer class='footer'>
+    <div class='container'>
+      <p class='pull-left muted'>
+        Established 2005 &middot; Databasically &copy;
+        2013
+      </p>
+      <p class='pull-right'>
+        <a href='#'>Back to top</a>
+      </p>
+    </div>
+  </footer>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2626511-3']);
+    _gaq.push(['_setDomainName', 'databasically.com']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script>
+    // Function to slabtext the H1 headings
+    function slabTextHeadlines() {
+        $("h1").slabText({
+            // Don't slabtext the headers if the viewport is under 380px
+            "viewportBreakpoint":380,
+            "minCharsPerLine":9
+        });
+    };
+    
+    $(window).load(function() {
+        slabTextHeadlines();
+    });
+  </script>
+</body>
