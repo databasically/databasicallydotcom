@@ -1,0 +1,28 @@
+---
+layout: article
+title: Recover a dropped stash in git
+post_date: 2013-09-16
+---
+<p>I was working on a git branch and did a 'git stash save' on some changes, then did a pull, then went to lunch.  When I got back, I fixed something on another branch, then went to 'git stash pop' them.
+</p>
+
+<p>Without thinking, I did a hard reset and wiped them out, but I'd already taken them out of the stash area. Ack!</p>
+
+<p>I thought about checking to see if it's possible to recover a dropped stash from the reflog, but turns out it was easier than that. I had already run <code>git stash show</code> earlier and had something like this:
+
+<%  code('shell') do %>
+$ git stash pop
+[...]
+Dropped refs/stash@{0} (6ddc4021719ddd8f5e35f5d63e8e04b9ab2c5650)
+<% end %>
+</p>
+<p>In this case, I had the SHA of that commit, so a <code>git branch tmp 6ddc4</code> made a new branch with that commit on the tip of it, and I could move along.</p>
+<p>Naturally, I couldn't stop thinking about this and wondered what I would do if I didn't have the commit around. Could I find it in the reflog?</p>
+<p>Turns out, you can use <code>git fsck</code> to find 'dangling commits':
+
+<% code('bash') do %>
+$ git fsck --no-reflog | grep 'dangling commit' | cut -d ' ' -f 3
+<% end %>
+
+This gave me a list of all commits that weren't referenced anymore. From there, I did <code>git show SHA</code> on them to find the one I was interested in.
+</p>
