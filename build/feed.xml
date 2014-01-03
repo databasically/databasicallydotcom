@@ -5,10 +5,31 @@
   <id>http://blog.url.com/</id>
   <link href="http://blog.url.com/"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2013-09-16T00:00:00Z</updated>
+  <updated>2014-01-01T00:00:00Z</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>On Writing</title>
+    <link rel="alternate" href="/2014/01/01/on-writing/"/>
+    <id>/2014/01/01/on-writing/</id>
+    <published>2014-01-01T00:00:00Z</published>
+    <updated>2014-01-01T00:00:00Z</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;It's a new year and with that come the flurry of resolutions. This year, we say, I'll go to bed earlier, or go to bed later, or only hit snooze once.  I'll eat better, exercise more, be happier. I'll blog more, I'll write a book. I'll start that project, go on that trip, climb that mountain, lay on that beach.&lt;/p&gt;
+
+&lt;p&gt;For a while, I've wanted to write more. Well, I thought I wanted to write more. Maybe it's that I liked the &lt;i&gt;idea&lt;/i&gt; that I would write more.  Why? To leave a mark. To force myself to actually think about what I believe about a subject and then to be able to explain it well enough to commit it to paper. Smart people say it has a great way to connect with others, and I love the act of storytelling so much that I want to practice it.  I'm not sure, but it's some of these plus something a little deeper that I want to think about.&lt;/p&gt;
+
+&lt;p&gt;While I actually started doing this a little more before the new year, I'm going to step it up. Luckily, I've done very little regular writing so the bar has been set very low.  I'm merely aiming for a post a week, be it technical, something short, or something longer as a response to something else.&lt;/p&gt;
+
+&lt;p&gt;It's like this: A friend of a friend just finished his doctorate, which required that he wrote a thesis. While discussing what he wrote, I asked him about the process of getting it done and his reply fascinated me.  He said he had a rule: he had to write at least one sentence a day.  It didn't matter if he was on vacation, on holiday, sick, drunk, hungover, had an exam, or anything. Every day; one sentence. Some days, it was just that, he put down his sentence.  But invariably, once he wrote one sentence, he would see a part of the outline that needed to be fleshed out, or think about a paragraph he was struggling to write and now he had a better idea of the explanation.  Soon enough, his thesis was ready for review and he scheduled an appointment. When he showed up, no one took him seriously. "No one gets that far so fast, it takes much longer to write a thesis." This surprised him, because he didn't think he'd been particularly fast. Some days, he only wrote one sentence, after all.  But it was the consistency that mattered.&lt;/p&gt;
+
+&lt;p&gt;Another feeling I want to experience is actually finishing and shipping something. Most of the projects I currently work on have no end in sight, they just keep going. So, I want a little bit of working on something, finishing it, and being done with it.&lt;/p&gt;
+
+&lt;p&gt;Naturally, I immediately wanted to start making a page on this site that can show exactly how consistent I am (or not!) However, I want to err on the side of &lt;i&gt;actually finishing&lt;/i&gt; this, so that will have to wait for another day.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Using the Unix 'cal' commmand</title>
     <link rel="alternate" href="/2013/09/16/using-the-unix-cal-command/"/>
@@ -192,7 +213,6 @@ April 20 2014
 &lt;/p&gt;
 &lt;p&gt;
   You can use &lt;code&gt;man cal&lt;/code&gt; to get more details and examples.
-
 &lt;/p&gt;</content>
   </entry>
   <entry>
@@ -667,48 +687,6 @@ RTanque League.
 &lt;pre&gt;bundle update rtanque&lt;/pre&gt;
 &lt;p&gt;Find the name of the match you want to watch, start it with:&lt;/p&gt;
 &lt;pre&gt;bundle exec rtanque replay replays/bot--vs--bot.yml&lt;/pre&gt;
-</content>
-  </entry>
-  <entry>
-    <title>What's New in Ruby: June 2013</title>
-    <link rel="alternate" href="/2013/06/11/whats-new-in-ruby-june-2013/"/>
-    <id>/2013/06/11/whats-new-in-ruby-june-2013/</id>
-    <published>2013-06-11T00:00:00Z</published>
-    <updated>2013-06-11T00:00:00Z</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">Every month, &lt;a href="http://meetup.com/kcruby"&gt;Kansas City Ruby&lt;/a&gt; (#kcruby) reviews a subset of Peter Cooper's fantastic &lt;a href="http://rubyweekly.com/?utm_source=databasically"&gt;Ruby Weekly&lt;/a&gt; selections, along with other items picked up around the web.
-
-http://www.ruby-lang.org/en/news/2013/05/14/ruby-2-0-0-p195-is-released/
-
-&lt;h4&gt;&lt;a href="http://www.ruby-lang.org/en/news/2013/05/14/ruby-2-0-0-p195-is-released/" target="_blank"&gt;Ruby 2.0.0p195 released&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;The first patchlevel release of 2.0.0. It includes a security fix of Ruby DL / Fiddle extension, along with some bug fixes and optimizations, mostly listed here.
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="http://blog.rubymotion.com/post/49943751398/rubymotion-goes-2-0-and-gets-osx-support-templates-and" target="_blank"&gt;RubyMotion Goes 2.0 And Gets OSX Support, Templates and Plugins&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;RubyMotion celebrates its first birthday with a version 2.0 release. The most significant update is you can now use the originally iOS-only toolkit for building regular OS X apps.
-&lt;/p&gt;
-
-&lt;h4&gt;&lt;a href="http://joshnuss.github.io/mruby-web-irb/" target="_blank"&gt;mruby: web irb&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;mruby is written in C and normally compiles to x86 or ARM byte code. Here its been compiled to JavaScript, using llvm and emscripten. The JavaScript produced is compatible with asm.js, which helps your browser's JavaScript VM run the code more efficiently.
-&lt;/p&gt;
-
-&lt;h4&gt;&lt;a href="https://github.com/blog/1517-introducing-octokit" target="_blank"&gt;Introducing Octokit: GitHub-maintained Client Libraries for the GitHub API&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-Octokit.rb: &lt;a href="https://github.com/octokit/octokit.rb"&gt;https://github.com/octokit/octokit.rb&lt;/a&gt;&lt;br&gt;
-Octokit.objc: &lt;a href="https://github.com/octokit/octokit.objc"&gt;https://github.com/octokit/octokit.objc&lt;/a&gt;
-&lt;/p&gt;
-
-&lt;h4&gt;&lt;a href="http://confreaks.com/events/railsconf2013" target="_blank"&gt;RailsConf 2013 Videos&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;All 70 videos from RailsConf 2013 are now available to watch if you didn't make it to the conference.
-&lt;/p&gt;
-
-&lt;h4&gt;&lt;a href="https://github.com/databasically/kcruby-rtanque/blob/master/README.md" target="_blank"&gt;KC Ruby RTanque League&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-We need your help getting the word out to Kansas City based programmers!  Please help us out with publicizing!
-&lt;/p&gt;
 </content>
   </entry>
 </feed>
