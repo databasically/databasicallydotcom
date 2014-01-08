@@ -2,8 +2,39 @@
 layout: article
 title: how to recover a dropped stash in git
 ---
-<p>Sometimes, you use <code>git stash</code> to save some changes.  Then, you <code>git apply</code> them, which puts them back in your working copy and then gets rid of them.</p>
+<p>Sometimes, you use <code>git stash</code> to save some changes.  Then, you <code>git stash pop</code> them, which puts them back in your working copy and then gets rid of them.</p>
 
-<p>Say you need those changes.  They were in there at some point, how do you get them back?</p>
+<p>Say you want to look at a stash, or maybe re-apply that stash later.  They were saved at some point, how do you get them back?</p>
 
-<code>This is code.</code>
+<p>A stash is just a commit, just saved in a different place, and we don't just have a reference to it anymore. If we know the commit name, then we can bring it back in a number of ways.</p>
+
+<p>Here are some ways that I've found to get these back:</p>
+
+<h4>Look at the output of where you popped it</h4>
+<% code('bash') do %>
+$ git stash pop
+# On branch master
+....
+Dropped refs/stash@{0} (3d611c6eabbb91456cd2fbfd5f89bc24d4ae03ab)
+<% end %>
+
+<p>Once you know the ref, use <code>git branch temp 3d611</code> to make it into a branch, then you can review, merge, or cherry-pick it.
+</p>
+<h4>Get a list of 'dangling commits' and show them in a viewer</h4>
+
+<p>Try this: <code>git fsck --unreachable</code></p>
+
+<p>You'll see messages like 'dangling tree' and 'dangling commit' and 'dangling blog' in the output. Those are objects that are "present in the database but never directly used" (from the manpage.)  Essentially, objects that are used nowhere in the history.</p>
+
+<p>Then, you can use the graphical git viewer to see all the stash names and pick the one you want:  <code>gitk --all $( git fsck --no-reflog | awk '/dangling commit/ {print $3}' )</code></p>
+
+<p>Finally, save that commit SHA as a branch with <code>git branch temp SHA</code> and then manipulate it from there.</p>
+
+<h4>List them in the shell</h4>
+
+<p>This is essentially the same idea, but runs through each ref and shows the summary in the shell.</p>
+
+<p><code>for ref in `git fsck --unreachable | grep commit | cut -d' ' -f3`; do git show --summary $ref; done | less</code></p>
+
+<h4>Avoid this in the first place!</h4>
+<p>Finally, if you use <code>git stash apply</code> then it doesn't remove the stash, so you can do something else with it later without going through all these steps. <code>git stash drop</code> and <code>git stash clear</code> will get rid of one / all of the stashes if you need, as well.</p>
