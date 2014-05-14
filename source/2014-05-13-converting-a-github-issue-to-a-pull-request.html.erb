@@ -4,24 +4,29 @@ title: Converting a GitHub Issue to a Pull Request
 post_date: 2014-05-13
 ---
 
-<p>Before, I would make a new branch for my work and use <code>refs #issuenum</code> in my commit messages to link the commits to an issue. But, sometimes I would forget to link a commit and then it would be lost in limbo.  Teammates could use the branch comparison view to review changes, but it wasn't ideal.</p>
+<h3>The Problem</h3>
+<p>When I started using GitHub Issues on my projects, I wanted group commits for a project together.  Originally, I would make a new branch for my work and use <code>refs #issuenum</code> in my commit messages to link the commits to an issue. But, sometimes I would forget to link a commit and then it would be lost in limbo.  Teammates could use the branch comparison view to review changes, but it wasn't an ideal place to have a conversation about a feature or fix.</p>
 
-<p>Instead, GitHub already has a construct for this: the pull request.  So, for a while when we started to work on something, we actually <b>closed</b> the issue and started a brand new pull request.</p>
+<p>Instead, GitHub already has a construct for this: the pull request.  So, for a while when I started to work on something, I actually <b>closed</b> the original issue and started a brand new pull request.</p>
 
 <p>There <i>had</i> to be a better way.</p>
 
-<p>I found that the API allows converting an issue to a pull request. There's no corresponding UI control on the GitHub website, so we need a way to activate this functionality.</p>
+<h3>The Solution</h3>
+<p>I found that the API allows converting an issue to a pull request. There's no corresponding UI control on the GitHub website, so I needed a way to activate this functionality.</p>
 
 <p>
   Now, my typical workflow for features is this:
   <ul>
     <li>Client asks for something.</li>
     <li>I file an issue on GitHub so I don't forget it.</li>
-    <li>When that issue comes up to be done, I start a new branch and start working.</li>
+    <li><i>time passes</i></li>
+    <li>The issue is next to be done, so I start a new branch and start working.</li>
     <li>After a couple of commits, I push my branch and I'm ready for a pull request.</li>
-    <li>I run this little program, answer some questions, and it promotes my issue to a pull request.</li>
+    <li>I run this little program, which asks me some questions, and it promotes my issue to a pull request and links it to my branch.</li>
   </ul>
 </p>
+
+<h3>Code</h3>
 
 <% code('shell') do %>
 #!/usr/bin/env ruby
@@ -55,3 +60,21 @@ command = %Q(
   )
 
 puts `#{command}`<% end %>
+
+<h3>Questions</h3>
+After I gave this talk at KC Ruby, there were a few questions:
+<dl>
+  <dt>What about the <code>hub</code> gem?</dt>
+  <dd>It's great! I couldn't get it working easily and this was my major pain point, but I hear that it does really neat things.</dd>
+</dl>
+
+<dl>
+  <dt>Are pull requests that much better?</dt>
+  <dd>In a nutshell, I like them more because:
+    <ul>
+      <li>they group commits automatically, since they're based off a branch.</li>
+      <li>commenting on specific lines is much easier, since as additional changes are pushes the comments will reflect that.</li>
+      <li>having all the history grouped together is really helpful in the future when you need to look back wondering why something was done the way it was done!</li>
+    </ul>
+  </dd>
+</dl>
