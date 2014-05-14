@@ -5,10 +5,71 @@
   <id>http://blog.url.com/</id>
   <link href="http://blog.url.com/"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2014-01-03T00:00:00Z</updated>
+  <updated>2014-05-13T00:00:00Z</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Converting a GitHub Issue to a Pull Request</title>
+    <link rel="alternate" href="/2014/05/13/converting-a-github-issue-to-a-pull-request/"/>
+    <id>/2014/05/13/converting-a-github-issue-to-a-pull-request/</id>
+    <published>2014-05-13T00:00:00Z</published>
+    <updated>2014-05-13T00:00:00Z</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Before, I would make a new branch for my work and use &lt;code&gt;refs #issuenum&lt;/code&gt; in my commit messages to link the commits to an issue. But, sometimes I would forget to link a commit and then it would be lost in limbo.  Teammates could use the branch comparison view to review changes, but it wasn't ideal.&lt;/p&gt;
+
+&lt;p&gt;Instead, GitHub already has a construct for this: the pull request.  So, for a while when we started to work on something, we actually &lt;b&gt;closed&lt;/b&gt; the issue and started a brand new pull request.&lt;/p&gt;
+
+&lt;p&gt;There &lt;i&gt;had&lt;/i&gt; to be a better way.&lt;/p&gt;
+
+&lt;p&gt;I found that the API allows converting an issue to a pull request. There's no corresponding UI control on the GitHub website, so we need a way to activate this functionality.&lt;/p&gt;
+
+&lt;p&gt;
+  Now, my typical workflow for features is this:
+  &lt;ul&gt;
+    &lt;li&gt;Client asks for something.&lt;/li&gt;
+    &lt;li&gt;I file an issue on GitHub so I don't forget it.&lt;/li&gt;
+    &lt;li&gt;When that issue comes up to be done, I start a new branch and start working.&lt;/li&gt;
+    &lt;li&gt;After a couple of commits, I push my branch and I'm ready for a pull request.&lt;/li&gt;
+    &lt;li&gt;I run this little program, answer some questions, and it promotes my issue to a pull request.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;pre class="highlight shell"&gt;
+&lt;span class="c"&gt;#!/usr/bin/env ruby&lt;/span&gt;
+require &lt;span class="s1"&gt;'io/console'&lt;/span&gt;
+
+ORG &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'your-organization-name'&lt;/span&gt;
+REPO &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'your-repository-name'&lt;/span&gt;
+USER &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'your-github-login-name'&lt;/span&gt;
+puts  &lt;span class="s2"&gt;&amp;quot;Converting a GitHub issue to a pull request for #{ORG}/#{REPO}&amp;quot;&lt;/span&gt;
+
+print &lt;span class="s2"&gt;&amp;quot;What issue number: &amp;quot;&lt;/span&gt;
+issue_num &lt;span class="o"&gt;=&lt;/span&gt; gets.chomp
+
+print &lt;span class="s2"&gt;&amp;quot;What branch to start from (master or staging, maybe?): &amp;quot;&lt;/span&gt;
+start_branch &lt;span class="o"&gt;=&lt;/span&gt; gets.chomp
+
+print &lt;span class="s2"&gt;&amp;quot;What branch to pull from (must be pushed already): &amp;quot;&lt;/span&gt;
+end_branch &lt;span class="o"&gt;=&lt;/span&gt; gets.chomp
+
+print &lt;span class="s2"&gt;&amp;quot;Enter GitHub password: &amp;quot;&lt;/span&gt;
+userpass &lt;span class="o"&gt;=&lt;/span&gt; STDIN.noecho&lt;span class="o"&gt;(&lt;/span&gt;&amp;amp;:gets&lt;span class="o"&gt;)&lt;/span&gt;.chomp
+
+&lt;span class="nb"&gt;command&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; %Q&lt;span class="o"&gt;(&lt;/span&gt;
+  curl --user &lt;span class="s2"&gt;&amp;quot;#{USER}:#{userpass}&amp;quot;&lt;/span&gt;
+       --silent
+       --request POST
+       --data &lt;span class="s1"&gt;'{&amp;quot;issue&amp;quot;: &amp;quot;#{issue_num}&amp;quot;,
+          &amp;quot;head&amp;quot;: &amp;quot;#{ORG}:#{end_branch}&amp;quot;,
+          &amp;quot;base&amp;quot;: &amp;quot;#{start_branch}&amp;quot;}'&lt;/span&gt;
+       https://api.github.com/repos/#&lt;span class="o"&gt;{&lt;/span&gt;ORG&lt;span class="o"&gt;}&lt;/span&gt;/#&lt;span class="o"&gt;{&lt;/span&gt;REPO&lt;span class="o"&gt;}&lt;/span&gt;/pulls
+  &lt;span class="o"&gt;)&lt;/span&gt;
+
+puts &lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="c"&gt;#{command}`&lt;/span&gt;&lt;/pre&gt;</content>
+  </entry>
   <entry>
     <title>Misleading people with graphs</title>
     <link rel="alternate" href="/2014/01/03/misleading-people-with-graphs/"/>
@@ -409,163 +470,6 @@ Lesson 7: A few Bad Ideas you might have accidentally implemented
 &lt;p&gt;
 &lt;/p&gt;
 
-</content>
-  </entry>
-  <entry>
-    <title>Kansas City Ruby RTanque League: Round Two Results</title>
-    <link rel="alternate" href="/2013/07/09/kansas-city-ruby-rtanque-league-round-two-results/"/>
-    <id>/2013/07/09/kansas-city-ruby-rtanque-league-round-two-results/</id>
-    <published>2013-07-09T00:00:00Z</published>
-    <updated>2013-07-09T00:00:00Z</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">These are the results for round one of the 2013
-&lt;a href="http://meetup.com/kcruby"&gt;KC Ruby&lt;/a&gt;
-RTanque League.
-&lt;h2&gt;Results: Win, Loss, Avg Health Left&lt;/h2&gt;
-&lt;table class='table table-bordered'&gt;
-  &lt;thead&gt;
-    &lt;th&gt;Rank&lt;/th&gt;
-    &lt;th&gt;Bot&lt;/th&gt;
-    &lt;th&gt;Wins&lt;/th&gt;
-    &lt;th&gt;Losses&lt;/th&gt;
-    &lt;th&gt;Health&lt;/th&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;joeandaverde&lt;/td&gt;
-      &lt;td&gt;11&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;69.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;THEtheChad&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;58.0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;dalek&lt;/td&gt;
-      &lt;td&gt;9&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;41.5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;Darren&lt;/td&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;41.7&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;twitch&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;28.2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;sir ticks a lot&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;39.5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;MacGyver&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;24.5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;DrunkBot&lt;/td&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;18.5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;9&lt;/td&gt;
-      &lt;td&gt;jamesior_bot&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;24.9&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;Seek&amp;amp;Destroy&lt;/td&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;7&lt;/td&gt;
-      &lt;td&gt;18.9&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;11&lt;/td&gt;
-      &lt;td&gt;wallhugger&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;6&lt;/td&gt;
-      &lt;td&gt;32.5&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;12&lt;/td&gt;
-      &lt;td&gt;hacker&lt;/td&gt;
-      &lt;td&gt;0&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;1.1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;For losses, remaining health is 0.  For draws, both bots get their remaining health.&lt;/p&gt;
-&lt;h2&gt;Details&lt;/h2&gt;
-&lt;p&gt;
-  Some matches were infinite, so I capped each match at 7500 ticks.
-  &lt;br&gt;
-  &lt;i&gt;
-    I'll update this with questions if you have them. Post to the meetup thread.
-  &lt;/i&gt;
-&lt;/p&gt;
-&lt;h2&gt;Round Three Due: Sunday, July 14th at midnight&lt;/h2&gt;
-&lt;p&gt;
-  We're going to run the next round live at KC Ruby, so get your entry in.  Even if you didn't enter the previous rounds, you can still play!
-&lt;/p&gt;
-&lt;h2&gt;How to submit&lt;/h2&gt;
-&lt;p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;upload your bot's code to a private gist&lt;/li&gt;
-    &lt;li&gt;bot filename must end in .rb&lt;/li&gt;
-    &lt;li&gt;please keep the same bot name in your class so we can compare&lt;/li&gt;
-    &lt;li&gt;
-      fill out
-      &lt;a href="http://bit.ly/2013-kcruby-rtanque-signup"&gt;this google form&lt;/a&gt;
-      with the following information:
-      &lt;ul&gt;
-        &lt;li&gt;your name&lt;/li&gt;
-        &lt;li&gt;gist ID from above&lt;/li&gt;
-        &lt;li&gt;twitter handle&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/p&gt;
-&lt;h2&gt;Viewing the replays&lt;/h2&gt;
-&lt;p&gt;Every match has been recorded, so you can grab the download and watch them to see what went well and what you need to improve on.&lt;/p&gt;
-&lt;h4&gt;Download the matches&lt;/h4&gt;
-&lt;p&gt;
-  (zipped YAML):
-  &lt;a href="https://s3.amazonaws.com/databasically/articles_files/kcruby-rtanque-2013-round-2-replays.zip"&gt;download&lt;/a&gt;
-  &lt;br&gt;
-  Unzip to your rtanque directory.
-&lt;/p&gt;
-&lt;h4&gt;Grab the databasically fork of RTanque&lt;/h4&gt;
-&lt;p&gt;This has the record/replay logic that hasn't been merged into master yet.&lt;/p&gt;
-&lt;pre&gt;# A sample Gemfile&amp;#x000A;source "https://rubygems.org"&amp;#x000A;&amp;#x000A;gem 'rtanque', :path =&gt; "/Users/wg/code/rtanque/databasically-rtanque"&lt;/pre&gt;
-&lt;p&gt;Bundle.&lt;/p&gt;
-&lt;pre&gt;bundle update rtanque&lt;/pre&gt;
-&lt;p&gt;Find the name of the match you want to watch, start it with:&lt;/p&gt;
-&lt;pre&gt;bundle exec rtanque replay replays/bot--vs--bot.yml&lt;/pre&gt;
 </content>
   </entry>
 </feed>
