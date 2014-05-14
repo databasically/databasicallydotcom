@@ -1,0 +1,57 @@
+---
+layout: article
+title: Converting a GitHub Issue to a Pull Request
+post_date: 2014-05-13
+---
+
+<p>Before, I would make a new branch for my work and use <code>refs #issuenum</code> in my commit messages to link the commits to an issue. But, sometimes I would forget to link a commit and then it would be lost in limbo.  Teammates could use the branch comparison view to review changes, but it wasn't ideal.</p>
+
+<p>Instead, GitHub already has a construct for this: the pull request.  So, for a while when we started to work on something, we actually <b>closed</b> the issue and started a brand new pull request.</p>
+
+<p>There <i>had</i> to be a better way.</p>
+
+<p>I found that the API allows converting an issue to a pull request. There's no corresponding UI control on the GitHub website, so we need a way to activate this functionality.</p>
+
+<p>
+  Now, my typical workflow for features is this:
+  <ul>
+    <li>Client asks for something.</li>
+    <li>I file an issue on GitHub so I don't forget it.</li>
+    <li>When that issue comes up to be done, I start a new branch and start working.</li>
+    <li>After a couple of commits, I push my branch and I'm ready for a pull request.</li>
+    <li>I run this little program, answer some questions, and it promotes my issue to a pull request.</li>
+  </ul>
+</p>
+
+<% code('shell') do %>
+#!/usr/bin/env ruby
+require 'io/console'
+
+ORG = 'your-organization-name'
+REPO = 'your-repository-name'
+USER = 'your-github-login-name'
+puts  "Converting a GitHub issue to a pull request for #{ORG}/#{REPO}"
+
+print "What issue number: "
+issue_num = gets.chomp
+
+print "What branch to start from (master or staging, maybe?): "
+start_branch = gets.chomp
+
+print "What branch to pull from (must be pushed already): "
+end_branch = gets.chomp
+
+print "Enter GitHub password: "
+userpass = STDIN.noecho(&:gets).chomp
+
+command = %Q(
+  curl --user "#{USER}:#{userpass}"
+       --silent
+       --request POST
+       --data '{"issue": "#{issue_num}",
+          "head": "#{ORG}:#{end_branch}",
+          "base": "#{start_branch}"}'
+       https://api.github.com/repos/#{ORG}/#{REPO}/pulls
+  )
+
+puts `#{command}`<% end %>
