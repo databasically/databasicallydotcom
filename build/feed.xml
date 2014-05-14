@@ -18,24 +18,29 @@
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;Before, I would make a new branch for my work and use &lt;code&gt;refs #issuenum&lt;/code&gt; in my commit messages to link the commits to an issue. But, sometimes I would forget to link a commit and then it would be lost in limbo.  Teammates could use the branch comparison view to review changes, but it wasn't ideal.&lt;/p&gt;
+    <content type="html">&lt;h3&gt;The Problem&lt;/h3&gt;
+&lt;p&gt;When I started using GitHub Issues on my projects, I wanted group commits for a project together.  Originally, I would make a new branch for my work and use &lt;code&gt;refs #issuenum&lt;/code&gt; in my commit messages to link the commits to an issue. But, sometimes I would forget to link a commit and then it would be lost in limbo.  Teammates could use the branch comparison view to review changes, but it wasn't an ideal place to have a conversation about a feature or fix.&lt;/p&gt;
 
-&lt;p&gt;Instead, GitHub already has a construct for this: the pull request.  So, for a while when we started to work on something, we actually &lt;b&gt;closed&lt;/b&gt; the issue and started a brand new pull request.&lt;/p&gt;
+&lt;p&gt;Instead, GitHub already has a construct for this: the pull request.  So, for a while when I started to work on something, I actually &lt;b&gt;closed&lt;/b&gt; the original issue and started a brand new pull request.&lt;/p&gt;
 
 &lt;p&gt;There &lt;i&gt;had&lt;/i&gt; to be a better way.&lt;/p&gt;
 
-&lt;p&gt;I found that the API allows converting an issue to a pull request. There's no corresponding UI control on the GitHub website, so we need a way to activate this functionality.&lt;/p&gt;
+&lt;h3&gt;The Solution&lt;/h3&gt;
+&lt;p&gt;I found that the API allows converting an issue to a pull request. There's no corresponding UI control on the GitHub website, so I needed a way to activate this functionality.&lt;/p&gt;
 
 &lt;p&gt;
   Now, my typical workflow for features is this:
   &lt;ul&gt;
     &lt;li&gt;Client asks for something.&lt;/li&gt;
     &lt;li&gt;I file an issue on GitHub so I don't forget it.&lt;/li&gt;
-    &lt;li&gt;When that issue comes up to be done, I start a new branch and start working.&lt;/li&gt;
+    &lt;li&gt;&lt;i&gt;time passes&lt;/i&gt;&lt;/li&gt;
+    &lt;li&gt;The issue is next to be done, so I start a new branch and start working.&lt;/li&gt;
     &lt;li&gt;After a couple of commits, I push my branch and I'm ready for a pull request.&lt;/li&gt;
-    &lt;li&gt;I run this little program, answer some questions, and it promotes my issue to a pull request.&lt;/li&gt;
+    &lt;li&gt;I run this little program, which asks me some questions, and it promotes my issue to a pull request and links it to my branch.&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/p&gt;
+
+&lt;h3&gt;Code&lt;/h3&gt;
 
 &lt;pre class="highlight shell"&gt;
 &lt;span class="c"&gt;#!/usr/bin/env ruby&lt;/span&gt;
@@ -68,7 +73,25 @@ userpass &lt;span class="o"&gt;=&lt;/span&gt; STDIN.noecho&lt;span class="o"&gt;
        https://api.github.com/repos/#&lt;span class="o"&gt;{&lt;/span&gt;ORG&lt;span class="o"&gt;}&lt;/span&gt;/#&lt;span class="o"&gt;{&lt;/span&gt;REPO&lt;span class="o"&gt;}&lt;/span&gt;/pulls
   &lt;span class="o"&gt;)&lt;/span&gt;
 
-puts &lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="c"&gt;#{command}`&lt;/span&gt;&lt;/pre&gt;</content>
+puts &lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="c"&gt;#{command}`&lt;/span&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Questions&lt;/h3&gt;
+After I gave this talk at KC Ruby, there were a few questions:
+&lt;dl&gt;
+  &lt;dt&gt;What about the &lt;code&gt;hub&lt;/code&gt; gem?&lt;/dt&gt;
+  &lt;dd&gt;It's great! I couldn't get it working easily and this was my major pain point, but I hear that it does really neat things.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Are pull requests that much better?&lt;/dt&gt;
+  &lt;dd&gt;In a nutshell, I like them more because:
+    &lt;ul&gt;
+      &lt;li&gt;they group commits automatically, since they're based off a branch.&lt;/li&gt;
+      &lt;li&gt;commenting on specific lines is much easier, since as additional changes are pushes the comments will reflect that.&lt;/li&gt;
+      &lt;li&gt;having all the history grouped together is really helpful in the future when you need to look back wondering why something was done the way it was done!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/dd&gt;
+&lt;/dl&gt;</content>
   </entry>
   <entry>
     <title>Misleading people with graphs</title>
