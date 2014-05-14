@@ -75,6 +75,10 @@ userpass &lt;span class="o"&gt;=&lt;/span&gt; STDIN.noecho&lt;span class="o"&gt;
 
 puts &lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="c"&gt;#{command}`&lt;/span&gt;&lt;/pre&gt;
 
+&lt;h3&gt;Demo (given at KC Ruby)&lt;/h3&gt;
+
+&lt;div style="padding-left:30px"&gt;&lt;iframe width="640" height="480" src="//www.youtube.com/embed/5EA9DGNSUdo" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+
 &lt;h3&gt;Questions&lt;/h3&gt;
 After I gave this talk at KC Ruby, there were a few questions:
 &lt;dl&gt;
