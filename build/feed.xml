@@ -5,10 +5,60 @@
   <id>http://blog.url.com/</id>
   <link href="http://blog.url.com/"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2014-05-13T00:00:00Z</updated>
+  <updated>2014-06-23T16:31:00Z</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>All the Little Things</title>
+    <link rel="alternate" href="/2014/06/23/all-the-little-things/"/>
+    <id>/2014/06/23/all-the-little-things/</id>
+    <published>2014-06-23T16:31:00Z</published>
+    <updated>2014-06-23T16:31:00Z</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;h1 id="all-the-little-things"&gt;All the Little Things&lt;/h1&gt;
+
+&lt;iframe width="853" height="480" src="//www.youtube-nocookie.com/embed/8bZh5LMaSmE" frameborder="0" allowfullscreen=""&gt;&lt;/iframe&gt;
+&lt;hr /&gt;
+&lt;p&gt;      At RailsConf 2014, Sandi Metz delivered a talk over refactoring complex chunks of code. She praised the value of breaking large pieces of code in to smaller, more digestible pieces. Metz used the &lt;a href="https://github.com/professor/GildedRose"&gt;gilded rose kata&lt;/a&gt; as an example of complex code to break down and simplify. In her talk, Metz broke down the giant conditional presented in the gilded rose into much smaller pieces. Through this, she created simpler, more maintainable, and more extensible code.&lt;/p&gt;
+
+&lt;p&gt;      Metz began her talk promising her listeners that if they would make smaller things, they would write better code. She then introduced the gilded rose kata and her goal of adding the functionality for 'conjured' items. The issue was that the conditional in the &lt;code&gt;tick&lt;/code&gt; method was too complex to easily add any behavior. Before adding any functionality, Metz opted to refactor the given code. She began refactoring by breaking each part of the large conditional into separate methods. She then created objects to cover the functionality of those methods. By breaking the functionality of &lt;code&gt;GildedRose&lt;/code&gt; into small objects, Metz simplified the code base. &lt;code&gt;GildedRose&lt;/code&gt; was no longer a giant class, but a simple object factory. All Metz had to do to add &lt;code&gt;Conjured&lt;/code&gt; was to create the &lt;code&gt;Conjured&lt;/code&gt; class and add it to a hash in &lt;code&gt;GildedRose&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Throughout her talk, Metz made five few key points:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;"Make Smaller Things"&lt;br /&gt;
+Writing small objects and small methods leads to maintainable, flexible, and understandable code.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;"Refactor Under Green; reach for the lowest hanging green."&lt;br /&gt;
+Ensuring tests pass before refactoring can help to prevent changes in behavior after refactoring.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;"Duplication is far cheaper than the wrong abstraction"&lt;br /&gt;
+While duplication isn't great, writing the wrong abstraction can be expensive. When refactoring, don't get caught up on tangents and write unnecessary abstractions.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;"Inheritance is not evil"&lt;br /&gt;
+Many people get a bad impression about inheritance from seeing it used the wrong way. But, as Metz suggests, inheritance can be the perfect tool when used properly. The key is to keep it simple. As Metz put it, keep inheritance trees shallow and narrow.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;"Reach for Open/Closed"&lt;br /&gt;
+Adding behavior should not require editing existing code. This is a concept many people have trouble applying in practice. Yet, when following the other principles of SOLID design and the advice given by Metz, it is doable. Doing so will, in the long run, save time and effort that one would spend combating complexity when making changes later on.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;      I see examples throughout my old code that could benefit from Metz's advice. Too many large objects and methods. Objects that know too much about other objects and their environment. Shirking away from inheritence wherever possible. Having to edit old code to introduce new behavior.&lt;/p&gt;
+
+&lt;p&gt;      Metz's talk changed the way I look at complexity in code structure. I'm guilty of falling into the trap of thinking that creating more objects leads to more complex code. But, based on Metz's talk, creating more, smaller objects and methods is the simpler way to structure code.&lt;/p&gt;
+
+&lt;p&gt;– Nick Fausnight&lt;/p&gt;
+
+</content>
+  </entry>
   <entry>
     <title>Converting a GitHub Issue to a Pull Request</title>
     <link rel="alternate" href="/2014/05/13/converting-a-github-issue-to-a-pull-request/"/>
@@ -353,150 +403,5 @@ Dropped refs/stash@&lt;span class="o"&gt;{&lt;/span&gt;0&lt;span class="o"&gt;}&
 &lt;/pre&gt;
 This gave me a list of all commits that weren't referenced anymore. From there, I did &lt;code&gt;git show SHA&lt;/code&gt; on them to find the one I was interested in.
 &lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>What's New in Ruby: July 2013</title>
-    <link rel="alternate" href="/2013/07/09/whats-new-in-ruby-july-2013/"/>
-    <id>/2013/07/09/whats-new-in-ruby-july-2013/</id>
-    <published>2013-07-09T00:00:00Z</published>
-    <updated>2013-07-09T00:00:00Z</updated>
-    <author>
-      <name>Article Author</name>
-    </author>
-    <content type="html">Every month, &lt;a href="http://meetup.com/kcruby"&gt;Kansas City Ruby&lt;/a&gt; (#kcruby) reviews a subset of Peter Cooper's fantastic &lt;a href="http://rubyweekly.com/?utm_source=databasically"&gt;Ruby Weekly&lt;/a&gt; selections, along with other items picked up around the web.
-
-
-&lt;h4&gt;&lt;a href="http://weblog.rubyonrails.org/2013/6/25/Rails-4-0-final/" target="_blank"&gt;Rails 4.0 Final is out!&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-  &lt;blockquote&gt;
-  A big focus has been on making it dead simple to build modern web applications that are screaming fast without needing to go the client-side JS/JSON server route. Much of this work was pioneered for Rails in the new version of Basecamp and focuses on three aspects:
-  &lt;br&gt;
-  &lt;br&gt;
-  &lt;ol&gt;
-    &lt;li&gt;Make it super easy to do Russian Doll-caching through key-based expiration with automatic dependency management of nested templates (explored first in the cache_digests plugin).&lt;/li&gt;
-    &lt;li&gt;Speed-up the client-side with Turbolinks, which essentially turns your app into a single-page javascript application in terms of speed, but with none of the developmental drawbacks (except, maybe, compatibility issues with some existing JavaScript packages).&lt;/li&gt;
-    &lt;li&gt;Declarative etags makes it even easier to ensure you're taking advantage of HTTP freshness.&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-Also:
-&lt;blockquote&gt;Active Resource, Active Record Observers, and Action Pack page and action caching are all examples of things that are no longer in core, but lives on in plugins.&lt;/blockquote&gt;
-&lt;blockquote&gt;We encourage you to peruse the CHANGELOGs for all the Rails frameworks and delight over the hundreds of improvements we've made to Rails 4.0: &lt;a href="https://github.com/rails/rails/blob/v4.0.0/actionpack/CHANGELOG.md"&gt;Action Pack&lt;/a&gt;, &lt;a href="https://github.com/rails/rails/blob/v4.0.0/activemodel/CHANGELOG.md"&gt;Active Model&lt;/a&gt;, &lt;a href="https://github.com/rails/rails/blob/v4.0.0/activerecord/CHANGELOG.md"&gt;Active Record&lt;/a&gt;, &lt;a href="https://github.com/rails/rails/blob/v4.0.0/activesupport/CHANGELOG.md"&gt;Active Support&lt;/a&gt;, &lt;a href="https://github.com/rails/rails/blob/v4.0.0/railties/CHANGELOG.md"&gt;Rails&lt;/a&gt;.
-&lt;/blockquote&gt;
-
-Finally, you can check out the &lt;a href="http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#upgrading-from-rails-3-2-to-rails-4-0"&gt;upgrade guide&lt;/a&gt; or the &lt;a href="http://railscasts.com/episodes/415-upgrading-to-rails-4"&gt;Railscast screencast&lt;/a&gt;.
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="http://www.kalzumeus.com/2013/06/17/if-your-business-uses-rails-2-3-you-need-to-move-to-a-supported-option-asap/" target="_blank"&gt;If Your Business Uses Rails 2.3 You Need To Move To A Supported Option ASAP&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-  &lt;blockquote&gt;Executive summary for your CTO: If your company runs Rails 2.3 apps, switch to &lt;a href="http://www.railslts.com/"&gt;Rails LTS&lt;/a&gt;, a commercially supported fork of Rails.  If you do not do this, and do not take one of the more elaborate mitigation steps as described below, your Rails applications will be compromised, you will lose the servers you run on, and your business will suffer substantial losses.&lt;/blockquote&gt;
-
-  &lt;blockquote&gt;
-    &lt;h5&gt;Your Options If You Are Currently On Rails 2.3.X&lt;/h5&gt;
-    &lt;ol&gt;
-      &lt;li&gt;Do nothing and, with probability of 100%, get your server owned.&lt;/li&gt;
-      &lt;li&gt;Rewrite your applications for Rails 3 or Rails 4, which are currently supported.&lt;/li&gt;
-      &lt;li&gt;Support Rails 2.3 yourself&lt;/li&gt;
-      &lt;li&gt;Pray that someone supports Rails 2.3 for you&lt;/li&gt;
-      &lt;li&gt;Pay for a commercial fork of Rails 2.3&lt;/li&gt;
-    &lt;/ol&gt;
-
-
-
-  &lt;/blockquote&gt;
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="http://blog.steveklabnik.com/posts/2013-06-25-removing-turbolinks-from-rails-4" target="_blank"&gt;Removing Turbolinks from Rails 4
-&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-  &lt;blockquote&gt;
-    If you don't want to use Turbolinks with your Rails 4 application, it's easy! Just do this:
-    &lt;ol&gt;
-        &lt;li&gt; Remove the gem 'turbolinks' line from your Gemfile.&lt;/li&gt;
-        &lt;li&gt;Remove the //= require turbolinks from your app/assets/javascripts/application.js.&lt;/li&gt;
-        &lt;li&gt;Remove the two "data-turbolinks-track" =&gt; true hash key/value pairs from your app/views/layouts/application.html.erb.&lt;/li&gt;
-    &lt;/ol&gt;
-   Done!
-  &lt;/blockquote&gt;
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="http://railssecurity.com/" target="_blank"&gt;Free one-month course on fixing common Rails vulnerabilities, via email&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-  &lt;blockquote&gt;
-You’ll get a new lesson every few days for the next month. By the end, your critical Rails app will be a veritable Fort Knox.
-&lt;br&gt;&lt;br&gt;
-What you’ll learn:
-&lt;br&gt;&lt;br&gt;
-Lesson 1: Three Rails security risks you won’t find in the official guide
-&lt;br&gt;
-Lesson 2: The attack vector behind 87% of one year's detected vulnerabilities
-&lt;br&gt;
-Lesson 3: Surprise! Rails is still vulnerable to SQL injection
-&lt;br&gt;
-Lesson 4: Catching security issues before they reach production
-&lt;br&gt;
-Lesson 5: The power of automated security audits
-&lt;br&gt;
-Lesson 6: Three surprising ways that Ruby's dynamic nature is a risk
-&lt;br&gt;
-Lesson 7: A few Bad Ideas you might have accidentally implemented
-  &lt;/blockquote&gt;
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="https://blog.engineyard.com/2013/whats-new-and-awesome-in-ruby-2" target="_blank"&gt;What's New and Awesome in Ruby 2&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-  &lt;h5&gt;Faster&lt;/h5&gt;
-  &lt;blockquote&gt;Ruby 2 has a few patches that dramatically improve performance. The biggest of these is a substantial optimization to Kernel#require, which speeds up Rails startup dramatically. &lt;/blockquote&gt;
-
-  &lt;h5&gt;UTF-8 By Default&lt;/h5&gt;
-  &lt;blockquote&gt;All Ruby scripts now default to UTF-8 encoding. This makes the #encoding: utf-8 magic comment no longer necessary.&lt;/blockquote&gt;
-
-  And more: keywork arguments, lazy enumerators, literal symbol array syntax.
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="" target="_blank"&gt;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="" target="_blank"&gt;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="" target="_blank"&gt;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="" target="_blank"&gt;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="" target="_blank"&gt;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="" target="_blank"&gt;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="" target="_blank"&gt;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-&lt;/p&gt;
-
-
-&lt;h4&gt;&lt;a href="" target="_blank"&gt;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;
-&lt;/p&gt;
-
-</content>
   </entry>
 </feed>
