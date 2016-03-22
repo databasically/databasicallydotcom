@@ -1,18 +1,7 @@
 = partial 'layouts/head'
 %body
-  .container-narrow
-    .masthead
-      %ul.nav.nav-pills.pull-right
-        %li
-          %a{:href => "/"} Home
-        %li
-          %a{:href => "/articles"} Articles
-        %li
-          %a{:href => "/contact"} Contact
-      %h3.muted
-        %a{:href => '/'} Databasically
-
-    .row-fluid
+  .container
+    .row
       .span12.article
         %h1= current_page.data.title
         - if current_page.data.post_date
@@ -21,16 +10,3 @@
         = yield
 
   = partial 'layouts/footer'
-  :javascript
-    // Function to slabtext the H1 headings
-    function slabTextHeadlines() {
-        $("h1").slabText({
-            // Don't slabtext the headers if the viewport is under 380px
-            "viewportBreakpoint":380,
-            "minCharsPerLine":9
-        });
-    };
-
-    $(window).load(function() {
-        slabTextHeadlines();
-    });
