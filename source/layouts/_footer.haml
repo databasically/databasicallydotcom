@@ -1,10 +1,9 @@
-
-%blockquote.blockquote-reverse
-  %p
-    %a.btn.btn-primary.btn-sm{:href => "/contact"} Get in touch
-    Established 2005 &middot; Databasically &copy;
-    = Time.now.year
+.container
+  .row
+    %blockquote.blockquote-reverse
+      %p
+        Established 2005 &middot; Databasically &copy;
+        = Time.now.year
 
 
 = partial 'layouts/google_analytics'
-
