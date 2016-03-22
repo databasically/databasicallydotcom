@@ -13,4 +13,6 @@
 # Ignore Sass' cache
 /.sass-cache
 
+/gems
+
 .DS_Store
