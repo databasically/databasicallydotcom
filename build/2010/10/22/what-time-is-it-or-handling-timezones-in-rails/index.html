@@ -2,40 +2,67 @@
 <html lang='en'>
   <head>
     <meta charset='utf-8'>
-    <!-- Always force latest IE rendering engine or request Chrome Frame -->
     <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <meta content='Ruby enthusiasts, mostly based in Kansas City, KS, USA.' name='description'>
     <title>What time is it? Or, handling timezones in Rails.</title>
     <link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <script src="/javascripts/all.js" type="text/javascript"></script>
-    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
-    <meta content='Ruby enthusiasts, mostly based in Kansas City, KS, USA.' name='description'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800,400,300' rel='stylesheet' type='text/css'>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/javascripts/all.js" type="text/javascript"></script>
   </head>
 </html>
-<body>
-  <div class='container-narrow'>
-    <div class='masthead'>
-      <ul class='nav nav-pills pull-right'>
+<nav class='navbar navbar-default'>
+  <div class='container-fluid'>
+    <div class='navbar-header'>
+      <button class='navbar-toggle collapsed' data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'>
+        <span class='sr-only'>Toggle navigation</span>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+      </button>
+      <a class='navbar-brand' href='/'>
+        <img alt='logo' height='42px' src='/images/databasically-square.png'>
+      </a>
+    </div>
+    <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+      <ul class='nav navbar-nav'>
         <li>
-          <a href='/'>Home</a>
+          <a href='/contact'>
+            Contact
+            <span class='sr-only'>(current)</span>
+          </a>
         </li>
         <li>
           <a href='/articles'>Articles</a>
         </li>
-        <li>
-          <a href='/contact'>Contact</a>
-        </li>
       </ul>
-      <h3 class='muted'>
-        <a href='/'>Databasically</a>
-      </h3>
+      <form action='https://duckduckgo.com/' class='navbar-form navbar-right' method='get' role='search'>
+        <div class='form-group'>
+          <input name='ki' type='hidden' value='-1'>
+          <input name='ke' type='hidden' value='-1'>
+          <input name='kz' type='hidden' value='-1'>
+          <input name='kj' type='hidden' value='#CB4D51'>
+          <input name='k9' type='hidden' value='#CB4D51'>
+          <input name='k8' type='hidden' value='#000000'>
+          <input name='kh' type='hidden' value='+1'>
+          <input name='sites' type='hidden' value='www.databasically.com'>
+          <input class='form-control' name='q' placeholder='Search this site' type='text'>
+          <button class='btn btn-default' type='submit'>
+            <span class='glyphicon glyphicon-search'></span>
+          </button>
+        </div>
+      </form>
     </div>
-    <div class='row-fluid'>
+  </div>
+</nav>
+<body>
+  <div class='container'>
+    <div class='row'>
       <div class='span12 article'>
         <h1>What time is it? Or, handling timezones in Rails.</h1>
         <h3 class='muted pull-right post_date'>
@@ -60,19 +87,19 @@
         <span class="n">rake</span> <span class="n">time</span><span class="ss">:zones:us</span></pre>
         <h3>Setting the default time zone</h3>
         In your environment.rb (Rails 2) or application.rb (Rails 3) file, you can set the default timezone:
-        <pre class="highlight ruby"><span class="n">config</span><span class="nf">.time_zone</span> <span class="o">=</span> <span class="s1">'Central Time (US &amp;amp; Canada)'</span></pre>
+        <pre class="highlight ruby"><span class="n">config</span><span class="nf">.time_zone</span> <span class="o">=</span> <span class="s1">&#39;Central Time (US &amp;amp; Canada)&#39;</span></pre>
         
         What does this do?  By setting an application-wide timezone, any datetime will be stored in UTC in the database, but will be translated when we access it.
         <h3>Set a timezone for a user</h3>
         You can use <a href="http://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/time_zone_select">time_zone_select</a> to get a list of timezones for a user to pick from. The third argument is a list of "priority" zones that will appear first.
-        <pre class="highlight ruby"> <span class="n">time_zone_select</span><span class="p">(</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s1">'time_zone'</span><span class="p">,</span> <span class="no">TimeZone</span><span class="nf">.us_zones</span><span class="p">,</span> <span class="ss">:default</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;Pacific Time (US &amp;amp; Canada)&quot;</span><span class="p">)</span></pre>
+        <pre class="highlight ruby"> <span class="n">time_zone_select</span><span class="p">(</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s1">&#39;time_zone&#39;</span><span class="p">,</span> <span class="no">TimeZone</span><span class="nf">.us_zones</span><span class="p">,</span> <span class="ss">:default</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="s2">&quot;Pacific Time (US &amp;amp; Canada)&quot;</span><span class="p">)</span></pre>
         
         Once the value is saved in the database, you'll want to set it for each request, per user:
         <pre class="highlight ruby">  <span class="n">before_filter</span> <span class="ss">:set_timezone</span>
         
           <span class="k">def </span><span class="nf">set_timezone</span>
-            <span class="c1"># current_user.time_zone #=&amp;gt; 'Central Time (US &amp;amp; Canada)'</span>
-            <span class="no">Time</span><span class="nf">.zone</span> <span class="o">=</span> <span class="n">current_user</span><span class="nf">.time_zone</span> <span class="o">||</span> <span class="s1">'Central Time (US &amp;amp; Canada)'</span>
+            <span class="c1"># current_user.time_zone #=&amp;gt; &#39;Central Time (US &amp;amp; Canada)&#39;</span>
+            <span class="no">Time</span><span class="nf">.zone</span> <span class="o">=</span> <span class="n">current_user</span><span class="nf">.time_zone</span> <span class="o">||</span> <span class="s1">&#39;Central Time (US &amp;amp; Canada)&#39;</span>
           <span class="k">end</span></pre>
         
         [<strong>UPDATE</strong>: You'll need a field 'time_zone' in your user table!]
@@ -83,17 +110,16 @@
       </div>
     </div>
   </div>
-  <footer class='footer'>
-    <div class='container'>
-      <p class='pull-left muted'>
-        Established 2005 &middot; Databasically &copy;
-        2014
-      </p>
-      <p class='pull-right'>
-        <a href='#'>Back to top</a>
-      </p>
+  <div class='container'>
+    <div class='row'>
+      <blockquote class='blockquote-reverse'>
+        <p>
+          Established 2005 &middot; Databasically &copy;
+          2016
+        </p>
+      </blockquote>
     </div>
-  </footer>
+  </div>
   <script>
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-2626511-3']);
@@ -105,19 +131,5 @@
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  </script>
-  <script>
-    // Function to slabtext the H1 headings
-    function slabTextHeadlines() {
-        $("h1").slabText({
-            // Don't slabtext the headers if the viewport is under 380px
-            "viewportBreakpoint":380,
-            "minCharsPerLine":9
-        });
-    };
-    
-    $(window).load(function() {
-        slabTextHeadlines();
-    });
   </script>
 </body>

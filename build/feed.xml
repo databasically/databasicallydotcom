@@ -94,11 +94,11 @@ Adding behavior should not require editing existing code. This is a concept many
 
 &lt;pre class="highlight shell"&gt;
 &lt;span class="c"&gt;#!/usr/bin/env ruby&lt;/span&gt;
-require &lt;span class="s1"&gt;'io/console'&lt;/span&gt;
+require &lt;span class="s1"&gt;&amp;#39;io/console&amp;#39;&lt;/span&gt;
 
-ORG &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'your-organization-name'&lt;/span&gt;
-REPO &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'your-repository-name'&lt;/span&gt;
-USER &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'your-github-login-name'&lt;/span&gt;
+ORG &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;your-organization-name&amp;#39;&lt;/span&gt;
+REPO &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;your-repository-name&amp;#39;&lt;/span&gt;
+USER &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;your-github-login-name&amp;#39;&lt;/span&gt;
 puts  &lt;span class="s2"&gt;&amp;quot;Converting a GitHub issue to a pull request for #{ORG}/#{REPO}&amp;quot;&lt;/span&gt;
 
 print &lt;span class="s2"&gt;&amp;quot;What issue number: &amp;quot;&lt;/span&gt;
@@ -117,9 +117,9 @@ userpass &lt;span class="o"&gt;=&lt;/span&gt; STDIN.noecho&lt;span class="o"&gt;
   curl --user &lt;span class="s2"&gt;&amp;quot;#{USER}:#{userpass}&amp;quot;&lt;/span&gt;
        --silent
        --request POST
-       --data &lt;span class="s1"&gt;'{&amp;quot;issue&amp;quot;: &amp;quot;#{issue_num}&amp;quot;,
+       --data &lt;span class="s1"&gt;&amp;#39;{&amp;quot;issue&amp;quot;: &amp;quot;#{issue_num}&amp;quot;,
           &amp;quot;head&amp;quot;: &amp;quot;#{ORG}:#{end_branch}&amp;quot;,
-          &amp;quot;base&amp;quot;: &amp;quot;#{start_branch}&amp;quot;}'&lt;/span&gt;
+          &amp;quot;base&amp;quot;: &amp;quot;#{start_branch}&amp;quot;}&amp;#39;&lt;/span&gt;
        https://api.github.com/repos/#&lt;span class="o"&gt;{&lt;/span&gt;ORG&lt;span class="o"&gt;}&lt;/span&gt;/#&lt;span class="o"&gt;{&lt;/span&gt;REPO&lt;span class="o"&gt;}&lt;/span&gt;/pulls
   &lt;span class="o"&gt;)&lt;/span&gt;
 
@@ -399,7 +399,7 @@ Dropped refs/stash@&lt;span class="o"&gt;{&lt;/span&gt;0&lt;span class="o"&gt;}&
 &lt;p&gt;Naturally, I couldn't stop thinking about this and wondered what I would do if I didn't have the commit around. Could I find it in the reflog?&lt;/p&gt;
 &lt;p&gt;Turns out, you can use &lt;code&gt;git fsck&lt;/code&gt; to find 'dangling commits':
 
-&lt;pre class="highlight shell"&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git fsck --no-reflog | grep &lt;span class="s1"&gt;'dangling commit'&lt;/span&gt; | cut -d &lt;span class="s1"&gt;' '&lt;/span&gt; -f 3
+&lt;pre class="highlight shell"&gt;&lt;span class="gp"&gt;$ &lt;/span&gt;git fsck --no-reflog | grep &lt;span class="s1"&gt;&amp;#39;dangling commit&amp;#39;&lt;/span&gt; | cut -d &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt; -f 3
 &lt;/pre&gt;
 This gave me a list of all commits that weren't referenced anymore. From there, I did &lt;code&gt;git show SHA&lt;/code&gt; on them to find the one I was interested in.
 &lt;/p&gt;</content>
