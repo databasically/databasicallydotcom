@@ -2,17 +2,17 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}/
-    / Always force latest IE rendering engine or request Chrome Frame
     %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "Ruby enthusiasts, mostly based in Kansas City, KS, USA.", :name => "description"}/
     %title= current_page.data.title || "Databasically"
     = stylesheet_link_tag "all"
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    = javascript_include_tag "all"
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %meta{:content => "Ruby enthusiasts, mostly based in Kansas City, KS, USA.", :name => "description"}/
 
     / Le HTML5 shim, for IE6-8 support of HTML5 elements
     /[if lt IE 9]
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    = javascript_include_tag "all"
 
 = partial 'layouts/navbar'
