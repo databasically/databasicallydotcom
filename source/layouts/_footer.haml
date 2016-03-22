@@ -1,11 +1,14 @@
-%footer.footer
-  .container
-    %p.pull-left.muted
-      Established 2005 &middot; Databasically &copy;
-      = Time.now.year
+%blockquote
+  %p
+    %div
 
-    %p.pull-right
-      %a{:href => "#"} Back to top
+
+%blockquote.blockquote-reverse
+  %p
+    %a.btn.btn-primary.btn-sm{:href => "/contact"} Get in touch
+    Established 2005 &middot; Databasically &copy;
+    = Time.now.year
 
 
 = partial 'layouts/google_analytics'
+

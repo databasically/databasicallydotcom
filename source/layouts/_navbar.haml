@@ -1,0 +1,36 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "/"}
+        %img{:alt => "logo", :src => "/images/databasically-square.png", :height => '42px'}/
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          %a{:href => "/contact"}
+            Contact
+            %span.sr-only (current)
+        %li
+          %a{:href => "/articles"} Articles
+      / %form.navbar-form.navbar-right{:role => "search"}
+      /   .form-group
+      /     %input.form-control{:placeholder => "Search", :type => "text"}/
+      /   %button.btn.btn-default{:type => "submit"} Submit
+
+      %form.navbar-form.navbar-right{:role => "search", :action => "https://duckduckgo.com/", :method => "get"}
+        .form-group
+          %input{:name => "ki", :type => "hidden", :value => "-1"}/
+          %input{:name => "ke", :type => "hidden", :value => "-1"}/
+          %input{:name => "kz", :type => "hidden", :value => "-1"}/
+          %input{:name => "kj", :type => "hidden", :value => "#CB4D51"}/
+          %input{:name => "k9", :type => "hidden", :value => "#CB4D51"}/
+          %input{:name => "k8", :type => "hidden", :value => "#000000"}/
+          %input{:name => "kh", :type => "hidden", :value => "+1"}/
+          %input{:name => "sites", :type => "hidden", :value => "www.databasically.com"}/
+          %input.form-control{:name => "q", :placeholder => "Search this site", :type => "text"}/
+          %button.btn.btn-default{:type => "submit"}
+            %span.glyphicon.glyphicon-search

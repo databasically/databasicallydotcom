@@ -1,42 +1,9 @@
 = partial 'layouts/head'
 
-%body{"data-spy" => "scroll", "data-target" => ".bs-docs-sidebar", :class => page_classes}
+%body{:class => page_classes}
   .container
     .row
-      .span3.bs-docs-sidebar
-        %ul.nav.nav-list.bs-docs-sidenav
-          %li.logo
-            %a{:href => "/#masthead"}
-              %img{:alt => "logo", :src => "/images/databasically-square.png"}/
-          -# %li
-          -#   %a{:href => "/#expert"} Expertise
-          -# %li
-          -#   %a{:href => "/#work"} Portfolio
-          -# %li
-          -#   %a{:href => "/#about"} About Us
-          -# %li
-          -#   %a{:href => "/#process"} Process
-          %li
-            %a{:href => "/contact"} Contact
-          %br/
-          %li
-            %a{:href => "/articles"} Blog
-          %br/
-          %li
-            %a{:href => "/git/training"} Git Training
-      .span9
+      .span12
         = yield
 
   = partial 'layouts/footer'
-  :javascript
-    // Function to slabtext the H1 headings
-    function slabTextHeadlines() {
-        $("h1").slabText({
-            // Don't slabtext the headers if the viewport is under 380px
-            "viewportBreakpoint":380
-        });
-    };
-
-    $(function() {
-      slabTextHeadlines();
-    });
