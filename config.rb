@@ -31,6 +31,10 @@ activate :blog do |blog|
   # blog.page_link = "page/:num"
 end
 
+set :url_root, 'http://www.databasically.com'
+activate :search_engine_sitemap, process_url: -> (url) { url.chomp('/') }
+
+
 page "/feed.xml", :layout => false, :directory_index => false
 ###
 # Compass
