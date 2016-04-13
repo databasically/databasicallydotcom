@@ -1,6 +1,6 @@
 ---
 layout: article
-title: ! 'RubyGems error on update: undefined local variable or method `remote_gemspecs&#039;'
+title: ! 'RubyGems error on update: undefined local variable or method 'remote_gemspecs&#039;'
 post_date: 2008-11-23
 ---
 I updated rubygems:
@@ -10,10 +10,10 @@ Updating RubyGems
 Updating rubygems-update
 Successfully installed rubygems-update-1.3.1
 ERROR:  While executing gem ... (NameError)
-    undefined local variable or method `remote_gemspecs' for
+    undefined local variable or method 'remote_gemspecs' for
    #&lt;gem ::Commands::UpdateCommand:0x14df818&gt;<% end %>
 ... but received this error:
-<% code("ruby") do %>undefined local variable or method `remote_gemspecs'<% end %>
+<% code("ruby") do %>undefined local variable or method 'remote_gemspecs'<% end %>
 Reading the release notes prompted me to install the rubygems-update gem separately:
 <% code("ruby") do %>&gt;sudo gem install rubygems-update
 Successfully installed rubygems-update-1.3.1<% end %>

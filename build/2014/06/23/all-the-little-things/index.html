@@ -73,29 +73,29 @@
         <hr />
         <p>      At RailsConf 2014, Sandi Metz delivered a talk over refactoring complex chunks of code. She praised the value of breaking large pieces of code in to smaller, more digestible pieces. Metz used the <a href="https://github.com/professor/GildedRose">gilded rose kata</a> as an example of complex code to break down and simplify. In her talk, Metz broke down the giant conditional presented in the gilded rose into much smaller pieces. Through this, she created simpler, more maintainable, and more extensible code.</p>
         
-        <p>      Metz began her talk promising her listeners that if they would make smaller things, they would write better code. She then introduced the gilded rose kata and her goal of adding the functionality for 'conjured' items. The issue was that the conditional in the <code>tick</code> method was too complex to easily add any behavior. Before adding any functionality, Metz opted to refactor the given code. She began refactoring by breaking each part of the large conditional into separate methods. She then created objects to cover the functionality of those methods. By breaking the functionality of <code>GildedRose</code> into small objects, Metz simplified the code base. <code>GildedRose</code> was no longer a giant class, but a simple object factory. All Metz had to do to add <code>Conjured</code> was to create the <code>Conjured</code> class and add it to a hash in <code>GildedRose</code>.</p>
+        <p>      Metz began her talk promising her listeners that if they would make smaller things, they would write better code. She then introduced the gilded rose kata and her goal of adding the functionality for 'conjured' items. The issue was that the conditional in the 'tick' method was too complex to easily add any behavior. Before adding any functionality, Metz opted to refactor the given code. She began refactoring by breaking each part of the large conditional into separate methods. She then created objects to cover the functionality of those methods. By breaking the functionality of 'GildedRose' into small objects, Metz simplified the code base. 'GildedRose' was no longer a giant class, but a simple object factory. All Metz had to do to add 'Conjured' was to create the 'Conjured' class and add it to a hash in 'GildedRose'.</p>
         
         <p>Throughout her talk, Metz made five few key points:</p>
         
         <ol>
           <li>
-            <p>"Make Smaller Things"<br />
+            <p>"Make Smaller Things"
         Writing small objects and small methods leads to maintainable, flexible, and understandable code.</p>
           </li>
           <li>
-            <p>"Refactor Under Green; reach for the lowest hanging green."<br />
+            <p>"Refactor Under Green; reach for the lowest hanging green."
         Ensuring tests pass before refactoring can help to prevent changes in behavior after refactoring.</p>
           </li>
           <li>
-            <p>"Duplication is far cheaper than the wrong abstraction"<br />
+            <p>"Duplication is far cheaper than the wrong abstraction"
         While duplication isn't great, writing the wrong abstraction can be expensive. When refactoring, don't get caught up on tangents and write unnecessary abstractions.</p>
           </li>
           <li>
-            <p>"Inheritance is not evil"<br />
+            <p>"Inheritance is not evil"
         Many people get a bad impression about inheritance from seeing it used the wrong way. But, as Metz suggests, inheritance can be the perfect tool when used properly. The key is to keep it simple. As Metz put it, keep inheritance trees shallow and narrow.</p>
           </li>
           <li>
-            <p>"Reach for Open/Closed"<br />
+            <p>"Reach for Open/Closed"
         Adding behavior should not require editing existing code. This is a concept many people have trouble applying in practice. Yet, when following the other principles of SOLID design and the advice given by Metz, it is doable. Doing so will, in the long run, save time and effort that one would spend combating complexity when making changes later on.</p>
           </li>
         </ol>
