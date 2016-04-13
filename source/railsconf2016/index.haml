@@ -54,6 +54,8 @@ We don't have specific times that we need to be at these, but let me know you're
   = partial :event, :locals => {event: event}
 
 %h1#other_attractions Other attractions
+- data.events.select {|event| event.date == 'attraction'}.each do |event|
+  = partial :event, :locals => {event: event}
 
 
 

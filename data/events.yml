@@ -70,6 +70,12 @@
   cost: $45/$55/$65
   desc: Guests will travel through some Kansas City’s historic neighborhoods as they sample savory meats and side dishes from Kansas City’s historic and hidden gem barbecue restaurants.
   url: http://www.kcbarbecuetours.com/
+- name: National World War I Museum
+  date: attraction
+  time: 10am - 5pm, except Monday
+  cost: $14
+  desc: The National World War I Museum and Memorial helps the nation preserve and remember the courage, honor, sacrifice and valiant efforts that led to the end of the world's first global conflict.
+  url: https://www.theworldwar.org/
 - name: Template
   date: May 0
   time: ???
