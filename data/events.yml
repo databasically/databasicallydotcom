@@ -1,0 +1,79 @@
+- name: KC Royals Game
+  date: May 2
+  time: 7:30 PM
+  cost: ~$20
+  desc: We'll place a group order, probably. We'll have to arrange transportation.
+  url: http://kansascity.royals.mlb.com/index.jsp?c_id=kc
+- name: KC Royals Game
+  date: May 3
+  time: 7:30 PM
+  cost: ~$20
+  desc: We'll place a group order, probably. We'll have to arrange transportation.
+  url: http://kansascity.royals.mlb.com/index.jsp?c_id=kc
+- name: Board Game Night
+  date: May 3
+  time: Evening
+  cost: BYOB and Games
+  desc: If you're interested, let me know and I'll see about reserving a room.
+  url: '#'
+- name: 'Boulevard Brewery: Free Public Tours'
+  date: May 2
+  time: 10:15, 11:00, 11:45, 1:15 & 2:00
+  cost: Free
+  desc: Tickets become available at 10am, so if you're interested let me know and we'll get a time picked.  'Enjoy a 40-minute walking tour of our production facility. Along the way, you’ll learn about the history of our company, our brewing process, and our approach to beer and business. The tour concludes in our Tasting Room where you can sample a variety of Boulevard beers.'
+  url:  http://www.boulevard.com/visit-us/free-public-tour/
+- name: 'Boulevard Brewery: Free Public Tours'
+  date: May 3
+  time: 11:00, 11:45, 1:15 & 2:00
+  cost: Free
+  desc: Tickets become available at 10am, so if you're interested let me know and we'll get a time picked.  'Enjoy a 40-minute walking tour of our production facility. Along the way, you’ll learn about the history of our company, our brewing process, and our approach to beer and business. The tour concludes in our Tasting Room where you can sample a variety of Boulevard beers.'
+  url:  http://www.boulevard.com/visit-us/free-public-tour/
+- name: Boulevard Brewery Tasting Room
+  date: Any
+  time: Any
+  cost: Free entry, $1 per 4oz and other options
+  desc: '"On any given day, our tap towers feature a rotating lineup of year-round core beers, seasonal offerings, a Smokestack brew or two, and sometimes brewery-exclusive test beers or other special treats. Our knowledgeable staff is on hand to answer your questions about our beers, brewing processes and culture."'
+  url:  http://www.boulevard.com/visit-us/the-tasting-room/
+- name: Smokestack Tour & Tasting
+  date: May 3
+  time: 3:30 PM
+  cost: $20 per person
+  desc: '"The Smokestack Tour combines an in-depth walking tour of our facility with a guided tasting session and food pairing, focusing on the processes and personalities of our acclaimed Smokestack Series beers."'
+  url:  http://www.boulevard.com/visit-us/the-smokestack-tour/
+- name: Smokestack Tour & Tasting
+  date: May 2
+  time: 3:30 PM
+  cost: $20 per person
+  desc: '"The Smokestack Tour combines an in-depth walking tour of our facility with a guided tasting session and food pairing, focusing on the processes and personalities of our acclaimed Smokestack Series beers."'
+  url:  http://www.boulevard.com/visit-us/the-smokestack-tour/
+- name: Dinnner, General Carousing & Bar Hopping
+  date: May 3
+  time: Evening
+  cost: ???
+  desc: If you're coming in town and just want to meet some people for dinner and/or drinks, register for this.
+  url:
+- name: Kansas City BBQ Restaurant Tour
+  date: May 3
+  time: Evening, need minimum of 10 to reserve
+  cost: $45/$55/$65
+  desc: Guests will travel through some Kansas City’s historic neighborhoods as they sample savory meats and side dishes from Kansas City’s historic and hidden gem barbecue restaurants.
+  url: http://www.kcbarbecuetours.com/
+- name: Saturday Sightseeing
+  date: May 7
+  time: All Day
+  cost: ???
+  desc: Meet up with other attendees to explore Kansas City after the conference is over
+  url:
+- name: Kansas City BBQ Restaurant Tour
+  date: May 7
+  time: Anytime, need minimum of 10 to reserve
+  cost: $45/$55/$65
+  desc: Guests will travel through some Kansas City’s historic neighborhoods as they sample savory meats and side dishes from Kansas City’s historic and hidden gem barbecue restaurants.
+  url: http://www.kcbarbecuetours.com/
+- name: Template
+  date: May 0
+  time: ???
+  cost: ???
+  desc:
+  url:
+

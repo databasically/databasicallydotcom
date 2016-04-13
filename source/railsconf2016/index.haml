@@ -1,0 +1,65 @@
+---
+title: Railsconf 2016 - Kansas City - Events
+post_date: 2016-03-22
+---
+%h1 Railsconf 2016 - Kansas City - May 4, 5, 6
+
+%h2 Events Surrounding Railsconf 2016
+
+%p
+  Hi! If you're coming to Railsconf 2016 in Kansas City and you're arriving a day early or late, this is the place to find something to do.
+
+%h3 Who are you?
+%p
+  My name is Wes Garrison. I grew up in Kansas City and I want you to see something other than the inside of a conference center. So, I'll be coordinating a lot of different events so you can see the sights. Plus, new Ruby Friends are always great!
+
+%h3 How does this work?
+
+%ul
+  %li
+    First, get on the mailing list.  Check your email for a confirmation!
+    = partial :mailchimp
+
+  %li
+    Follow
+    = link_to '@wesgarrison', 'https://twitter.com/wesgarrison'
+    for more timely updates as we get closer.
+  %li Look at the events below.
+  %li
+    Send suggestions to
+    = link_to '@wesgarrison', 'https://twitter.com/wesgarrison'
+  %li Fill out the form with events you are interested in.
+  %li For popular events, I'll send out specific arrangements, ticket details, transportation.
+  %li For general attractions, I'll help coordinate and connect interested parties.
+
+Events with specific times and/or reservation requirements are first.
+%br
+General attractions are
+= link_to 'at the bottom.', '#other_attractions'
+We don't have specific times that we need to be at these, but let me know you're interested!
+
+%h1 Monday, May 2nd Events
+
+- data.events.select {|event| event.date == 'May 2'}.each do |event|
+  = partial :event, :locals => {event: event}
+
+%h1 Tuesday May 3rd Events
+
+- data.events.select {|event| event.date == 'May 3'}.each do |event|
+  = partial :event, :locals => {event: event}
+
+%h1 Saturday May 7th Events
+
+- data.events.select {|event| event.date == 'May 7'}.each do |event|
+  = partial :event, :locals => {event: event}
+
+%h1#other_attractions Other attractions
+
+
+
+
+
+
+
+/ %h1 debug
+/ = data.events

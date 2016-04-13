@@ -1,0 +1,19 @@
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title
+      = event.name
+  .panel-body
+    %table.table.table-hover
+      %thead
+        %tr
+          %th.col-md-4 Time
+          %th.col-md-4 Cost
+          %th.col-md-4 Info
+      %tbody
+        %tr
+          %td= event.time
+          %td= event.cost
+          %td= link_to 'link', event.url if event.url
+
+    = event.desc
+
