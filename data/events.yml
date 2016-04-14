@@ -15,7 +15,19 @@
   time: Evening
   cost: BYOB and Games
   desc: If you're interested, let me know and I'll see about reserving a room.
-  url: '#'
+  url:
+- name: Board Game Night
+  date: May 4
+  time: Evening
+  cost: BYOB and Games
+  desc: If you're interested, let me know and I'll see about reserving a room.
+  url:
+- name: Board Game Night
+  date: May 5
+  time: Evening
+  cost: BYOB and Games
+  desc: If you're interested, let me know and I'll see about reserving a room.
+  url:
 - name: 'Boulevard Brewery: Free Public Tours'
   date: May 2
   time: 10:15, 11:00, 11:45, 1:15 & 2:00
@@ -71,11 +83,44 @@
   desc: Guests will travel through some of Kansas City’s historic neighborhoods as they sample savory meats and side dishes from Kansas City’s historic and hidden gem barbecue restaurants.
   url: http://www.kcbarbecuetours.com/
 - name: National World War I Museum
-  date: attraction
+  date: Any
   time: 10am - 5pm, except Monday
   cost: $14
   desc: The National World War I Museum and Memorial helps the nation preserve and remember the courage, honor, sacrifice and valiant efforts that led to the end of the world's first global conflict.
   url: https://www.theworldwar.org/
+- name: Legoland
+  date: Any
+  time: 10:00am - 6:00pm
+  cost: $18
+  desc: Can get combined tickets with SeaLife Aquarium
+  url: https://www.legolanddiscoverycenter.com/kansascity/
+- name: SeaLife Aquarium
+  date: Any
+  time: 10:00am - 6:00pm
+  cost: $11-14 (buy online for discount)
+  desc: Can get combined tickets with LegoLand
+  url: https://www.visitsealife.com/kansas-city/
+- name: Negro Leagues Baseball Museum
+  date: Any
+  time: 9:00 am–6:00 p.m (except Mondays)
+  cost: $10
+  desc: Founded in 1990, the NLBM preserves the rich history of African-American baseball.  Located in the historic 18th & Vine District.
+  url: https://www.nlbm.com/
+
+- name: College Basketball Experience
+  date: Any
+  time: 10-6pm, Sat & Sun
+  cost: $14
+  desc: '"The energy and madness of mens collegiate basketball is represented here with authentic and fully interactive experiences that will lead you into the thrill and history of the game."'
+  url: http://www.collegebasketballexperience.com/
+
+- name: Nelson-Atkins Art Museum
+  date: Any
+  time: 10-5 Wed, Sat, Sun / 10-9 Thu, Fri
+  cost: Free, $8 parking (or park on street somewhere near)
+  desc: "Voted Best U.S. Museum, Based on Yelp Reviews"
+  url: http://www.nelson-atkins.org
+
 - name: Template
   date: May 0
   time: ???
