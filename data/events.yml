@@ -11,22 +11,10 @@
   desc: We'll place a group order, probably. We'll have to arrange transportation.
   url: http://kansascity.royals.mlb.com/index.jsp?c_id=kc
 - name: Board Game Night
-  date: May 3
-  time: Evening
-  cost: BYOB and Games
-  desc: If you're interested, let me know and I'll see about reserving a room.
-  url:
-- name: Board Game Night
   date: May 4
-  time: Evening
+  time: Evening, at the Crowne Plaza - Salon B
   cost: BYOB and Games
-  desc: If you're interested, let me know and I'll see about reserving a room.
-  url:
-- name: Board Game Night
-  date: May 5
-  time: Evening
-  cost: BYOB and Games
-  desc: If you're interested, let me know and I'll see about reserving a room.
+  desc: Bring your board games and join your Ruby Friends for an evening of games.
   url:
 - name: 'Boulevard Brewery: Free Public Tours'
   date: May 2
@@ -120,6 +108,20 @@
   cost: Free, $8 parking (or park on street somewhere near)
   desc: "Voted Best U.S. Museum, Based on Yelp Reviews"
   url: http://www.nelson-atkins.org
+
+- name: Breakout KC - Railsconf Group Event
+  date: May 2
+  time: Evening
+  cost: $28 (before 15% group discount with code)
+  desc: "'YOU HAVE 60 MINUTES TO BREAKOUT FROM ONE OF OUR REAL LIFE ESCAPE ROOMS. CRACK THE CODES. USE YOUR GUT. SOLVE THE RIDDLES. FIND OUT IF YOU HAVE WHAT IT TAKES TO BREAKOUT IN TIME!'"
+  url: http://breakoutkc.com
+
+- name: Breakout KC - Railsconf Group Event
+  date: Any
+  time: Any
+  cost: $28 (before 15% group discount with code)
+  desc: Solve puzzles to break out of a room, all in 60 minutes. You can sign up for other times on their website. If you want to coordinate with others, sign up above and I'll help arrange times.
+  url: http://breakoutkc.com
 
 - name: Template
   date: May 0
