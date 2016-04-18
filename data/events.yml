@@ -137,6 +137,13 @@
   desc: Karaoke Bar with private suites and main bar
   url: http://offkeykc.com/
 
+- name: KC Elixir User Group Meeting
+  date: May 5
+  time: 7pm - 8:30pm
+  cost: $0
+  desc: Brian Cardarella of DockYard will be presenting at RailsConf and has graciously offered to present at a KC Elixir MeetUp. Brian would like to talk about Courier, an Elixir library for mail delivery on which he's been working.
+  url: http://www.meetup.com/KC-Elixir-Users-Group/events/230470583/
+
 - name: Template
   date: May 0
   time: ???
