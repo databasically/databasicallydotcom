@@ -1,0 +1,13 @@
+%table.table
+  %thead
+    %tr
+      - days.each do |date|
+        %th= date
+  %tbody
+    %tr
+      - days.each do |date|
+        %td.col-xs-4
+          %ul
+            - data.events.select {|event| event.date == date}.each do |event|
+              %li
+                %small= link_to event.name, '#' + event_anchor(event)

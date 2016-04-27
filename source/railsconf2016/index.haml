@@ -38,6 +38,8 @@ General attractions are
 = link_to 'at the bottom.', '#other_attractions'
 We don't have specific times that we need to be at these, but let me know you're interested!
 
+= partial :calendar
+
 %h1 Monday, May 2nd Events
 
 - data.events.select {|event| event.date == 'May 2'}.each do |event|

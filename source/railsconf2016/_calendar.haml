@@ -1,0 +1,24 @@
+= link_to '', '#', name: 'calendar'
+.panel.panel-primary
+  .panel-heading
+    %h3.panel-title
+      Calendar
+  .panel-body
+    = partial :calendar_row, locals: {days: first_row_days}
+    = partial :calendar_row, locals: {days: second_row_days}
+
+    %table.table
+      %thead
+        %tr
+          %th
+            Any
+          %th
+          %th
+      %tbody
+        %tr
+          - attraction_events(data.events).each_slice(3).each do |events|
+            %td.col-xs-4
+              %ul
+                - events.each do |event|
+                  %li
+                    %small= link_to event.name, '#' + event_anchor(event)

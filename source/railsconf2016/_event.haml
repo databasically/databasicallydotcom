@@ -1,6 +1,10 @@
 .panel.panel-primary
   .panel-heading
+    .panel-title.pull-right
+      %small
+        = link_to 'calendar', "#calendar", class: 'pull-right'
     %h3.panel-title
+      = link_to '', '#', name: event_anchor(event)
       = event.name
   .panel-body
     %table.table.table-hover

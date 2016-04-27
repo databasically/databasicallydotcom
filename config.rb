@@ -75,15 +75,30 @@ page "/feed.xml", :layout => false, :directory_index => false
 # Helpers
 ###
 
+
+
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
 
 # Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def specific_days(events)
+    events.map(&:date).sort.uniq.select {|date| date.match(/May/)}
+  end
+
+  def first_row_days
+    ['May 2', 'May 3', 'May 4']
+  end
+
+  def second_row_days
+    ['May 5', 'May 6', 'May 7']
+  end
+
+  def attraction_events(events)
+    events.select {|event| event.date == 'Any'}.sort_by(&:name)
+
+  end
+end
 
 set :css_dir, 'stylesheets'
 
