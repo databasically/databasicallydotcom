@@ -124,13 +124,13 @@
   url: http://breakoutkc.com
 
 - name: Karaoke - Offkey
-  date: May 4
+  date: Any
   time: 7pm - Close
   cost: Depends if we have enough to get a private suite
   desc: Karaoke Bar with private suites and main bar
   url: http://offkeykc.com/
 
-- name: Karaoke - Offkey
+- name: Semi-Official Railsconf Karaoke Night - Offkey
   date: May 5
   time: 7pm - Close
   cost: Depends if we have enough to get a private suite
