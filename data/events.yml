@@ -52,10 +52,10 @@
   cost: ???
   desc: If you're coming in town and just want to meet some people for dinner and/or drinks, register for this.
   url:
-- name: Kansas City BBQ Restaurant Tour
+- name: Kansas City BBQ Restaurant Tour (sold out)
   date: May 3
-  time: Evening, need minimum of 10 to reserve
-  cost: $45/$55/$65
+  time: 6 PM sharp in Crowne Plaza lobby
+  cost: Free thanks to Honeybadger App!
   desc: Guests will travel through some of Kansas City’s historic neighborhoods as they sample savory meats and side dishes from Kansas City’s historic and hidden gem barbecue restaurants.
   url: http://www.kcbarbecuetours.com/
 - name: Saturday Sightseeing
@@ -64,12 +64,13 @@
   cost: ???
   desc: Meet up with other attendees to explore Kansas City after the conference is over
   url:
-- name: Kansas City BBQ Restaurant Tour
+- name: Kansas City BBQ Restaurant Tour - Saturday
   date: May 7
   time: Anytime, need minimum of 10 to reserve
   cost: $45/$55/$65
   desc: Guests will travel through some of Kansas City’s historic neighborhoods as they sample savory meats and side dishes from Kansas City’s historic and hidden gem barbecue restaurants.
   url: http://www.kcbarbecuetours.com/
+
 - name: National World War I Museum
   date: Any
   time: 10am - 5pm, except Monday
