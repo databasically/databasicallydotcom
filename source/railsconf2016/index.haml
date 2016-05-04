@@ -17,45 +17,46 @@ post_date: 2016-03-22
 
 %ul
   %li
-    Follow
-    = link_to '@wesgarrison', 'https://twitter.com/wesgarrison'
-    for more timely updates as we get closer.
-  %li Look at the events below.
+    Use #railsconf to find people interested in events.
   %li
-    Send suggestions to
-    = link_to '@wesgarrison', 'https://twitter.com/wesgarrison'
-  %li For popular events, I'll send out specific arrangements, ticket details, and transportation plans.
-  %li For general attractions, I'll help coordinate and connect interested parties.
-
-Events with specific times and/or reservation requirements are first.
-%br
-General attractions are
-= link_to 'at the bottom.', '#other_attractions'
-We don't have specific times that we need to be at these, but let me know you're interested!
+    =link_to 'See the list of BBQ places around town', '#kansas_city_bbq'
 
 = partial :calendar
 
-%h1 Monday, May 2nd Events
+%h1#kansas_city_bbq BBQ Restaurants
 
-- data.events.select {|event| event.date == 'May 2'}.each do |event|
-  = partial :event, :locals => {event: event}
+%ul
+  %li
+    =link_to 'Jack Stack (Freight House): ', 'http://www.jackstackbbq.com/freight-house/a/freight-house/'
 
-%h1 Tuesday May 3rd Events
+    101 W 22nd St., #300 Kansas City, MO 64108
+  %li
+    =link_to 'Arthur Bryant\'s: ', 'https://www.arthurbryantsbbq.com/our_restaurants/index.htm'
+    18th and Brooklyn
 
-- data.events.select {|event| event.date == 'May 3'}.each do |event|
-  = partial :event, :locals => {event: event}
+  %li
+    =link_to 'Gates BBQ: ', 'http://www.gatesbbq.com/GeneralInformation/Location.aspx'
+    12th & Brooklyn
 
-%h1 Wednesday May 4th Events
+  %li
+    =link_to 'Winslows BBQ: ', 'http://winslowsbbq.com/'
+    20 E 5th St Kansas City, MO 64106 (Closes at 8PM.)
+
+  %li
+    =link_to 'Slaps BBQ: ', 'http://www.slapsbbqkc.com/'
+    553 Central Ave, Kansas City KS, 66101 (Open until they sell out.)
+
+%h1#may_4 Wednesday May 4th Events
 
 - data.events.select {|event| event.date == 'May 4'}.each do |event|
   = partial :event, :locals => {event: event}
 
-%h1 Thursday May 5th Events
+%h1#may_5 Thursday May 5th Events
 
 - data.events.select {|event| event.date == 'May 5'}.each do |event|
   = partial :event, :locals => {event: event}
 
-%h1 Friday May 6th Events
+%h1#may_6 Friday May 6th Events
 
 - data.events.select {|event| event.date == 'May 6'}.each do |event|
   = partial :event, :locals => {event: event}
@@ -71,7 +72,18 @@ We don't have specific times that we need to be at these, but let me know you're
 
 
 
+%h1 Archive
 
+
+%h1 Monday, May 2nd Events
+
+- data.events.select {|event| event.date == 'May 2'}.each do |event|
+  = partial :event, :locals => {event: event}
+
+%h1 Tuesday May 3rd Events
+
+- data.events.select {|event| event.date == 'May 3'}.each do |event|
+  = partial :event, :locals => {event: event}
 
 
 

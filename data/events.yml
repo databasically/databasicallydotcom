@@ -10,6 +10,14 @@
   cost: ~$20
   desc: We'll place a group order, probably. We'll have to arrange transportation.
   url: http://kansascity.royals.mlb.com/index.jsp?c_id=kc
+
+- name: BBQ for Dinner
+  date: May 4
+  time: Evening
+  cost: Food + drinks
+  desc: If you want to go out for BBQ tonight, <a href="https://clicktotweet.com/4WG3f">tweet @wesgarrison</a> and we'll coordinate.
+  url:
+
 - name: Board Game Night
   date: May 4
   time: Evening, at the Crowne Plaza - Salon B
@@ -124,12 +132,20 @@
   desc: Solve puzzles to break out of a room, all in 60 minutes. You can sign up for other times on their website. If you want to coordinate with others, sign up above and I'll help arrange times.
   url: http://breakoutkc.com
 
+- name: Breakout KC - Railsconf Group Event
+  date: May 4
+  time: Start times from 5pm to 11:30pm, takes 1 hour
+  cost: $28 (before 15% group discount with code RailsConf2016)
+  desc: Want to join? <a href="http://ctt.ec/27f4c">Use this tweet</a> and add when you want to go! <br><br> Solve puzzles to break out of a room, all in 60 minutes. You can sign up for other times on their website. If you want to coordinate with others, sign up above and I'll help arrange times.
+  url: http://breakoutkc.com
+
 - name: Playoff Hockey Watch Party
   date: May 4
   time: Evening
   cost: Food + drinks
   desc: Power and Light District (Specifics TBD).  Johnny's, No Other Pub, and McFadden's, and Pizza Bar are all sporty.
   url:
+
 
 - name: Karaoke - Offkey
   date: Any
