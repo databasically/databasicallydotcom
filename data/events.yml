@@ -147,18 +147,11 @@
   url:
 
 
-- name: Karaoke - Offkey
-  date: Any
-  time: 7pm - Close
-  cost: Depends if we have enough to get a private suite
-  desc: Karaoke Bar with private suites and main bar
-  url: http://offkeykc.com/
-
 - name: Semi-Official Railsconf Karaoke Night - Offkey
   date: May 5
-  time: 7pm - Close
-  cost: Depends if we have enough to get a private suite
-  desc: Karaoke Bar with private suites and main bar
+  time: 8pm - 10pm
+  cost: Flat rate fee for the room (would love someone to cover this!) + costs for drinks
+  desc: 510 Westport Rd Kansas City, Mo. 64111. This is located in the Westport area, so you'll want to grab an Uber there. Lots of places to eat, so head that way early. We currently have the room from 8-10. If you're there early, you can wait in the bar or there's a video game bar next door.
   url: http://offkeykc.com/
 
 - name: KC Elixir User Group Meeting
