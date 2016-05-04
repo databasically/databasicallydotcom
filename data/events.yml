@@ -20,10 +20,11 @@
 
 - name: Board Game Night
   date: May 4
-  time: Evening, at the Crowne Plaza - Salon B
+  time: After dinner - 12pm, at the Crowne Plaza - Salon B
   cost: BYOB and Games
   desc: Bring your board games and join your Ruby Friends for an evening of games.
   url:
+
 - name: 'Boulevard Brewery: Free Public Tours'
   date: May 2
   time: 10:15, 11:00, 11:45, 1:15 & 2:00
