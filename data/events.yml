@@ -176,6 +176,13 @@
   desc: No Other Pub by Sporting KC - 1370 Grand Boulevard, Kansas City, MO 64106 // The Ruby on Rails Tutorial's Beerware License states that, "If we meet some day, and you think this stuff is worth it, you can buy me a beer in return." Join me, Ruby on Rails Tutorial author Michael Hartl, and other Rails Tutorial peeps for an evening of conversation, fun, and making good on the terms of the Beerware License (assuming, of course, you think this stuff was worth it).
   url: https://www.eventbrite.com/e/rails-tutorial-beerware-night-tickets-24899445913
 
+- name: First Friday in the KC Crossroads Art District
+  date: May 6
+  time: 5pm - late
+  cost: $0
+  desc: Easy walk from the convention center. Food trucks, street music, aerial performances, sidewalk vendors, buskers, live theater, traditional and avant-garde art exhibits, and more
+  url: http://kccrossroads.org/first-fridays/
+
 
 # - name: Template
 #   date: May 0

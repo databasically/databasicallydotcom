@@ -46,11 +46,6 @@ post_date: 2016-03-22
     =link_to 'Slaps BBQ: ', 'http://www.slapsbbqkc.com/'
     553 Central Ave, Kansas City KS, 66101 (Open until they sell out.)
 
-%h1#may_5 Thursday May 5th Events
-
-- data.events.select {|event| event.date == 'May 5'}.each do |event|
-  = partial :event, :locals => {event: event}
-
 %h1#may_6 Friday May 6th Events
 
 - data.events.select {|event| event.date == 'May 6'}.each do |event|
@@ -85,6 +80,10 @@ post_date: 2016-03-22
 - data.events.select {|event| event.date == 'May 4'}.each do |event|
   = partial :event, :locals => {event: event}
 
+%h1#may_5 Thursday May 5th Events
+
+- data.events.select {|event| event.date == 'May 5'}.each do |event|
+  = partial :event, :locals => {event: event}
 
 / %h1 debug
 / = data.events
